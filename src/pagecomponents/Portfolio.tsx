@@ -28,6 +28,7 @@ const Portfolio = (props) => {
     const deletePortfolio = [...props.portfolio];
     deletePortfolio.splice(item);
     props.addPortfolio(deletePortfolio);
+    // console.log(typeof item);
   };
 
   const onDeletePortfolioCoin = (coin) => {
@@ -38,6 +39,7 @@ const Portfolio = (props) => {
     portfolioCopy.splice(indexOf, 1);
     props.addPortfolio(portfolioCopy);
     setPortfolioModal(!portfolioModal);
+    // console.log(typeof coin);
   };
 
   const onUpdatePortfolioCoin = (name, quantity) => {

@@ -14,8 +14,6 @@ const CoinDescription = (props) => {
     });
   }
 
-  console.log(coinToShow, currentCoin);
-
   return (
     <>
       <h4 className="desc-header">All About {currentCoin[2]}</h4>
