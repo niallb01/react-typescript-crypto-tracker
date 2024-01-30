@@ -5,8 +5,8 @@ import Navbar from "./components/Navbar";
 import Home from "./pagecomponents/Home";
 import Portfolio from "./pagecomponents/Portfolio";
 import CoinDescription from "./pagecomponents/CoinDescription";
-import CoinData from "./CoinData.json";
-import CoinDescData from "./CoinDescData.json";
+import CoinData from "./data/CoinData.json";
+import CoinDescData from "./data/CoinDescData.json";
 
 function App() {
   const [coins, setCoins] = useState([]);
