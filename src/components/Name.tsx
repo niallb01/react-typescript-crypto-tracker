@@ -1,4 +1,4 @@
-const Name = (props) => {
+const Name = (props: any) => {
   return (
     <>
       <div className="item-3">

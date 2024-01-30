@@ -14,6 +14,8 @@ const CoinDescription = (props) => {
     });
   }
 
+  console.log(coinToShow, currentCoin);
+
   return (
     <>
       <h4 className="desc-header">All About {currentCoin[2]}</h4>
@@ -34,7 +36,7 @@ const CoinDescription = (props) => {
         </Link>
       </div>
 
-      {coinToShow.map((coindesc, description) => {
+      {coinToShow.map((coindesc: any, description: any) => {
         return (
           <div key={description} className="desc-container">
             <div className="desc-data">
