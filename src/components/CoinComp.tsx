@@ -1,5 +1,4 @@
 const CoinComp = (props) => {
-  console.log("coincomp", props);
   return (
     <>
       <div className="item-1">
