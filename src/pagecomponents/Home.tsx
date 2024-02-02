@@ -1,4 +1,3 @@
-// import React from "react";
 import Coin from "../components/Coin";
 import { useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -7,16 +6,22 @@ import CoinDescription from "./CoinDescription";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
-const Home = (props) => {
+type HomeProps = {
+  coins: coinType[];
+  portfolio: portfolioType[];
+  addPortfolio: (portfolio: PortfolioType[]) => void;
+};
+
+const Home = (props: HomeProps) => {
   const [search, setSearch] = useState("");
 
-  // const { coins, portfolio, addPortfolio } = props;
+  console.log("home", props);
 
-  const handleSearchInput = (e) => {
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
-  const handlePortfolioItem = (name) => {
+  const handlePortfolioItem = (name: string) => {
     const portfolioCopy = [...props.portfolio];
     //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
     const found = portfolioCopy?.find((coin) => {
