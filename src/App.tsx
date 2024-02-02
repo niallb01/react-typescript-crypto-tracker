@@ -23,6 +23,7 @@ function App() {
   function getCoins() {
     const getCoinData = CoinData;
     setCoins(getCoinData);
+    // console.log(typeof getCoinData);
   }
   // get description data into state
   function getCoinsDesc() {

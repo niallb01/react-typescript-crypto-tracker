@@ -10,6 +10,8 @@ import { toast, ToastContainer } from "react-toastify";
 const Home = (props) => {
   const [search, setSearch] = useState("");
 
+  // const { coins, portfolio, addPortfolio } = props;
+
   const handleSearchInput = (e) => {
     setSearch(e.target.value);
   };

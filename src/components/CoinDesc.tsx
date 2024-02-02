@@ -1,25 +1,26 @@
-import React from "react";
-import Name from "./Name";
-import MarketCap from "./MarketCap";
-import DescImage from "./DescImage";
-import Symbol from "./Symbol";
-import CoinPrice from "./CoinPrice";
-import Circulating from "./Circulating";
-import FullyDiluted from "./FullyDiluted";
-import TotalSupply from "./TotalSupply";
-import MaxSupply from "./MaxSupply";
-import TwentyFourHourHigh from "./TwentyFourHourHigh";
-import TwentyFourHourLow from "./TwentyFourHourLow";
-import MarketRank from "./MarketRank";
-import Ath from "./Ath";
-import Atl from "./Atl";
-import DescVolume from "./DescVolume";
-import DescText from "./DescText";
+// import React from "react";
+// import Name from "./Name";
+// import MarketCap from "./MarketCap";
+// import DescImage from "./DescImage";
+// import Symbol from "./Symbol";
+// import CoinPrice from "./CoinPrice";
+// import Circulating from "./Circulating";
+// import FullyDiluted from "./FullyDiluted";
+// import TotalSupply from "./TotalSupply";
+// import MaxSupply from "./MaxSupply";
+// import TwentyFourHourHigh from "./TwentyFourHourHigh";
+// import TwentyFourHourLow from "./TwentyFourHourLow";
+// import MarketRank from "./MarketRank";
+// import Ath from "./Ath";
+// import Atl from "./Atl";
+// import DescVolume from "./DescVolume";
+// import DescText from "./DescText";
+import CoinDescComp from "./CoinDescComp";
 
 const CoinDesc = (props) => {
   return (
     <>
-      <MarketRank marketRank={props.marketRank} />
+      {/* <MarketRank marketRank={props.marketRank} />
       <DescImage descImage={props.descImage} />
       <Name name={props.name} />
       <Symbol symbol={props.symbol} />
@@ -34,7 +35,25 @@ const CoinDesc = (props) => {
       <TwentyFourHourLow twentyFourHourLow={props.twentyFourHourLow} />
       <Ath ath={props.ath} />
       <Atl atl={props.atl} />
-      <DescText descText={props.descText} />
+      <DescText descText={props.descText} /> */}
+      <CoinDescComp
+        marketRank={props.marketRank}
+        descImage={props.descImage}
+        name={props.name}
+        symbol={props.symbol}
+        coinPrice={props.coinPrice}
+        marketCap={props.marketCap}
+        descvolume={props.descvolume}
+        circulating={props.circulating}
+        fullyDiluted={props.fullyDiluted}
+        totalSupply={props.totalSupply}
+        maxSupply={props.maxSupply}
+        twentyFourHourHigh={props.twentyFourHourHigh}
+        twentyFourHourLow={props.twentyFourHourLow}
+        ath={props.ath}
+        atl={props.atl}
+        descText={props.descText}
+      />
     </>
   );
 };
