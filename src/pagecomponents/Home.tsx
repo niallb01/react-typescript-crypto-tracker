@@ -12,10 +12,12 @@ type HomeProps = {
   addPortfolio: (portfolio: PortfolioType[]) => void;
 };
 
+// type SearchType = {};
+
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState("");
 
-  console.log("home", props);
+  // console.log("home", props);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -98,14 +100,14 @@ const Home = (props: HomeProps) => {
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon-fill"
                       size="16"
-                      width={{ width: "10px" }}
+                      // width={{ width: "10px" }}
                     />
                   ) : (
                     <FaRegStar
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"
-                      width={{ width: "10px" }}
+                      // width={{ width: "10px" }}
                     />
                   )}
                 </Link>

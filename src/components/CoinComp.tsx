@@ -1,16 +1,16 @@
-type CoinCompProps = {
-  rank: string;
-  image: string;
-  symbol: string;
-  name: string;
-  coinPrice: number;
-  twentyFourHour: number;
-  volume: number;
-  fdv: number;
-  marketCap: number;
-};
+// type CoinCompProps = {
+//   rank: string;
+//   image: string;
+//   symbol: string;
+//   name: string;
+//   coinPrice: number;
+//   twentyFourHour: number;
+//   volume: number;
+//   fdv: number;
+//   marketCap: number;
+// };
 
-const CoinComp = (props: CoinCompProps) => {
+const CoinComp = (props) => {
   return (
     <>
       <div className="item-1">

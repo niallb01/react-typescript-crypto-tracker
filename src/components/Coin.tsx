@@ -1,20 +1,20 @@
 import CoinComp from "./CoinComp";
 //child of home component
 
-type CoinProps = {
-  id: string;
-  rank: string;
-  image: string;
-  symbol: string;
-  name: string;
-  coinPrice: number;
-  twentyFourHour: number;
-  volume: number;
-  fdv: number;
-  marketCap: number;
-};
+// type CoinProps = {
+//   id: string;
+//   rank: string;
+//   image: string;
+//   symbol: string;
+//   name: string;
+//   coinPrice: number;
+//   twentyFourHour: number;
+//   volume: number;
+//   fdv: number;
+//   marketCap: number;
+// };
 
-const Coin = (props: CoinProps) => {
+const Coin = (props) => {
   return (
     <>
       <CoinComp
