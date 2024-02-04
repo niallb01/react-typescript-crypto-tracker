@@ -42,6 +42,8 @@ type CoinDescType = {
 
 type PortfolioType = {
   name: string;
+  // portfolio: Array[];
+  addPortfolio: (portfolio: PortfolioType[]) => void;
 };
 
 function App() {

@@ -12,12 +12,29 @@ type HomeProps = {
   addPortfolio: (portfolio: PortfolioType[]) => void;
 };
 
-// type SearchType = {};
+type HomeCoinType = {
+  id: string;
+  symbol: string;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  volume: number;
+  price_change_24h: number;
+  twentyFourHour: number;
+  price_change_percentage_24h: number;
+};
+
+// type SearchType = {
+//   search: string;
+//   handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+// };
 
 const Home = (props: HomeProps) => {
-  const [search, setSearch] = useState("");
-
-  // console.log("home", props);
+  const [search, setSearch] = useState<string>("");
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -75,15 +92,14 @@ const Home = (props: HomeProps) => {
 
       <div className="portfolio-link">
         Go to
-        <Link to="/portfolio">
-          <a href="#" className="portfolio-link-text">
-            {" "}
-            Portfolio {<FaStar className="star-icon-fill" size="10" />}
-          </a>
+        <Link to="/portfolio" className="portfolio-link-text">
+          {/* <a href="#" className="portfolio-link-text"> */} Portfolio{" "}
+          {<FaStar className="star-icon-fill" size="10" />}
+          {/* </a> */}
         </Link>
       </div>
 
-      {coinsToUse.map((coin) => {
+      {coinsToUse.map((coin: HomeCoinType) => {
         return (
           <Link
             to={`/coin-description/${coin.name}`}

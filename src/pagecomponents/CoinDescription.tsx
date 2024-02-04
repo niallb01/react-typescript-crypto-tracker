@@ -4,9 +4,9 @@ import DescText from "../components/DescText";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-type DescriptionProps = {
-  coinDescription: CoinDescType[];
-};
+// type DescriptionProps = {
+//   coinDescription: string;
+// };
 
 const CoinDescription = (props: DescriptionProps) => {
   const location = useLocation();
@@ -23,18 +23,16 @@ const CoinDescription = (props: DescriptionProps) => {
       <h4 className="desc-header">All About {currentCoin[2]}</h4>
       <div className="portfolio-link">
         Go to
-        <Link to="/portfolio">
-          <a href="#" className="portfolio-link-text">
-            {" "}
-            Portfolio{" "}
-            {
-              <FaStar
-                className="star-icon-fill"
-                size="10"
-                width={{ width: "10px" }}
-              />
-            }
-          </a>
+        <Link to="/portfolio" className="portfolio-link-text">
+          {" "}
+          Portfolio{" "}
+          {
+            <FaStar
+              className="star-icon-fill"
+              size="10"
+              width={{ width: "10px" }}
+            />
+          }
         </Link>
       </div>
 
