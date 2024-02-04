@@ -1,23 +1,23 @@
-type CoinDescCompProps = {
-  marketRank: number;
-  descImage: string;
-  name: string;
-  symbol: string;
-  coinPrice: number;
-  marketCap: number;
-  descvolume: number;
-  circulating: number;
-  fullyDiluted: number;
-  totalSupply: number;
-  maxSupply: null;
-  twentyFourHourHigh: number;
-  twentyFourHourLow: number;
-  ath: number;
-  atl: number;
-  descText: string;
-};
+// type CoinDescCompProps = {
+//   marketRank: number;
+//   descImage: string;
+//   name: string;
+//   symbol: string;
+//   coinPrice: number;
+//   marketCap: number;
+//   descvolume: number;
+//   circulating: number;
+//   fullyDiluted: number;
+//   totalSupply: number;
+//   maxSupply: null;
+//   twentyFourHourHigh: number;
+//   twentyFourHourLow: number;
+//   ath: number;
+//   atl: number;
+//   descText: string;
+// };
 
-const CoinDescComp = (props: CoinDescCompProps) => {
+const CoinDescComp = (props) => {
   return (
     <>
       <p className="market-cap-rank">

@@ -22,22 +22,22 @@ type CoinType = {
 };
 
 type CoinDescType = {
-  marketRank: number;
-  descImage: string;
-  name: string;
   symbol: string;
-  coinPrice: number;
-  marketCap: number;
-  descvolume: number;
-  circulating: number;
-  fullyDiluted: number;
-  totalSupply: number;
-  maxSupply: number | null;
-  twentyFourHourHigh: number;
-  twentyFourHourLow: number;
+  name: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  fully_diluted_valuation: number;
+  total_volume: number;
+  high_24h: number;
+  low_24h: number;
+  circulating_supply: number;
+  total_supply: number | null;
+  max_supply: number | null;
   ath: number;
   atl: number;
-  descText: string;
+  coin_description: string;
 };
 
 type PortfolioType = {

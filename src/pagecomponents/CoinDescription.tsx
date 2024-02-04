@@ -4,7 +4,11 @@ import DescText from "../components/DescText";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
-const CoinDescription = (props) => {
+type DescriptionProps = {
+  coinDescription: CoinDescType[];
+};
+
+const CoinDescription = (props: DescriptionProps) => {
   const location = useLocation();
   const currentCoin = location.pathname.split("/");
   let coinToShow = props.coinDescription;
@@ -34,7 +38,7 @@ const CoinDescription = (props) => {
         </Link>
       </div>
 
-      {coinToShow.map((coindesc: any, description: any) => {
+      {coinToShow.map((coindesc, description) => {
         return (
           <div key={description} className="desc-container">
             <div className="desc-data">
