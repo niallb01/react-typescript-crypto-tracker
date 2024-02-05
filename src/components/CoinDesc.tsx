@@ -16,7 +16,6 @@ type CoinDescProps = {
   twentyFourHourLow: string;
   ath: string;
   atl: string;
-  // descText: string;
 };
 
 const CoinDesc = (props: CoinDescProps) => {
@@ -38,7 +37,6 @@ const CoinDesc = (props: CoinDescProps) => {
         twentyFourHourLow={props.twentyFourHourLow}
         ath={props.ath}
         atl={props.atl}
-        // descText={props.descText}
       />
     </>
   );

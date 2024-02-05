@@ -16,7 +16,7 @@ const EditCoin = (props) => {
   //event handler to edit coin quantity from user
   const handleEditQuantity = (e) => {
     setQuantity(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   return (

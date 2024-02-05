@@ -1,6 +1,12 @@
 import InputCoinComp from "./InputCoinComp";
 
-const InputCoin = (props) => {
+type InputCoinProps = {
+  image: string;
+  name: string;
+  symbol: string;
+};
+
+const InputCoin = (props: InputCoinProps) => {
   return (
     <>
       <InputCoinComp

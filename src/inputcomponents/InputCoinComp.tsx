@@ -1,4 +1,10 @@
-const InputCoinComp = (props) => {
+type InputCoinComp = {
+  image: string;
+  name: string;
+  symbol: string;
+};
+
+const InputCoinComp = (props: InputCoinComp) => {
   return (
     <>
       <img className="input-crypto-icon" src={props.image} alt="crypto" />

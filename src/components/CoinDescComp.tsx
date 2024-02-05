@@ -14,7 +14,6 @@ type CoinDescCompProps = {
   twentyFourHourLow: string;
   ath: string;
   atl: string;
-  // descText: string;
 };
 
 const CoinDescComp = (props: CoinDescCompProps) => {
@@ -51,7 +50,6 @@ const CoinDescComp = (props: CoinDescCompProps) => {
       <p className="desc-24hr-low">24hr Low: £{props.twentyFourHourLow}</p>
       <p className="all-time-high">All Time High: £{props.ath}</p>
       <p className="all-time-low">All Time Low: £{props.atl}</p>
-      {/* <p className="desc-text">{props.descText}</p> */}
     </>
   );
 };

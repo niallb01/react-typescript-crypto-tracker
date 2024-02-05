@@ -44,6 +44,8 @@ type PortfolioType = {
   name: string;
   // portfolio: Array[];
   addPortfolio: (portfolio: PortfolioType[]) => void;
+  coins: [];
+  portfolio: [];
 };
 
 function App() {
@@ -96,10 +98,6 @@ function App() {
               coins={coins}
             />
           }
-        />
-        <Route
-          path="/coin-description/:coinName"
-          element={<CoinDescription coinDescription={coinDescription} />}
         />
       </Routes>
     </>
