@@ -15,7 +15,6 @@ type CoinProps = {
 };
 
 const Coin = (props: CoinProps) => {
-  console.log("coin", props);
   return (
     <>
       <CoinComp
