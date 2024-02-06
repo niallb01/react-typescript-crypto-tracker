@@ -1,4 +1,16 @@
-const PortfolioCoinComp = (props) => {
+type PortfolioCoinComp = {
+  rank: number;
+  image: string;
+  name: string;
+  symbol: string;
+  coinPrice: string;
+  quantity: string;
+  marketCap: string;
+  totalValue: string;
+  twentyFourHour: any;
+};
+
+const PortfolioCoinComp = (props: PortfolioCoinComp) => {
   return (
     <>
       <div className="item-1">

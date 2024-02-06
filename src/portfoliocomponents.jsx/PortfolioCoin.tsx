@@ -3,7 +3,22 @@ import PortfolioCoinComp from "./PortfolioCoinComp";
 //this component is child of portfolio - data is being sent down from portfolio
 //parent - portfolio is mapping over data
 
-const PortfolioCoin = (props) => {
+type PortfolioCoin = {
+  rank: number;
+  image: string;
+  name: string;
+  symbol: string;
+  coinPrice: string;
+  quantity: string;
+  marketCap: string;
+  totalValue: string;
+  twentyFourHour: string;
+  onDeletePortfolioCoin: (coin: string) => void;
+  onUpdatePortfolioCoin: (name: string, quantity: string) => void;
+};
+
+const PortfolioCoin = (props: PortfolioCoin) => {
+  const { onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
   return (
     <>
       <PortfolioCoinComp
@@ -15,12 +30,12 @@ const PortfolioCoin = (props) => {
         twentyFourHour={props.twentyFourHour}
         quantity={props.quantity}
         marketCap={props.marketCap}
-        totalValue={props.totalValue.toLocaleString()}
+        totalValue={props.totalValue}
       />
       <EditCoin
         name={props.name}
-        onDeletePortfolioCoin={props.onDeletePortfolioCoin}
-        onUpdatePortfolioCoin={props.onUpdatePortfolioCoin}
+        onDeletePortfolioCoin={onDeletePortfolioCoin}
+        onUpdatePortfolioCoin={onUpdatePortfolioCoin}
       />
     </>
   );

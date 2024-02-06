@@ -7,7 +7,23 @@ import PortfolioCoin from "../portfoliocomponents.jsx/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 
 type PortfolioProps = {
-  addPortfolio: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  portfolio: PortfolioPageType[];
+  addPortfolio: React.Dispatch<React.SetStateAction<PortfolioType[]>>;
+  coins: object[];
+};
+
+type PortfolioPageType = {
+  quantity: any;
+  market_cap_rank: number;
+  image: string;
+  name: string;
+  symbol: string;
+  price_change_percentage_24h: number;
+  current_price: number;
+  market_cap: number;
+  total_volume: number;
+  item: object;
+  coin: string;
 };
 
 const Portfolio = (props: PortfolioProps) => {
@@ -16,8 +32,6 @@ const Portfolio = (props: PortfolioProps) => {
   const [quantity, setQuantity] = useState([]);
 
   const { portfolio, addPortfolio, coins } = props;
-
-  console.log("portfolio", props, typeof props);
 
   const togglePortfolioModal = () => {
     setPortfolioModal(!portfolioModal);
@@ -38,10 +52,10 @@ const Portfolio = (props: PortfolioProps) => {
     const deletePortfolio = [portfolio];
     deletePortfolio.splice(item);
     addPortfolio(deletePortfolio);
-    // console.log(typeof item);
+    console.log(typeof item, "line 55");
   };
 
-  const onDeletePortfolioCoin = (coin) => {
+  const onDeletePortfolioCoin = (coin: string) => {
     const portfolioCopy = [...portfolio];
     const indexOf = portfolioCopy.findIndex((item) => {
       return item.name === coin;
@@ -49,18 +63,18 @@ const Portfolio = (props: PortfolioProps) => {
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
     setPortfolioModal(!portfolioModal);
-    // console.log(typeof coin);
+    console.log(typeof coin, coin);
   };
 
-  const onUpdatePortfolioCoin = (name, quantity) => {
+  const onUpdatePortfolioCoin = (name: string, quantity: string) => {
     const portfolioCopy = [...portfolio];
     const indexOf = portfolioCopy.findIndex((item) => {
       return item.name === name;
     });
-    console.log(indexOf);
     portfolioCopy[indexOf].quantity = quantity;
     addPortfolio(portfolioCopy);
   };
+  // console.log(typeof quantity);
 
   //looks inside each object of the array to see if coin name is inside it
   const coinPortfolio = coins.filter((coin) => {
@@ -147,8 +161,9 @@ const Portfolio = (props: PortfolioProps) => {
           </div>
         </div>
       )}
-      {coinPortfolio.map((coin) => {
+      {coinPortfolio.map((coin: PortfolioPageType) => {
         const item = portfolio.find((item) => {
+          // console.log(typeof item, "line 164");
           return item.name === coin.name;
         });
         return (
@@ -163,7 +178,9 @@ const Portfolio = (props: PortfolioProps) => {
                 coinPrice={coin.current_price.toLocaleString()}
                 quantity={item.quantity}
                 marketCap={(coin.market_cap / 1000000000).toFixed(2)}
-                totalValue={item.quantity * coin.current_price}
+                totalValue={(
+                  item.quantity * coin.current_price
+                ).toLocaleString()}
                 onDeletePortfolioCoin={onDeletePortfolioCoin}
                 onUpdatePortfolioCoin={onUpdatePortfolioCoin}
               />

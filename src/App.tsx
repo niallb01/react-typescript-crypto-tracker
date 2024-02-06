@@ -41,11 +41,14 @@ type CoinDescType = {
 };
 
 type PortfolioType = {
+  market_cap_rank: number;
+  image: string;
   name: string;
-  // portfolio: Array[];
-  addPortfolio: (portfolio: PortfolioType[]) => void;
-  coins: [];
-  portfolio: [];
+  symbol: string;
+  price_change_percentage_24h: number;
+  current_price: number;
+  market_cap: number;
+  total_volume: number;
 };
 
 function App() {
@@ -61,13 +64,11 @@ function App() {
 
   function getCoins() {
     const getCoinData: CoinType[] = CoinData;
-    // console.log("Coin Data:", getCoinData);
     setCoins(getCoinData);
   }
 
   function getCoinsDesc() {
     const getCoinDescData: CoinDescType[] = CoinDescData;
-    // console.log("Coin Description Data:", getCoinDescData);
     setDescription(getCoinDescData);
   }
 
