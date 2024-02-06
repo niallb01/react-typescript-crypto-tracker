@@ -5,10 +5,9 @@ import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 
 type DescriptionProps = {
-  coinDescription: any; // Update this line
-  // coinToShow: any; // Specify the correct type if needed
+  coinDescription: any;
 };
-// find out why above isn't working
+
 type CoinDescriptionType = {
   symbol: string;
   name: string;

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../Modal.css";
 //this component is a child of portfolioCoin - data is being sent down from portfolioCoin
+
 type EditCoinProps = {
   onDeletePortfolioCoin: (coin: string) => void;
   onUpdatePortfolioCoin: (name: string, quantity: string) => void;

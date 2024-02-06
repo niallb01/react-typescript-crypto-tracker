@@ -49,9 +49,9 @@ type PortfolioType = {
   current_price: number;
   market_cap: number;
   total_volume: number;
-  item: object; // Adjusted to object
+  item: object;
   coin: string;
-  quantity: string | undefined; // Adjusted to string
+  quantity: string | undefined;
   id: string;
   fully_diluted_valuation: number;
   volume: number;

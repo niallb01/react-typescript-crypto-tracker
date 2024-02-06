@@ -86,7 +86,6 @@ const Home = (props: HomeProps) => {
   const filteredCoins = coins.filter((coin: HomeCoinType) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });
-  // console.log(filteredCoins);
   //if user enters search term use filtered version of coins otherwise use all coins
   const coinsToUse = search ? filteredCoins : coins;
 

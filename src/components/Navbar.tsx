@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaCoins } from "react-icons/fa";
 
-const Navbar = (props) => {
+const Navbar = () => {
   return (
     <>
       <h1 className="header">

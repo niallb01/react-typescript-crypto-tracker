@@ -21,10 +21,10 @@ type PortfolioPageType = {
   current_price: number;
   market_cap: number;
   total_volume: number;
-  item: object; // Adjusted to object
+  item: object;
   coin: string;
   id: string;
-  quantity: string | undefined; // Adjusted to string
+  quantity: any;
   fully_diluted_valuation: number;
   volume: number;
   price_change_24h: number;
@@ -33,7 +33,7 @@ type PortfolioPageType = {
 };
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
-  const [portfolioSearch, setPortfolioSearch] = useState<string>(""); // was [] and below
+  const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
 
   const { portfolio, addPortfolio, coins } = props;
@@ -68,7 +68,6 @@ const Portfolio = (props: PortfolioProps) => {
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
     setPortfolioModal(!portfolioModal);
-    // console.log(typeof coin, coin);
   };
 
   const onUpdatePortfolioCoin = (name: string, quantity: string) => {
@@ -79,7 +78,6 @@ const Portfolio = (props: PortfolioProps) => {
     portfolioCopy[indexOf].quantity = quantity;
     addPortfolio(portfolioCopy);
   };
-  // console.log(typeof quantity);
 
   //looks inside each object of the array to see if coin name is inside it
   const coinPortfolio = coins.filter((coin: any) => {
@@ -168,7 +166,6 @@ const Portfolio = (props: PortfolioProps) => {
       )}
       {coinPortfolio.map((coin: any) => {
         const item = portfolio.find((item) => {
-          // console.log(typeof item, "line 164");
           return item.name === coin.name;
         });
         return (
@@ -184,9 +181,8 @@ const Portfolio = (props: PortfolioProps) => {
                 quantity={item?.quantity}
                 marketCap={(coin.market_cap / 1000000000).toFixed(2)}
                 totalValue={(
-                  item.quantity * coin.current_price
+                  item?.quantity * coin.current_price
                 ).toLocaleString()}
-                // totalValue={item.quantity * coin.current_price}
                 onDeletePortfolioCoin={onDeletePortfolioCoin}
                 onUpdatePortfolioCoin={onUpdatePortfolioCoin}
               />
