@@ -9,9 +9,9 @@ type PortfolioCoin = {
   name: string;
   symbol: string;
   coinPrice: string;
-  quantity: string;
+  quantity: string | undefined;
   marketCap: string;
-  totalValue: string;
+  totalValue: any | number;
   twentyFourHour: string;
   onDeletePortfolioCoin: (coin: string) => void;
   onUpdatePortfolioCoin: (name: string, quantity: string) => void;

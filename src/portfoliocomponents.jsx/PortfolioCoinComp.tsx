@@ -4,9 +4,9 @@ type PortfolioCoinComp = {
   name: string;
   symbol: string;
   coinPrice: string;
-  quantity: string;
+  quantity: string | undefined;
   marketCap: string;
-  totalValue: string;
+  totalValue: any | number;
   twentyFourHour: any;
 };
 

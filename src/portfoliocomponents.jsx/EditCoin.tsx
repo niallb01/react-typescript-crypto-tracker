@@ -1,22 +1,28 @@
 import { useState } from "react";
 import "../Modal.css";
 //this component is a child of portfolioCoin - data is being sent down from portfolioCoin
+type EditCoinProps = {
+  onDeletePortfolioCoin: (coin: string) => void;
+  onUpdatePortfolioCoin: (name: string, quantity: string) => void;
+  name: string;
+};
 
-const EditCoin = (props) => {
-  const [editModal, setEditModal] = useState(false);
-  const [quantity, setQuantity] = useState([]);
-  const [selectedCoin, setSelectedCoin] = useState();
+const EditCoin = (props: EditCoinProps) => {
+  const [editModal, setEditModal] = useState<boolean>(false);
+  const [quantity, setQuantity] = useState<string>("");
+  const [selectedCoin, setSelectedCoin] = useState<string>("");
+
+  const { name, onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
 
   //we've passed down the coin into editcoin when btn is clicked we are then storing coin in local state
-  const toggleEditModal = (coin) => {
+  const toggleEditModal = (coin: any) => {
     setEditModal(!editModal);
     setSelectedCoin(coin);
   };
 
   //event handler to edit coin quantity from user
-  const handleEditQuantity = (e) => {
+  const handleEditQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(e.target.value);
-    // console.log(e.target.value);
   };
 
   return (
@@ -25,7 +31,7 @@ const EditCoin = (props) => {
         <button
           className="edit-coin"
           onClick={() => {
-            toggleEditModal(props.name);
+            toggleEditModal(name);
           }}
         >
           EDIT
@@ -47,8 +53,9 @@ const EditCoin = (props) => {
             <div className="edit-coin-btn-container">
               <button
                 onClick={() => {
-                  props.onUpdatePortfolioCoin(selectedCoin, quantity);
-                  toggleEditModal();
+                  onUpdatePortfolioCoin(selectedCoin, quantity);
+                  toggleEditModal(selectedCoin);
+                  // toggleEditModal();
                 }}
                 className="add-portfolio-coin-btn"
               >
@@ -59,7 +66,7 @@ const EditCoin = (props) => {
               </button>
               <button
                 onClick={() => {
-                  props.onDeletePortfolioCoin(selectedCoin);
+                  onDeletePortfolioCoin(selectedCoin);
                 }}
                 className="delete-portfolio-coin-btn"
               >

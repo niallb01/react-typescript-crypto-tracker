@@ -1,5 +1,5 @@
 import Coin from "../components/Coin";
-import { useState } from "react";
+import { Key, useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import CoinDescription from "./CoinDescription";
@@ -7,9 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
 type HomeProps = {
-  coins: coinType[];
-  portfolio: portfolioType[];
-  addPortfolio: (portfolio: PortfolioType[]) => void;
+  coins: any;
+  portfolio: HomeCoinType[];
+  addPortfolio: (portfolio: HomeCoinType[]) => void;
 };
 
 type HomeCoinType = {
@@ -26,22 +26,23 @@ type HomeCoinType = {
   price_change_24h: number;
   twentyFourHour: number;
   price_change_percentage_24h: number;
+  quantity: string | undefined;
+  coin: string;
+  filtered: [];
+  item: object;
 };
-
-// type SearchType = {
-//   search: string;
-//   handleSearchInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
-// };
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
+
+  const { coins, portfolio, addPortfolio } = props;
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
   const handlePortfolioItem = (name: string) => {
-    const portfolioCopy = [...props.portfolio];
+    const portfolioCopy = [...portfolio];
     //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
@@ -52,11 +53,29 @@ const Home = (props: HomeProps) => {
         return coin.name !== name;
       });
       //Update state
-      props.addPortfolio(filtered);
+      addPortfolio(filtered);
       return;
     }
-    portfolioCopy.push({ name: name, quantity: "1" });
-    props.addPortfolio(portfolioCopy);
+    portfolioCopy.push({
+      name: name,
+      quantity: "1",
+      id: "",
+      symbol: "",
+      image: "",
+      current_price: 0,
+      market_cap: 0,
+      market_cap_rank: 0,
+      fully_diluted_valuation: 0,
+      total_volume: 0,
+      volume: 0,
+      price_change_24h: 0,
+      twentyFourHour: 0,
+      price_change_percentage_24h: 0,
+      coin: "",
+      filtered: [],
+      item: {},
+    });
+    addPortfolio(portfolioCopy);
     toast.success("Coin Added To Portfolio", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 500,
@@ -64,12 +83,12 @@ const Home = (props: HomeProps) => {
     });
   };
 
-  const filteredCoins = props.coins.filter((coin) => {
+  const filteredCoins = coins.filter((coin: HomeCoinType) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });
   // console.log(filteredCoins);
   //if user enters search term use filtered version of coins otherwise use all coins
-  const coinsToUse = search ? filteredCoins : props.coins;
+  const coinsToUse = search ? filteredCoins : coins;
 
   return (
     <>
@@ -83,9 +102,11 @@ const Home = (props: HomeProps) => {
             onInput={handleSearchInput}
           ></input>
           <datalist id="search-input-2">
-            {props.coins.map((coin, coinName) => (
-              <option key={coinName}>{coin.name}</option>
-            ))}
+            {coins.map(
+              (coin: HomeCoinType, coinName: Key | null | undefined) => (
+                <option key={coinName}>{coin.name}</option>
+              )
+            )}
           </datalist>
         </div>
       </div>
@@ -93,9 +114,8 @@ const Home = (props: HomeProps) => {
       <div className="portfolio-link">
         Go to
         <Link to="/portfolio" className="portfolio-link-text">
-          {/* <a href="#" className="portfolio-link-text"> */} Portfolio{" "}
-          {<FaStar className="star-icon-fill" size="10" />}
-          {/* </a> */}
+          {" "}
+          Portfolio {<FaStar className="star-icon-fill" size="10" />}
         </Link>
       </div>
 
@@ -103,27 +123,25 @@ const Home = (props: HomeProps) => {
         return (
           <Link
             to={`/coin-description/${coin.name}`}
-            element={<CoinDescription />}
+            element={<CoinDescription coinDescription={CoinDescription} />}
             key={coin.name}
           >
             <div className="coin-container">
               <div className="coin-row">
                 <Link to={"#"}>
-                  {props.portfolio.find((coinToFind) => {
+                  {portfolio.find((coinToFind: HomeCoinType) => {
                     return coinToFind.name === coin.name;
                   }) ? (
                     <FaStar
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon-fill"
                       size="16"
-                      // width={{ width: "10px" }}
                     />
                   ) : (
                     <FaRegStar
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"
-                      // width={{ width: "10px" }}
                     />
                   )}
                 </Link>

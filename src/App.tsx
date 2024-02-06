@@ -49,6 +49,15 @@ type PortfolioType = {
   current_price: number;
   market_cap: number;
   total_volume: number;
+  item: object; // Adjusted to object
+  coin: string;
+  quantity: string | undefined; // Adjusted to string
+  id: string;
+  fully_diluted_valuation: number;
+  volume: number;
+  price_change_24h: number;
+  twentyFourHour: number;
+  filtered: [];
 };
 
 function App() {

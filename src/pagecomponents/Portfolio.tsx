@@ -8,12 +8,11 @@ import { BsLightning } from "react-icons/bs";
 
 type PortfolioProps = {
   portfolio: PortfolioPageType[];
-  addPortfolio: React.Dispatch<React.SetStateAction<PortfolioType[]>>;
+  addPortfolio: React.Dispatch<React.SetStateAction<PortfolioPageType[]>>;
   coins: object[];
 };
 
 type PortfolioPageType = {
-  quantity: any;
   market_cap_rank: number;
   image: string;
   name: string;
@@ -22,14 +21,20 @@ type PortfolioPageType = {
   current_price: number;
   market_cap: number;
   total_volume: number;
-  item: object;
+  item: object; // Adjusted to object
   coin: string;
+  id: string;
+  quantity: string | undefined; // Adjusted to string
+  fully_diluted_valuation: number;
+  volume: number;
+  price_change_24h: number;
+  twentyFourHour: number;
+  filtered: [];
 };
-
 const Portfolio = (props: PortfolioProps) => {
-  const [portfolioModal, setPortfolioModal] = useState(false);
-  const [portfolioSearch, setPortfolioSearch] = useState([]);
-  const [quantity, setQuantity] = useState([]);
+  const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
+  const [portfolioSearch, setPortfolioSearch] = useState<string>(""); // was [] and below
+  const [quantity, setQuantity] = useState<string>("");
 
   const { portfolio, addPortfolio, coins } = props;
 
@@ -48,8 +53,8 @@ const Portfolio = (props: PortfolioProps) => {
     setQuantity(e.target.value);
   };
 
-  const onDeletePortfolio = (item) => {
-    const deletePortfolio = [portfolio];
+  const onDeletePortfolio = (item: any) => {
+    const deletePortfolio: any = [portfolio];
     deletePortfolio.splice(item);
     addPortfolio(deletePortfolio);
     console.log(typeof item, "line 55");
@@ -63,7 +68,7 @@ const Portfolio = (props: PortfolioProps) => {
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
     setPortfolioModal(!portfolioModal);
-    console.log(typeof coin, coin);
+    // console.log(typeof coin, coin);
   };
 
   const onUpdatePortfolioCoin = (name: string, quantity: string) => {
@@ -77,7 +82,7 @@ const Portfolio = (props: PortfolioProps) => {
   // console.log(typeof quantity);
 
   //looks inside each object of the array to see if coin name is inside it
-  const coinPortfolio = coins.filter((coin) => {
+  const coinPortfolio = coins.filter((coin: any) => {
     const indexOf = portfolio.findIndex((item) => {
       return item.name === coin.name;
     });
@@ -86,17 +91,17 @@ const Portfolio = (props: PortfolioProps) => {
     }
   });
 
-  const coinResults = coins.filter((coin) => {
+  const coinResults = coins.filter((coin: any) => {
     return coin.name.toLowerCase().includes(portfolioSearch);
   });
 
-  const chooseCoin = (name) => {
+  const chooseCoin = (name: string) => {
     setPortfolioSearch(name);
   };
 
   //adding new coin to portfolio, need to add quantity, price * quantity = totalvalue
   const onAddNewCoin = () => {
-    const newCoin = [...portfolio];
+    const newCoin: any = [...portfolio];
     //add new item to portfolio/state
     newCoin.push({ name: portfolioSearch, quantity });
     // console.log("new coin", newCoin);
@@ -131,7 +136,7 @@ const Portfolio = (props: PortfolioProps) => {
             />
 
             <ul className="input-coin">
-              {coinResults.map((coin) => {
+              {coinResults.map((coin: any) => {
                 return (
                   <li onClick={() => chooseCoin(coin.name)} key={coin.name}>
                     <InputCoin
@@ -161,7 +166,7 @@ const Portfolio = (props: PortfolioProps) => {
           </div>
         </div>
       )}
-      {coinPortfolio.map((coin: PortfolioPageType) => {
+      {coinPortfolio.map((coin: any) => {
         const item = portfolio.find((item) => {
           // console.log(typeof item, "line 164");
           return item.name === coin.name;
@@ -176,11 +181,12 @@ const Portfolio = (props: PortfolioProps) => {
                 symbol={coin.symbol.toUpperCase()}
                 twentyFourHour={coin.price_change_percentage_24h.toFixed(1)}
                 coinPrice={coin.current_price.toLocaleString()}
-                quantity={item.quantity}
+                quantity={item?.quantity}
                 marketCap={(coin.market_cap / 1000000000).toFixed(2)}
                 totalValue={(
                   item.quantity * coin.current_price
                 ).toLocaleString()}
+                // totalValue={item.quantity * coin.current_price}
                 onDeletePortfolioCoin={onDeletePortfolioCoin}
                 onUpdatePortfolioCoin={onUpdatePortfolioCoin}
               />
