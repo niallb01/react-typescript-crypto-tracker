@@ -38,6 +38,9 @@ type CoinDescType = {
   ath: number;
   atl: number;
   coin_description: string;
+  key: string;
+  index: number;
+  coindesc: string;
 };
 
 type PortfolioType = {

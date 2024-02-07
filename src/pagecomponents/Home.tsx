@@ -2,12 +2,11 @@ import Coin from "../components/Coin";
 import { Key, useState } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import CoinDescription from "./CoinDescription";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 
 type HomeProps = {
-  coins: any;
+  coins: HomeCoinType[];
   portfolio: HomeCoinType[];
   addPortfolio: (portfolio: HomeCoinType[]) => void;
 };
@@ -79,7 +78,7 @@ const Home = (props: HomeProps) => {
     toast.success("Coin Added To Portfolio", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 500,
-      limit: 1,
+      // limit: 1,
     });
   };
 
@@ -120,11 +119,7 @@ const Home = (props: HomeProps) => {
 
       {coinsToUse.map((coin: HomeCoinType) => {
         return (
-          <Link
-            to={`/coin-description/${coin.name}`}
-            element={<CoinDescription coinDescription={CoinDescription} />}
-            key={coin.name}
-          >
+          <Link to={`/coin-description/${coin.name}`} key={coin.name}>
             <div className="coin-container">
               <div className="coin-row">
                 <Link to={"#"}>
