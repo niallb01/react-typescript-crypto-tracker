@@ -79,7 +79,7 @@ const Portfolio = (props: PortfolioProps) => {
   };
 
   //looks inside each object of the array to see if coin name is inside it
-  const coinPortfolio = coins.filter((coin: any) => {
+  const coinPortfolio = coins.filter((coin: PortfolioPageType) => {
     const indexOf = portfolio.findIndex((item) => {
       return item.name === coin.name;
     });
@@ -88,7 +88,7 @@ const Portfolio = (props: PortfolioProps) => {
     }
   });
 
-  const coinResults = coins.filter((coin: any) => {
+  const coinResults = coins.filter((coin: PortfolioPageType) => {
     return coin.name.toLowerCase().includes(portfolioSearch);
   });
 
@@ -133,7 +133,7 @@ const Portfolio = (props: PortfolioProps) => {
             />
 
             <ul className="input-coin">
-              {coinResults.map((coin: any) => {
+              {coinResults.map((coin: PortfolioPageType) => {
                 return (
                   <li onClick={() => chooseCoin(coin.name)} key={coin.name}>
                     <InputCoin
@@ -163,7 +163,7 @@ const Portfolio = (props: PortfolioProps) => {
           </div>
         </div>
       )}
-      {coinPortfolio.map((coin: any) => {
+      {coinPortfolio.map((coin: PortfolioPageType) => {
         const item = portfolio.find((item) => {
           return item.name === coin.name;
         });
