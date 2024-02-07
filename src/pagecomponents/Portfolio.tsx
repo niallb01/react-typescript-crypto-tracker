@@ -9,7 +9,7 @@ import { BsLightning } from "react-icons/bs";
 type PortfolioProps = {
   portfolio: PortfolioPageType[];
   addPortfolio: React.Dispatch<React.SetStateAction<PortfolioPageType[]>>;
-  coins: object[];
+  coins: PortfolioPageType[];
 };
 
 type PortfolioPageType = {
@@ -53,11 +53,10 @@ const Portfolio = (props: PortfolioProps) => {
     setQuantity(e.target.value);
   };
 
-  const onDeletePortfolio = (item: any) => {
+  const onDeletePortfolio = (item: object) => {
     const deletePortfolio: any = [portfolio];
     deletePortfolio.splice(item);
     addPortfolio(deletePortfolio);
-    console.log(typeof item, "line 55");
   };
 
   const onDeletePortfolioCoin = (coin: string) => {
