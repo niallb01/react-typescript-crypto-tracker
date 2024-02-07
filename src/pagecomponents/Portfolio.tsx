@@ -29,7 +29,7 @@ type PortfolioPageType = {
   volume: number;
   price_change_24h: number;
   twentyFourHour: number;
-  filtered: [];
+  filtered: object;
 };
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);

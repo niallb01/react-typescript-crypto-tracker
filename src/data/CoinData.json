@@ -10,10 +10,17 @@
     "fully_diluted_valuation": 355947584982,
     "total_volume": 42279110530,
     "price_change_24h": 224.1,
-    "price_change_percentage_24h": 1.33884
+    "price_change_percentage_24h": 1.33884,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
 
   {
+    "id": "ethereum",
     "symbol": "eth",
     "name": "Ethereum",
     "image": "https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880",
@@ -23,9 +30,16 @@
     "fully_diluted_valuation": 205079023238,
     "total_volume": 18800844298,
     "price_change_24h": -33.493591750023825,
-    "price_change_percentage_24h": -2.83867
+    "price_change_percentage_24h": -2.83867,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "tether",
     "symbol": "usdt",
     "name": "Tether",
     "image": "https://assets.coingecko.com/coins/images/325/large/Tether-logo.png?1598003707",
@@ -35,9 +49,16 @@
     "fully_diluted_valuation": 7072955648,
     "total_volume": 49291538175,
     "price_change_24h": 0.00165659,
-    "price_change_percentage_24h": 0.1877
+    "price_change_percentage_24h": 0.1877,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "tron",
     "symbol": "trx",
     "name": "TRON",
     "image": "https://assets.coingecko.com/coins/images/1094/large/tron-logo.png?1696502193",
@@ -47,9 +68,16 @@
     "fully_diluted_valuation": 7767735592,
     "total_volume": 238217034456,
     "price_change_24h": -0.00027422520701606,
-    "price_change_percentage_24h": -0.30958
+    "price_change_percentage_24h": -0.30958,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "binancecoin",
     "symbol": "bnb",
     "name": "BNB",
     "image": "https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850",
@@ -59,9 +87,16 @@
     "fully_diluted_valuation": 39190563289,
     "total_volume": 708346560,
     "price_change_24h": 2.01,
-    "price_change_percentage_24h": 0.85607
+    "price_change_percentage_24h": 0.85607,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "ripple",
     "symbol": "xrp",
     "name": "XRP",
     "image": "https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1605778731",
@@ -71,9 +106,16 @@
     "fully_diluted_valuation": 37797832974,
     "total_volume": 2802493647,
     "price_change_24h": 0.02257539,
-    "price_change_percentage_24h": 6.34904
+    "price_change_percentage_24h": 6.34904,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "polkadot",
     "symbol": "dot",
     "name": "Polkadot",
     "image": "https://assets.coingecko.com/coins/images/12171/large/polkadot.png?1696512008",
@@ -83,9 +125,16 @@
     "fully_diluted_valuation": 7674406664,
     "total_volume": 278689775,
     "price_change_24h": 0.133802,
-    "price_change_percentage_24h": 2.50721
+    "price_change_percentage_24h": 2.50721,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "cardano",
     "symbol": "ada",
     "name": "Cardano",
     "image": "https://assets.coingecko.com/coins/images/975/large/cardano.png?1547034860",
@@ -95,9 +144,16 @@
     "fully_diluted_valuation": 18128994742,
     "total_volume": 767029963,
     "price_change_24h": 0.00667315,
-    "price_change_percentage_24h": 1.68063
+    "price_change_percentage_24h": 1.68063,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "solana",
     "symbol": "sol",
     "name": "Solana",
     "image": "https://assets.coingecko.com/coins/images/4128/large/solana.png?1640133422",
@@ -107,9 +163,16 @@
     "fully_diluted_valuation": 24710348911,
     "total_volume": 1167767776,
     "price_change_24h": 0.706605,
-    "price_change_percentage_24h": 2.53496
+    "price_change_percentage_24h": 2.53496,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   },
   {
+    "id": "dogecoin",
     "symbol": "doge",
     "name": "Dogecoin",
     "image": "https://assets.coingecko.com/coins/images/5/large/dogecoin.png?1547792256",
@@ -119,6 +182,12 @@
     "fully_diluted_valuation": 8581634866,
     "total_volume": 328770634,
     "price_change_24h": 0.00040322,
-    "price_change_percentage_24h": 0.77842
+    "price_change_percentage_24h": 0.77842,
+    "twentyFourHour": 0,
+    "quantity": "",
+    "coin": "",
+    "filtered": [],
+    "item": [],
+    "volume": 0
   }
 ]

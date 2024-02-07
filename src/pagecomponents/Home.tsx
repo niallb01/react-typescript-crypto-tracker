@@ -27,7 +27,7 @@ type HomeCoinType = {
   price_change_percentage_24h: number;
   quantity: string | undefined;
   coin: string;
-  filtered: [];
+  filtered: object;
   item: object;
 };
 
@@ -71,7 +71,7 @@ const Home = (props: HomeProps) => {
       twentyFourHour: 0,
       price_change_percentage_24h: 0,
       coin: "",
-      filtered: [],
+      filtered: {},
       item: {},
     });
     addPortfolio(portfolioCopy);

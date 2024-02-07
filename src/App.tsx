@@ -9,6 +9,7 @@ import CoinData from "./data/CoinData.json";
 import CoinDescData from "./data/CoinDescData.json";
 
 type CoinType = {
+  id: string;
   symbol: string;
   name: string;
   image: string;
@@ -17,8 +18,14 @@ type CoinType = {
   market_cap_rank: number;
   fully_diluted_valuation: number;
   total_volume: number;
+  volume: number;
   price_change_24h: number;
+  twentyFourHour: number;
   price_change_percentage_24h: number;
+  quantity: string;
+  coin: string;
+  filtered: object;
+  item: object;
 };
 
 type CoinDescType = {
@@ -60,7 +67,7 @@ type PortfolioType = {
   volume: number;
   price_change_24h: number;
   twentyFourHour: number;
-  filtered: [];
+  filtered: object;
 };
 
 function App() {
