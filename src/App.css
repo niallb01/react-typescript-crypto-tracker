@@ -6,7 +6,6 @@
   padding: 0;
 } */
 
-
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -14,8 +13,6 @@ body {
   color: #ffffff;
   background: #181b26;
 }
-
-
 
 .portfolio-row {
   display: flex;
@@ -368,16 +365,16 @@ a {
 .modal-content-portfolio {
   display: flex;
   flex-direction: column;
-  width: 500px;
+  width: 400px;
   position: absolute;
-  top: 5%;
+  top: 2%;
   left: 30%;
-  line-height: 1.4;
   background: #2a3143;
-  padding: 14px 28px;
+  /* padding: 14px 28px; */
+  padding: 10px 22px;
   border-radius: 10px;
-  max-width: 600px;
-  min-width: 300px;
+  /* max-width: 600px;
+  min-width: 300px; */
 }
 
 li {
