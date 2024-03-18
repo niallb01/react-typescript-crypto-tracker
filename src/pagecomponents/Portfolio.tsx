@@ -158,17 +158,6 @@ const Portfolio = (props: PortfolioProps) => {
               })}
             </ul>
 
-            {/* <input
-              onInput={handleQuantity}
-              type="text"
-              className="portfolio-quantity"
-              value={quantity}
-              placeholder="Add Quantity..."
-            /> */}
-            {/* <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
-              + Add
-            </button> */}
-
             <button onClick={togglePortfolioModal} className="close-modal">
               X
             </button>
