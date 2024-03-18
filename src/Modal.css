@@ -152,6 +152,7 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
+  margin-bottom: 5px;
 }
 
 .add-portfolio-coin-btn:hover {
