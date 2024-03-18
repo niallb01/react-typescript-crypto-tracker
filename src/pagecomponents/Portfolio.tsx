@@ -132,6 +132,18 @@ const Portfolio = (props: PortfolioProps) => {
               onInput={handlePortfolioSearchInput}
             />
 
+            <input
+              onInput={handleQuantity}
+              type="text"
+              className="portfolio-quantity"
+              value={quantity}
+              placeholder="Add Quantity..."
+            />
+
+            <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
+              + Add
+            </button>
+
             <ul className="input-coin">
               {coinResults.map((coin: PortfolioPageType) => {
                 return (
@@ -146,16 +158,16 @@ const Portfolio = (props: PortfolioProps) => {
               })}
             </ul>
 
-            <input
+            {/* <input
               onInput={handleQuantity}
               type="text"
               className="portfolio-quantity"
               value={quantity}
               placeholder="Add Quantity..."
-            />
-            <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
+            /> */}
+            {/* <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
               + Add
-            </button>
+            </button> */}
 
             <button onClick={togglePortfolioModal} className="close-modal">
               X
