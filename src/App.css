@@ -365,21 +365,18 @@ a {
 .modal-content-portfolio {
   display: flex;
   flex-direction: column;
-  width: 350px;
+  width: 400px;
   position: absolute;
   top: 2%;
   left: 30%;
   background: #2a3143;
-  /* padding: 14px 28px; */
   padding: 10px 22px;
   border-radius: 10px;
-  /* max-width: 600px;
-  min-width: 300px; */
 }
 
 li {
   display: inline-flex;
-  width: 200px;
+  width: 220px;
   justify-content: space-between;
 }
 
