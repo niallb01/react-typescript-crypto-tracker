@@ -1,3 +1,4 @@
+// child of coin
 type CoinCompProps = {
   rank: number;
   image: string;

@@ -82,6 +82,7 @@ const Home = (props: HomeProps) => {
     });
   };
 
+  // pure func no side effects - test
   const filteredCoins = coins.filter((coin: HomeCoinType) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });

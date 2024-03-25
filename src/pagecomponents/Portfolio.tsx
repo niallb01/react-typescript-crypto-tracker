@@ -31,6 +31,7 @@ type PortfolioPageType = {
   twentyFourHour: number;
   filtered: object;
 };
+
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
@@ -66,7 +67,8 @@ const Portfolio = (props: PortfolioProps) => {
     });
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
-    setPortfolioModal(!portfolioModal);
+    console.log("delete coin", indexOf);
+    // setPortfolioModal(!portfolioModal);
   };
 
   const onUpdatePortfolioCoin = (name: string, quantity: string) => {
@@ -106,6 +108,7 @@ const Portfolio = (props: PortfolioProps) => {
     //empty search inputs
     setPortfolioSearch("");
     setQuantity("");
+    setPortfolioModal(!portfolioModal);
   };
 
   return (

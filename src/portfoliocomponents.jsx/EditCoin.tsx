@@ -56,7 +56,6 @@ const EditCoin = (props: EditCoinProps) => {
                 onClick={() => {
                   onUpdatePortfolioCoin(selectedCoin, quantity);
                   toggleEditModal(selectedCoin);
-                  // toggleEditModal();
                 }}
                 className="add-portfolio-coin-btn"
               >
@@ -68,6 +67,7 @@ const EditCoin = (props: EditCoinProps) => {
               <button
                 onClick={() => {
                   onDeletePortfolioCoin(selectedCoin);
+                  setEditModal(!editModal);
                 }}
                 className="delete-portfolio-coin-btn"
               >

@@ -81,6 +81,7 @@ function App() {
     getCoinsDesc();
   }, []);
 
+  
   function getCoins() {
     const getCoinData: CoinType[] = CoinData;
     setCoins(getCoinData);
