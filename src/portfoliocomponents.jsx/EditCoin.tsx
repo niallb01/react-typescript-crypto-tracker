@@ -19,6 +19,7 @@ const EditCoin = (props: EditCoinProps) => {
   const toggleEditModal = (coin: any) => {
     setEditModal(!editModal);
     setSelectedCoin(coin);
+    setQuantity("");
   };
 
   //event handler to edit coin quantity from user
