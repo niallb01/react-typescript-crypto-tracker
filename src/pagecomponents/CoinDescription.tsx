@@ -33,7 +33,7 @@ type CoinDescriptionType = {
 const CoinDescription = (props: DescriptionProps) => {
   const { coinDescription } = props;
 
-  console.log("coinDescription", props);
+  // console.log("coinDescription", props);
 
   const location = useLocation();
   const currentCoin = location.pathname.split("/");
