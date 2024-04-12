@@ -7,8 +7,8 @@ import "@testing-library/jest-dom/vitest";
 
 describe("home", () => {
   it("should render coin data and send down data to portfolio component if required", () => {
-    render(
-      // props need to be declared
+    const { getByText } = render(
+      // props that are being sent in need to be declared to test
       <MemoryRouter>
         <Home
           coins={[]}
@@ -39,8 +39,12 @@ describe("home", () => {
         />
       </MemoryRouter>
     );
-
     // test input/portfolio link
-    // find input
+    const searchInput = screen.getByPlaceholderText(/search currency/i);
+    expect(searchInput).toBeInTheDocument();
+    // find portfolio link and test route
+    const portfolioLink = getByText(/portfolio/i);
+    expect(portfolioLink).toBeInTheDocument();
+    expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
   });
 });

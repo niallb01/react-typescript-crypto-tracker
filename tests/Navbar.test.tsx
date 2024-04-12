@@ -13,7 +13,7 @@ describe("navbar", () => {
       </MemoryRouter>
     );
     const headerLink = getByText(/live coin tracker/i); // query method
-    expect(headerLink).toBeInTheDocument(); // test rendering
+    expect(headerLink).toBeInTheDocument(); // test component renders
     expect(headerLink.getAttribute("href")).toBe("/"); // getAttribute - matcher
   });
 });
