@@ -450,9 +450,10 @@ li {
     flex-direction: column;
     width: 300px;
     position: absolute;
-    left: 25px;
+    left: 15px;
+    /* left: 25px;
     top: 5%;
-    line-height: 1.4;
+    line-height: 1.4; */
     background: #2a3143;
     padding: 14px 28px;
     border-radius: 10px;
