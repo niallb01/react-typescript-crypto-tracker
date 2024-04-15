@@ -19,9 +19,7 @@ type PortfolioCoin = {
 
 const PortfolioCoin = (props: PortfolioCoin) => {
   const { onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
-
   // console.log("portfolio coin", props);
-
   return (
     <>
       <PortfolioCoinComp

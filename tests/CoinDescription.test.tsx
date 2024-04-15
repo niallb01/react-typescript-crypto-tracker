@@ -7,7 +7,7 @@ import "@testing-library/jest-dom/vitest";
 
 describe("coin description", () => {
   it("should render coin description data for selected coin and link to portfolio", () => {
-    // check typeof coinDescription={[]}
+    // check typeOf coinDescription={[]}
     const { getByText } = render(
       <MemoryRouter>
         <CoinDescription coinDescription={[]} />

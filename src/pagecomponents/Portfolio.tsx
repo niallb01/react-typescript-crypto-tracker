@@ -3,7 +3,7 @@ import { useState } from "react";
 import "../Modal.css";
 import "react-toastify/dist/ReactToastify.css";
 import InputCoin from "../inputcomponents/InputCoin";
-import PortfolioCoin from "../portfoliocomponents.jsx/PortfolioCoin";
+import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 
 type PortfolioProps = {
@@ -67,7 +67,7 @@ const Portfolio = (props: PortfolioProps) => {
     });
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
-    console.log("delete coin", indexOf);
+    // console.log("delete coin", indexOf);
     // setPortfolioModal(!portfolioModal);
   };
 

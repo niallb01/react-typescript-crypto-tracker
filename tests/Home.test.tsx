@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/vitest";
 
 describe("home", () => {
-  it("should render coin data and send down data to portfolio component if required", () => {
+  it("should render with correct text and initial state", () => {
     const { getByText } = render(
       // props that are being sent in need to be declared to test
       <MemoryRouter>
