@@ -4,11 +4,11 @@ import Home from "../src/pagecomponents/Home";
 import React from "react";
 import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/vitest";
+import userEvent from "@testing-library/user-event";
 
 describe("home", () => {
   it("should render with correct text and initial state", () => {
     const { getByText } = render(
-      // props that are being sent in need to be declared to test
       <MemoryRouter>
         <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
       </MemoryRouter>
@@ -20,5 +20,19 @@ describe("home", () => {
     const portfolioLink = getByText(/portfolio/i);
     expect(portfolioLink).toBeInTheDocument();
     expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
+  });
+});
+
+// test add coin to portfolio btn and toast
+describe("portfolio button", () => {
+  const user = userEvent.setup();
+  it("should add or remove portfolio coin", () => {
+    const { getByTestId } = render(
+      <MemoryRouter>
+        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+      </MemoryRouter>
+    );
+    const addPortfolioCoin = getByTestId("add-portfolio-coin");
+    expect(addPortfolioCoin).toBeInTheDocument();
   });
 });

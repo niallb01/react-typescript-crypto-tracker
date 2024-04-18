@@ -1,5 +1,5 @@
-import { getByRole, getByTestId, render, screen } from "@testing-library/react";
-import { it, expect, describe, test } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { it, expect, describe } from "vitest";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import EditCoin from "../src/portfoliocomponents/EditCoin";

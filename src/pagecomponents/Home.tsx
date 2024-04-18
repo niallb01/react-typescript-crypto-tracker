@@ -128,12 +128,14 @@ const Home = (props: HomeProps) => {
                     return coinToFind.name === coin.name;
                   }) ? (
                     <FaStar
+                      data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon-fill"
                       size="16"
                     />
                   ) : (
                     <FaRegStar
+                      data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"
