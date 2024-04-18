@@ -13,7 +13,6 @@ describe("portfolio", () => {
         <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
       </MemoryRouter>
     );
-    // find header
     const heading = screen.getByRole("heading", { level: 4 });
     expect(heading).toBeInTheDocument();
   });
@@ -23,16 +22,14 @@ describe("portfolio buttons", () => {
   const user = userEvent.setup(); // create user instance
   it("should let user add coin and delete portfolio", async () => {
     render(
-      // () => {} - mocks the func
+      // () => {} - mocks the func - placeholder
       <MemoryRouter>
         <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
       </MemoryRouter>
     );
-    // find edit btn
+
     const editButton = screen.getByRole("button", { name: /add coin/i });
-    // test user click
     await user.click(editButton);
-    // assert
     expect(editButton).toBeInTheDocument();
 
     // delete button - function needs to
