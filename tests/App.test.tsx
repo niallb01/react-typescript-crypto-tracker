@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router-dom";
 import App from "../src/App";
 
 describe("App", () => {
-  it("should render home page by default", () => {
+  it("should render home page", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
         <App />
