@@ -34,11 +34,11 @@ describe("portfolio link", () => {
   });
 });
 
-// test adding coin to portfolio btn and toast
+// test adding coin to portfolio btn
 describe("portfolio button", () => {
   const user = userEvent.setup();
-  it("should add or remove coin from portfolio", async () => {
-    render(
+  it("should add or remove coin from portfolio and trigger toast message", async () => {
+    const { container } = render(
       <MemoryRouter>
         <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
       </MemoryRouter>
@@ -48,5 +48,8 @@ describe("portfolio button", () => {
     ) as unknown as HTMLImageElement;
     await user.click(addCoinButton);
     expect(addCoinButton).toBeInTheDocument();
+    // toast
+    expect(container.firstChild).toHaveClass("Toastify");
+    expect(container.firstChild).toBeTruthy();
   });
 });
