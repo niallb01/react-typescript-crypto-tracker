@@ -19,10 +19,9 @@ describe("portfolio", () => {
 });
 
 describe("portfolio buttons", () => {
-  const user = userEvent.setup(); // create user instance
+  const user = userEvent.setup();
   it("should let user add coin and delete portfolio", async () => {
     render(
-      // () => {} - mocks the func - placeholder
       <MemoryRouter>
         <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
       </MemoryRouter>

@@ -30,6 +30,11 @@ describe("portfolio link", () => {
     await user.click(portfolioLink);
     expect(portfolioLink).toBeInTheDocument();
     expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
+
+    const portfolioIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(portfolioIcon).toBeInTheDocument();
   });
 });
 
@@ -45,6 +50,7 @@ describe("portfolio button", () => {
     const addCoinButton = document.querySelector(
       "svg"
     ) as unknown as HTMLImageElement;
+    //
     await user.click(addCoinButton);
     expect(addCoinButton).toBeInTheDocument();
     // toast

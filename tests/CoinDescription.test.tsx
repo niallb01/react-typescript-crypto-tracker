@@ -36,5 +36,10 @@ describe("portfolio link", () => {
     expect(portfolioLink).toBeInTheDocument();
     expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
     await user.click(portfolioLink);
+
+    const portfolioIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(portfolioIcon).toBeInTheDocument();
   });
 });

@@ -22,7 +22,6 @@ describe("App", () => {
         <App />
       </MemoryRouter>
     );
-
     const portfolioHeading = screen.getByRole("heading", { level: 4 });
     expect(portfolioHeading).toBeInTheDocument();
   });
@@ -33,7 +32,6 @@ describe("App", () => {
         <App />
       </MemoryRouter>
     );
-
     const descHeader = screen.getByText(/all about/i);
     expect(descHeader).toBeInTheDocument();
   });
