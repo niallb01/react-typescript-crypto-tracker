@@ -5,18 +5,17 @@ import React from "react";
 import EditCoin from "../src/portfoliocomponents/EditCoin";
 import "@testing-library/jest-dom/vitest";
 
-//() => {} - callback mocks function? - placeholder
 describe("edit coin", () => {
   const user = userEvent.setup();
   it("should render with correct text and initial state", async () => {
-    render(
+    const { container } = render(
       <EditCoin
         onDeletePortfolioCoin={() => {}}
         onUpdatePortfolioCoin={() => {}}
         name={""}
       />
     );
-    // find edit button -
+
     const editButton = screen.getByRole("button", { name: /edit/i });
     await user.click(editButton);
     expect(editButton).toBeInTheDocument();
@@ -24,33 +23,21 @@ describe("edit coin", () => {
     // find heading
     const heading = screen.getByRole("heading", { level: 4 });
     expect(heading).toBeInTheDocument();
-    // test text inputs
+
+    const editCoin = container.getElementsByClassName("edit-coin-input");
+    expect(editCoin).toBeTruthy();
 
     // close btn
     const closeButton = screen.getByRole("button", { name: /x/i });
-    await user.click(closeButton);
-    // expect(closeButton).toBeInTheDocument();
+    user.click(closeButton);
+    expect(closeButton).toBeInTheDocument();
 
-    // const updateButton = screen.getByRole("button", { name: /update/i });
-    // await user.click(updateButton);
+    const updateButton = screen.getByRole("button", { name: /update/i });
+    user.click(updateButton);
+    expect(updateButton).toBeInTheDocument();
+
+    const deleteButton = screen.getByRole("button", { name: /delete/i });
+    user.click(deleteButton);
+    expect(deleteButton).toBeInTheDocument();
   });
 });
-
-// separate test file?
-
-describe("edit coin buttons", () => {
-  const user = userEvent.setup();
-  it("should let user edit coin quantity or delete coin", async () => {
-    render(
-      <EditCoin
-        onDeletePortfolioCoin={() => {}}
-        onUpdatePortfolioCoin={() => {}}
-        name={""}
-      />
-    );
-    // find button -
-  });
-});
-
-// remember to test close modal btn
-// remember to test inputs
