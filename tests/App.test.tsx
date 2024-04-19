@@ -27,10 +27,9 @@ describe("App", () => {
     expect(portfolioHeading).toBeInTheDocument();
   });
 
-  it("should render coin description page when navigating to /coin-description", () => {
-    const coinName = "bitcoin";
+  it("should render coin description page when navigating to coin-description page", () => {
     render(
-      <MemoryRouter initialEntries={[`/coin-description/${coinName}`]}>
+      <MemoryRouter initialEntries={["/coin-description/coinName"]}>
         <App />
       </MemoryRouter>
     );

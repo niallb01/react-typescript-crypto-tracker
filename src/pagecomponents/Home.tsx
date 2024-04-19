@@ -127,15 +127,18 @@ const Home = (props: HomeProps) => {
                   {portfolio.find((coinToFind: HomeCoinType) => {
                     return coinToFind.name === coin.name;
                   }) ? (
-                    <FaStar
-                      data-testid="add-portfolio-coin"
-                      onClick={() => handlePortfolioItem(coin.name)}
-                      className="star-icon-fill"
-                      size="16"
-                    />
+                    <div className="add-portfolio-coin">
+                      {" "}
+                      <FaStar
+                        // data-testid="add-portfolio-coin"
+                        onClick={() => handlePortfolioItem(coin.name)}
+                        className="star-icon-fill"
+                        size="16"
+                      />
+                    </div>
                   ) : (
                     <FaRegStar
-                      data-testid="add-portfolio-coin"
+                      // data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"
