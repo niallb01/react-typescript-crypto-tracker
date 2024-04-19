@@ -13,7 +13,6 @@ describe("home", () => {
         <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
       </MemoryRouter>
     );
-    // test input
     const searchInput = screen.getByPlaceholderText(/search currency/i);
     expect(searchInput).toBeInTheDocument();
   });
