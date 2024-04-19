@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import { it, expect, describe } from "vitest";
+import { it, expect, describe, test } from "vitest";
 import Home from "../src/pagecomponents/Home";
 import React from "react";
 import { MemoryRouter } from "react-router";
@@ -24,15 +24,17 @@ describe("home", () => {
 });
 
 // test add coin to portfolio btn and toast
-// describe("portfolio button", () => {
-//   // const user = userEvent.setup();
-//   it("should add or remove portfolio coin", () => {
-//     const { getByClassName } = render(
-//       <MemoryRouter>
-//         <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
-//       </MemoryRouter>
-//     );
-//     const addPortfolioCoin = getByClassName("add-portfolio-coin");
-//     expect(addPortfolioCoin).toBeInTheDocument();
-//   });
-// });
+describe("portfolio button", () => {
+  // const user = userEvent.setup();
+  it("should add or remove portfolio coin", async () => {
+    render(
+      <MemoryRouter>
+        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+      </MemoryRouter>
+    );
+    const addCoin = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(addCoin).toBeInTheDocument();
+  });
+});
