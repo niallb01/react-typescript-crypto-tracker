@@ -25,7 +25,7 @@ describe("home", () => {
 
 // test add coin to portfolio btn and toast
 describe("portfolio button", () => {
-  // const user = userEvent.setup();
+  const user = userEvent.setup();
   it("should add or remove portfolio coin", async () => {
     render(
       <MemoryRouter>
@@ -35,6 +35,7 @@ describe("portfolio button", () => {
     const addCoin = document.querySelector(
       "svg"
     ) as unknown as HTMLImageElement;
+    await user.click(addCoin);
     expect(addCoin).toBeInTheDocument();
   });
 });

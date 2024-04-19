@@ -129,7 +129,7 @@ const Home = (props: HomeProps) => {
                   }) ? (
                     <FaStar
                       title="add-coin"
-                      data-testid="add-portfolio-coin"
+                      // data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon-fill"
                       size="16"
@@ -137,7 +137,7 @@ const Home = (props: HomeProps) => {
                   ) : (
                     <FaRegStar
                       title="add-coin"
-                      data-testid="add-portfolio-coin"
+                      // data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"
