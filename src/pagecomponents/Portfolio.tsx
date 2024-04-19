@@ -67,8 +67,6 @@ const Portfolio = (props: PortfolioProps) => {
     });
     portfolioCopy.splice(indexOf, 1);
     addPortfolio(portfolioCopy);
-    // console.log("delete coin", indexOf);
-    // setPortfolioModal(!portfolioModal);
   };
 
   const onUpdatePortfolioCoin = (name: string, quantity: string) => {
