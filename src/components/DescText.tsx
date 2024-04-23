@@ -1,6 +1,7 @@
 type DescProps = {
   descText: string;
 };
+
 const DescText = (props: DescProps) => {
   return (
     <>

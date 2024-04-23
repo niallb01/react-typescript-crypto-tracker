@@ -20,14 +20,12 @@ describe("edit coin", () => {
     await user.click(editButton);
     expect(editButton).toBeInTheDocument();
 
-    // find heading
     const heading = screen.getByRole("heading", { level: 4 });
     expect(heading).toBeInTheDocument();
 
     const editCoin = container.getElementsByClassName("edit-coin-input");
     expect(editCoin).toBeTruthy();
 
-    // close btn
     const closeButton = screen.getByRole("button", { name: /x/i });
     user.click(closeButton);
     expect(closeButton).toBeInTheDocument();

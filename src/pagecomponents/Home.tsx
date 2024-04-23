@@ -4,32 +4,7 @@ import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
-
-type HomeProps = {
-  coins: HomeCoinType[];
-  portfolio: HomeCoinType[];
-  addPortfolio: (portfolio: HomeCoinType[]) => void;
-};
-
-type HomeCoinType = {
-  id: string;
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  fully_diluted_valuation: number;
-  total_volume: number;
-  volume: number;
-  price_change_24h: number;
-  twentyFourHour: number;
-  price_change_percentage_24h: number;
-  quantity: string | undefined;
-  coin: string;
-  filtered: object;
-  item: object;
-};
+import { HomeCoinType, HomeProps } from "../types/coin_types";
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
@@ -40,12 +15,13 @@ const Home = (props: HomeProps) => {
     setSearch(e.target.value);
   };
 
+  //  function which takes a name parameter of type string.
   const handlePortfolioItem = (name: string) => {
-    const portfolioCopy = [...portfolio];
+    const portfolioCopy = [...portfolio]; // shallow copy of portfolio array, we don't mutate state
     //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
-    }); //if found remove from array
+    }); //if coin found remove from array
     if (found) {
       //Remove found coin
       const filtered = portfolioCopy.filter((coin) => {
@@ -78,11 +54,9 @@ const Home = (props: HomeProps) => {
     toast.success("Coin Added To Portfolio", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 500,
-      // limit: 1,
     });
   };
 
-  // pure func no side effects - test
   const filteredCoins = coins.filter((coin: HomeCoinType) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });
@@ -129,7 +103,6 @@ const Home = (props: HomeProps) => {
                   }) ? (
                     <FaStar
                       title="add-coin"
-                      // data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon-fill"
                       size="16"
@@ -137,7 +110,6 @@ const Home = (props: HomeProps) => {
                   ) : (
                     <FaRegStar
                       title="add-coin"
-                      // data-testid="add-portfolio-coin"
                       onClick={() => handlePortfolioItem(coin.name)}
                       className="star-icon"
                       size="16"

@@ -3,32 +3,7 @@ import { useLocation } from "react-router-dom";
 import DescText from "../components/DescText";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
-
-type DescriptionProps = {
-  coinDescription: CoinDescriptionType[];
-};
-
-type CoinDescriptionType = {
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  fully_diluted_valuation: number;
-  total_volume: number;
-  high_24h: number;
-  low_24h: number;
-  circulating_supply: number;
-  total_supply: number | null;
-  max_supply: number | null;
-  ath: number;
-  atl: number;
-  coin_description: string;
-  key: string;
-  index: number;
-  coindesc: string;
-};
+import { DescriptionProps, CoinDescriptionType } from "../types/coin_types";
 
 const CoinDescription = (props: DescriptionProps) => {
   const { coinDescription } = props;

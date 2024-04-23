@@ -39,7 +39,6 @@ describe("portfolio buttons", () => {
   });
 });
 
-// check buttons below
 describe("add coin modal", () => {
   const user = userEvent.setup();
   it("should render modal with coin list and inputs", async () => {

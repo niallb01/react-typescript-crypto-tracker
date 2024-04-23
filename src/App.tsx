@@ -7,68 +7,7 @@ import Portfolio from "./pagecomponents/Portfolio";
 import CoinDescription from "./pagecomponents/CoinDescription";
 import CoinData from "./data/CoinData.json";
 import CoinDescData from "./data/CoinDescData.json";
-
-type CoinType = {
-  id: string;
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  fully_diluted_valuation: number;
-  total_volume: number;
-  volume: number;
-  price_change_24h: number;
-  twentyFourHour: number;
-  price_change_percentage_24h: number;
-  quantity: string;
-  coin: string;
-  filtered: object;
-  item: object;
-};
-
-type CoinDescType = {
-  symbol: string;
-  name: string;
-  image: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  fully_diluted_valuation: number;
-  total_volume: number;
-  high_24h: number;
-  low_24h: number;
-  circulating_supply: number;
-  total_supply: number | null;
-  max_supply: number | null;
-  ath: number;
-  atl: number;
-  coin_description: string;
-  key: string;
-  index: number;
-  coindesc: string;
-};
-
-type PortfolioType = {
-  market_cap_rank: number;
-  image: string;
-  name: string;
-  symbol: string;
-  price_change_percentage_24h: number;
-  current_price: number;
-  market_cap: number;
-  total_volume: number;
-  item: object;
-  coin: string;
-  quantity: string | undefined;
-  id: string;
-  fully_diluted_valuation: number;
-  volume: number;
-  price_change_24h: number;
-  twentyFourHour: number;
-  filtered: object;
-};
+import { CoinType, CoinDescType, PortfolioType } from "./types/coin_types";
 
 function App() {
   const [coins, setCoins] = useState<CoinType[]>([]);

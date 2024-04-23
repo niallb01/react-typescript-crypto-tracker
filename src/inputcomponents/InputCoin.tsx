@@ -1,10 +1,5 @@
 import InputCoinComp from "./InputCoinComp";
-
-type InputCoinProps = {
-  image: string;
-  name: string;
-  symbol: string;
-};
+import { InputCoinProps } from "../types/coin_types";
 
 const InputCoin = (props: InputCoinProps) => {
   return (

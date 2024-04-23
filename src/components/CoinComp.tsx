@@ -1,15 +1,5 @@
 // child of coin
-type CoinCompProps = {
-  rank: number;
-  image: string;
-  symbol: string;
-  name: string;
-  coinPrice: string;
-  twentyFourHour: string;
-  volume: string;
-  fdv: string;
-  marketCap: string;
-};
+import { CoinCompProps } from "../types/coin_types";
 
 const CoinComp = (props: CoinCompProps) => {
   return (

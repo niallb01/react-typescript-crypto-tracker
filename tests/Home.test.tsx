@@ -38,7 +38,6 @@ describe("portfolio link", () => {
   });
 });
 
-// test adding coin to portfolio btn
 describe("portfolio button", () => {
   const user = userEvent.setup();
   it("should add or remove coin from portfolio and trigger toast message", async () => {
@@ -50,7 +49,7 @@ describe("portfolio button", () => {
     const addCoinButton = document.querySelector(
       "svg"
     ) as unknown as HTMLImageElement;
-    //
+
     await user.click(addCoinButton);
     expect(addCoinButton).toBeInTheDocument();
     // toast

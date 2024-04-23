@@ -1,22 +1,5 @@
 import CoinDescComp from "./CoinDescComp";
-
-type CoinDescProps = {
-  marketRank: number;
-  descImage: string;
-  name: string;
-  symbol: string;
-  coinPrice: string;
-  marketCap: string;
-  descvolume: string;
-  circulating: string;
-  fullyDiluted: string;
-  totalSupply: string;
-  maxSupply: string;
-  twentyFourHourHigh: string;
-  twentyFourHourLow: string;
-  ath: string;
-  atl: string;
-};
+import { CoinDescProps } from "../types/coin_types";
 
 const CoinDesc = (props: CoinDescProps) => {
   return (

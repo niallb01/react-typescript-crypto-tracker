@@ -1,18 +1,6 @@
 import CoinComp from "./CoinComp";
+import { CoinProps } from "../types/coin_types";
 //child of home component
-
-type CoinProps = {
-  id: string;
-  rank: number;
-  image: string;
-  symbol: string;
-  name: string;
-  coinPrice: string;
-  twentyFourHour: string;
-  volume: string;
-  fdv: string;
-  marketCap: string;
-};
 
 const Coin = (props: CoinProps) => {
   return (

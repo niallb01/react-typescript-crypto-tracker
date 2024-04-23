@@ -5,32 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import InputCoin from "../inputcomponents/InputCoin";
 import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
-
-type PortfolioProps = {
-  portfolio: PortfolioPageType[];
-  addPortfolio: React.Dispatch<React.SetStateAction<PortfolioPageType[]>>;
-  coins: PortfolioPageType[];
-};
-
-type PortfolioPageType = {
-  market_cap_rank: number;
-  image: string;
-  name: string;
-  symbol: string;
-  price_change_percentage_24h: number;
-  current_price: number;
-  market_cap: number;
-  total_volume: number;
-  item: object;
-  coin: string;
-  id: string;
-  quantity: any;
-  fully_diluted_valuation: number;
-  volume: number;
-  price_change_24h: number;
-  twentyFourHour: number;
-  filtered: object;
-};
+import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
@@ -170,7 +145,7 @@ const Portfolio = (props: PortfolioProps) => {
           return item.name === coin.name;
         });
         return (
-          <div className="portfolio-container">
+          <div className="portfolio-container" key={coin.name}>
             <div className="portfolio-row">
               <PortfolioCoin
                 rank={coin.market_cap_rank}
