@@ -29,10 +29,14 @@ const Portfolio = (props: PortfolioProps) => {
     setQuantity(e.target.value);
   };
 
-  const onDeletePortfolio = (item: object) => {
-    const deletePortfolio: any = [portfolio];
-    deletePortfolio.splice(item);
-    addPortfolio(deletePortfolio);
+  // const onDeletePortfolio = (item: object) => {
+  //   const deletePortfolio: any = [portfolio];
+  //   deletePortfolio.splice(item);
+  //   addPortfolio(deletePortfolio);
+  // };
+
+  const onDeletePortfolio = () => {
+    addPortfolio([]);
   };
 
   const onDeletePortfolioCoin = (coin: string) => {

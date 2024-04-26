@@ -15,7 +15,7 @@ const Home = (props: HomeProps) => {
     setSearch(e.target.value);
   };
 
-  //  function which takes a name parameter of type string.
+  // function which takes a name parameter of type string.
   const handlePortfolioItem = (name: string) => {
     const portfolioCopy = [...portfolio]; // shallow copy of portfolio array, we don't mutate state
     //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
@@ -51,6 +51,7 @@ const Home = (props: HomeProps) => {
       item: {},
     });
     addPortfolio(portfolioCopy);
+    console.log(portfolioCopy);
     toast.success("Coin Added To Portfolio", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 500,
