@@ -111,7 +111,7 @@ body.active-modal {
   color: #ffffff;
   border-width: 0em;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .edit-coin-input {
@@ -139,7 +139,7 @@ body.active-modal {
   margin-bottom: 20px;
   border-width: 0em;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 .add-portfolio-coin-btn {
