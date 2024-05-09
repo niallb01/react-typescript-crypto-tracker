@@ -17,7 +17,6 @@ const Home = (props: HomeProps) => {
 
   const { coins, portfolio, addPortfolio } = props;
 
-  // let dropdownRef = useRef();
   let dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,27 +38,22 @@ const Home = (props: HomeProps) => {
     setSearch(e.target.value);
   };
 
-  // sorting events
   const onVolumeSort = () => {
     setVolume(!volume);
   };
 
   const onFdvSort = () => {
-    console.log("fdv");
     setFdv(!fdv);
   };
 
   const onPriceSort = () => {
-    console.log("price");
     setPrice(!price);
   };
 
   const onDropdown = () => {
-    console.log("dropdown");
     setDropdown(!dropdown);
   };
 
-  // function which takes a name parameter of type string.
   const handlePortfolioItem = (name: string) => {
     const portfolioCopy = [...portfolio]; // shallow copy of portfolio array, we don't mutate state
     //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
@@ -137,9 +131,6 @@ const Home = (props: HomeProps) => {
       coinsToUse = filteredCoins.length > 0 ? filteredCoins : coins;
       break;
   }
-
-  //if user enters search term use filtered version of coins otherwise use all coins
-  // const coinsToUse = search ? filteredCoins : coins;
 
   return (
     <>
@@ -230,16 +221,6 @@ const Home = (props: HomeProps) => {
           )}
         </div>
       </div>
-      {/* 
-      <div className="portfolio-link">
-        Go to
-        <Link to="/portfolio" className="portfolio-link-text">
-          {" "}
-          Portfolio {<FaStar className="star-icon-fill" size="10" />}
-        </Link>
-      </div> */}
-      {/* 
-<Link to={`/coin-description/${coin.name}`} key={coin.name}> */}
 
       {coinsToUse.map((coin: HomeCoinType) => {
         return (
