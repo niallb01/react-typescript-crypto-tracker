@@ -1,5 +1,5 @@
 import Coin from "../components/Coin";
-import { Key, useState, useEffect, useRef, ButtonHTMLAttributes } from "react";
+import { Key, useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -33,34 +33,7 @@ const Home = (props: HomeProps) => {
     return () => {
       document.removeEventListener("mousedown", handler);
     };
-  });
-
-  // useEffect(() => {
-  //   let handler = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-  //       setDropdown(false);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", handler);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handler);
-  //   };
-  // }, [dropdown]);
-
-  // useEffect(() => {
-  //   let handler = (e: MouseEvent) => {
-  //     if (
-  //       dropdownRef.current &&
-  //       !dropdownRef.current.contains(e.target as Node)
-  //     ) {
-  //       setDropdown(false);
-  //     }
-  //   };
-  //   document.addEventListener("mousedown", handler);
-  //   return () => {
-  //     document.removeEventListener("mousedown", handler);
-  //   };
-  // }, [dropdown]);
+  }, [dropdown]);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -133,7 +106,6 @@ const Home = (props: HomeProps) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });
 
-  // sorting
   const sortCoinsByVolume = () => {
     return [...filteredCoins].sort((a, b) => b.total_volume - a.total_volume);
   };
@@ -150,9 +122,6 @@ const Home = (props: HomeProps) => {
     );
   };
 
-  //if user enters search term use filtered version of coins otherwise use all coins
-  // const coinsToUse = search ? filteredCoins : coins;
-
   let coinsToUse;
   switch (true) {
     case volume:
@@ -168,6 +137,9 @@ const Home = (props: HomeProps) => {
       coinsToUse = filteredCoins.length > 0 ? filteredCoins : coins;
       break;
   }
+
+  //if user enters search term use filtered version of coins otherwise use all coins
+  // const coinsToUse = search ? filteredCoins : coins;
 
   return (
     <>
@@ -204,7 +176,7 @@ const Home = (props: HomeProps) => {
           <button
             onClick={onDropdown}
             // value={dropdown}
-            data-dropdown={dropdown} // Use a custom attribute name
+            data-dropdown={dropdown}
             className="customize-modal-btn"
           >
             <IoSparklesOutline />
@@ -271,50 +243,100 @@ const Home = (props: HomeProps) => {
 
       {coinsToUse.map((coin: HomeCoinType) => {
         return (
-          <Link to={`/coin-description/${coin.name}`} key={coin.name}>
-            <div className="coin-container">
-              <div className="coin-row">
-                <Link to={"#"}>
-                  {portfolio.find((coinToFind: HomeCoinType) => {
-                    return coinToFind.name === coin.name;
-                  }) ? (
-                    <FaStar
-                      title="add-coin"
-                      onClick={() => handlePortfolioItem(coin.name)}
-                      className="star-icon-fill"
-                      size="16"
-                    />
-                  ) : (
-                    <FaRegStar
-                      title="add-coin"
-                      onClick={() => handlePortfolioItem(coin.name)}
-                      className="star-icon"
-                      size="16"
-                    />
-                  )}
-                </Link>
-
-                <Coin
-                  id={coin.id}
-                  rank={coin.market_cap_rank}
-                  image={coin.image}
-                  name={coin.name}
-                  symbol={coin.symbol.toUpperCase()}
-                  marketCap={(coin.market_cap / 1000000000).toFixed(2)}
-                  coinPrice={coin.current_price.toFixed(2)}
-                  twentyFourHour={coin.price_change_percentage_24h.toFixed(1)}
-                  fdv={
-                    coin.fully_diluted_valuation
-                      ? coin.fully_diluted_valuation.toLocaleString()
-                      : "∞"
-                  }
-                  volume={coin.total_volume.toLocaleString()}
-                />
+          <div key={coin.name}>
+            {dropdown ? (
+              <div className="coin-container">
+                <div className="coin-row">
+                  <Link to={"#"}>
+                    {" "}
+                    {portfolio.find(
+                      (coinToFind: HomeCoinType) =>
+                        coinToFind.name === coin.name
+                    ) ? (
+                      <FaStar
+                        title="add-coin"
+                        onClick={() => handlePortfolioItem(coin.name)}
+                        className="star-icon-fill"
+                        size="16"
+                      />
+                    ) : (
+                      <FaRegStar
+                        title="add-coin"
+                        onClick={() => handlePortfolioItem(coin.name)}
+                        className="star-icon"
+                        size="16"
+                      />
+                    )}
+                  </Link>
+                  <Coin
+                    id={coin.id}
+                    rank={coin.market_cap_rank}
+                    image={coin.image}
+                    name={coin.name}
+                    symbol={coin.symbol.toUpperCase()}
+                    marketCap={(coin.market_cap / 1000000000).toFixed(2)}
+                    coinPrice={coin.current_price.toFixed(2)}
+                    twentyFourHour={coin.price_change_percentage_24h.toFixed(1)}
+                    fdv={
+                      coin.fully_diluted_valuation
+                        ? coin.fully_diluted_valuation.toLocaleString()
+                        : "∞"
+                    }
+                    volume={coin.total_volume.toLocaleString()}
+                  />
+                </div>
               </div>
-            </div>
-          </Link>
+            ) : (
+              <Link to={`/coin-description/${coin.name}`}>
+                <div className="coin-container">
+                  <div className="coin-row">
+                    <Link to={"#"}>
+                      {" "}
+                      {portfolio.find(
+                        (coinToFind: HomeCoinType) =>
+                          coinToFind.name === coin.name
+                      ) ? (
+                        <FaStar
+                          title="add-coin"
+                          onClick={() => handlePortfolioItem(coin.name)}
+                          className="star-icon-fill"
+                          size="16"
+                        />
+                      ) : (
+                        <FaRegStar
+                          title="add-coin"
+                          onClick={() => handlePortfolioItem(coin.name)}
+                          className="star-icon"
+                          size="16"
+                        />
+                      )}
+                    </Link>
+                    <Coin
+                      id={coin.id}
+                      rank={coin.market_cap_rank}
+                      image={coin.image}
+                      name={coin.name}
+                      symbol={coin.symbol.toUpperCase()}
+                      marketCap={(coin.market_cap / 1000000000).toFixed(2)}
+                      coinPrice={coin.current_price.toFixed(2)}
+                      twentyFourHour={coin.price_change_percentage_24h.toFixed(
+                        1
+                      )}
+                      fdv={
+                        coin.fully_diluted_valuation
+                          ? coin.fully_diluted_valuation.toLocaleString()
+                          : "∞"
+                      }
+                      volume={coin.total_volume.toLocaleString()}
+                    />
+                  </div>
+                </div>
+              </Link>
+            )}
+          </div>
         );
       })}
+
       <div className="page-footer"></div>
     </>
   );
