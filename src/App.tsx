@@ -9,6 +9,7 @@ import CoinData from "./data/CoinData.json";
 import CoinDescData from "./data/CoinDescData.json";
 import { CoinType, CoinDescType, PortfolioType } from "./types/coin_types";
 
+
 function App() {
   const [coins, setCoins] = useState<CoinType[]>([]);
   const [coinDescription, setDescription] = useState<CoinDescType[]>([]);

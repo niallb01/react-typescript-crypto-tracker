@@ -323,7 +323,7 @@ a {
 }
 
 .portfolio-link {
-  margin-left: 75px;
+  margin-left: 65px;
 }
 
 .delete-coin-button {
@@ -378,6 +378,81 @@ li {
   display: inline-flex;
   width: 220px;
   justify-content: space-between;
+}
+
+.customize-modal-btn {
+  background-color: #48c1be;
+  color: #2a3143;
+  font-size: 14px;
+  font-weight: 600;
+  /* border: none; */
+  border: 1px solid;
+  border-radius: 5px;
+  /* height: 25px; */
+  height: 30px;
+  transition: ease-out 0.3s;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  /* margin-left: auto; */
+  margin-right: 65px;
+}
+
+.customize-modal-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+  border: 1px solid;
+
+  /* border: 1px solid be; */
+}
+
+.portfolio-link-customize {
+  display: flex;
+  /* align-items: center; */
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.portfolio-link {
+  margin-right: 10px;
+}
+
+/* .customize-modal {
+  margin-left: 10px;
+} */
+
+.switch-item {
+  display: block;
+  padding: 10px 25px;
+  font-weight: 400;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #181b26;
+  color: #fff;
+  /* background: #2a3143; */
+  /* min-width: 150px; */
+  /* width: 200px; */
+  box-shadow: 1px 1px 1px 0px;
+  z-index: 10;
+  /* opacity: 0.9; */
+  font-weight: 400;
+  margin-top: 5px;
+
+  line-height: 1.4;
+  background: #2a3143;
+  /* padding: 14px 28px; */
+  border-radius: 10px;
+  transform: translateY(0px);
+  transition: var(--speed) ease;
+}
+
+.dropdown-header {
+  line-height: 1.2;
+  font-size: 14px;
+  width: 100%;
+  font-weight: 400;
 }
 
 .Toastify__toast-container--top-center {
@@ -485,5 +560,8 @@ li {
 
   .total-value {
     width: 180px;
+  }
+  .customize-modal-btn {
+    margin-right: 30px;
   }
 }

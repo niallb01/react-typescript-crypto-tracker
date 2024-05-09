@@ -1,18 +1,89 @@
 import Coin from "../components/Coin";
-import { Key, useState } from "react";
+import { Key, useState, useEffect, useRef, ButtonHTMLAttributes } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
+import { IoSparklesOutline } from "react-icons/io5";
+import { Switch, FormGroup, FormControlLabel } from "@mui/material";
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
+  const [volume, setVolume] = useState<boolean>(false);
+  const [fdv, setFdv] = useState<boolean>(false);
+  const [price, setPrice] = useState<boolean>(false);
+  const [dropdown, setDropdown] = useState<boolean>(false);
 
   const { coins, portfolio, addPortfolio } = props;
 
+  // let dropdownRef = useRef();
+  let dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let handler = (e: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(e.target as Node)
+      ) {
+        setDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+  // useEffect(() => {
+  //   let handler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //     if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+  //       setDropdown(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handler);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // }, [dropdown]);
+
+  // useEffect(() => {
+  //   let handler = (e: MouseEvent) => {
+  //     if (
+  //       dropdownRef.current &&
+  //       !dropdownRef.current.contains(e.target as Node)
+  //     ) {
+  //       setDropdown(false);
+  //     }
+  //   };
+  //   document.addEventListener("mousedown", handler);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler);
+  //   };
+  // }, [dropdown]);
+
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
+  };
+
+  // sorting events
+  const onVolumeSort = () => {
+    setVolume(!volume);
+  };
+
+  const onFdvSort = () => {
+    console.log("fdv");
+    setFdv(!fdv);
+  };
+
+  const onPriceSort = () => {
+    console.log("price");
+    setPrice(!price);
+  };
+
+  const onDropdown = () => {
+    console.log("dropdown");
+    setDropdown(!dropdown);
   };
 
   // function which takes a name parameter of type string.
@@ -61,8 +132,42 @@ const Home = (props: HomeProps) => {
   const filteredCoins = coins.filter((coin: HomeCoinType) => {
     return coin.name.toLowerCase().includes(search.toLowerCase());
   });
+
+  // sorting
+  const sortCoinsByVolume = () => {
+    return [...filteredCoins].sort((a, b) => b.total_volume - a.total_volume);
+  };
+
+  const sortCoinsByFdv = () => {
+    return [...filteredCoins].sort(
+      (a, b) => b.fully_diluted_valuation - a.fully_diluted_valuation
+    );
+  };
+
+  const sortCoinsByPrice = () => {
+    return [...filteredCoins].sort(
+      (a, b) => b.price_change_24h - a.price_change_24h
+    );
+  };
+
   //if user enters search term use filtered version of coins otherwise use all coins
-  const coinsToUse = search ? filteredCoins : coins;
+  // const coinsToUse = search ? filteredCoins : coins;
+
+  let coinsToUse;
+  switch (true) {
+    case volume:
+      coinsToUse = sortCoinsByVolume();
+      break;
+    case fdv:
+      coinsToUse = sortCoinsByFdv();
+      break;
+    case price:
+      coinsToUse = sortCoinsByPrice();
+      break;
+    default:
+      coinsToUse = filteredCoins.length > 0 ? filteredCoins : coins;
+      break;
+  }
 
   return (
     <>
@@ -85,13 +190,84 @@ const Home = (props: HomeProps) => {
         </div>
       </div>
 
+      <div className="portfolio-link-customize">
+        <div className="portfolio-link">
+          Go to
+          <Link to="/portfolio">
+            <a href="#" className="portfolio-link-text">
+              {" "}
+              Portfolio {<FaStar className="star-icon-fill" size="10" />}
+            </a>
+          </Link>
+        </div>
+        <div className="dropdown" ref={dropdownRef}>
+          <button
+            onClick={onDropdown}
+            // value={dropdown}
+            data-dropdown={dropdown} // Use a custom attribute name
+            className="customize-modal-btn"
+          >
+            <IoSparklesOutline />
+            Customise
+          </button>
+
+          {dropdown && (
+            <div className="dropdown-content">
+              <p className="dropdown-header">Metrics</p>
+              <FormGroup>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={volume}
+                      onChange={onVolumeSort}
+                      size="small"
+                      className="switch-item"
+                    />
+                  }
+                  className="switch-item"
+                  label="Volume"
+                />
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={fdv}
+                      onChange={onFdvSort}
+                      size="small"
+                      className="switch-item"
+                    />
+                  }
+                  className="switch-item"
+                  label="FDV"
+                />
+                <p className="dropdown-header">Price Change</p>
+                <FormControlLabel
+                  control={
+                    <Switch
+                      checked={price}
+                      onChange={onPriceSort}
+                      size="small"
+                      className="switch-item"
+                    />
+                  }
+                  label="24hr"
+                  className="switch-item"
+                  // labelPlacement="start"
+                />
+              </FormGroup>
+            </div>
+          )}
+        </div>
+      </div>
+      {/* 
       <div className="portfolio-link">
         Go to
         <Link to="/portfolio" className="portfolio-link-text">
           {" "}
           Portfolio {<FaStar className="star-icon-fill" size="10" />}
         </Link>
-      </div>
+      </div> */}
+      {/* 
+<Link to={`/coin-description/${coin.name}`} key={coin.name}> */}
 
       {coinsToUse.map((coin: HomeCoinType) => {
         return (
