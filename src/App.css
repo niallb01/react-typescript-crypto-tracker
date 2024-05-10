@@ -376,38 +376,59 @@ li {
 .dropdown {
   position: relative;
   display: inline-block;
-  left: 0;
-  /* display: flex;
-  align-items: end; */
+  /* left: 0; */
 }
 
 .dropdown-header {
-  line-height: 1.2;
-  font-size: 14px;
+  /* line-height: 1.2;
+  font-size: 24px;
   width: 100%;
-  font-weight: 400;
+  font-weight: 400; */
+  /* color: #48c1be; */
+  line-height: 1.2;
+  font-size: 18px;
+  /* width: 100%; */
+  font-weight: 500;
+}
+
+.underline {
+  border-bottom: 2px solid currentColor;
 }
 
 .dropdown-content {
   position: absolute;
-  /* left: 0; */
   right: 60px;
-  background: #181b26;
-  /* background: #323741; */
+  /* background: #181b26; */
+  background: #212635;
+  background: #23283a;
   color: #fff;
-  /* box-shadow: 1px 1px 1px 1px; */
   z-index: 10;
-  /* opacity: 0.9; */
   font-weight: 400;
   margin-top: 5px;
-  line-height: 1.4;
-  padding: 14px 28px;
-  border: 1px solid #fff;
+  padding: 14px 24px;
+  border: 0.01em solid #fff;
   border-radius: 10px;
-  transform: translateY(0px);
-  transition: var(--speed) ease;
-  width: 250px;
+  height: 200px;
 }
+
+/* hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+} */
+
+.MuiFormControlLabel-label {
+  font-size: 14px;
+  margin-right: 100px;
+}
+
+.MuiFormControlLabel-label:hover {
+  color: #48c1be;
+}
+
 /* .switch-item {
   color: #48c1be;
   border: none;

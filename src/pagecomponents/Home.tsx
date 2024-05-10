@@ -174,7 +174,7 @@ const Home = (props: HomeProps) => {
           {dropdown && (
             <div className="dropdown-content">
               <FormGroup>
-                <p className="dropdown-header">Price Change</p>
+                <p className="dropdown-header">Price Change:</p>
                 <FormControlLabel
                   sx={{
                     "& .MuiFormControlLabel-label": {
@@ -194,7 +194,7 @@ const Home = (props: HomeProps) => {
                   label="24hr"
                   labelPlacement="start"
                 />
-                <p className="dropdown-header">Metrics</p>
+                <p className="dropdown-header">Metrics:</p>
                 <FormControlLabel
                   sx={{
                     "& .MuiFormControlLabel-label": {
