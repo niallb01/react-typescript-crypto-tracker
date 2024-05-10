@@ -360,8 +360,7 @@ li {
 }
 
 .dropdown-header {
-  line-height: 1.2;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -382,7 +381,7 @@ li {
   padding: 14px 24px;
   border: 0.01em solid #fff;
   border-radius: 10px;
-  height: 200px;
+  height: 210px;
 }
 
 .MuiFormControlLabel-label {

@@ -6,7 +6,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
 import { IoSparklesOutline } from "react-icons/io5";
-import { MdOutlinePriceChange } from "react-icons/md";
 import { SiBaremetrics } from "react-icons/si";
 import { CiBitcoin } from "react-icons/ci";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
@@ -16,6 +15,7 @@ const Home = (props: HomeProps) => {
   const [volume, setVolume] = useState<boolean>(false);
   const [fdv, setFdv] = useState<boolean>(false);
   const [price, setPrice] = useState<boolean>(false);
+  const [mktCap, setMktCap] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
 
   const { coins, portfolio, addPortfolio } = props;
@@ -53,6 +53,10 @@ const Home = (props: HomeProps) => {
     setPrice(!price);
   };
 
+  const onMktCapSort = () => {
+    setMktCap(!mktCap);
+  };
+
   const onDropdown = () => {
     setDropdown(!dropdown);
   };
@@ -61,9 +65,8 @@ const Home = (props: HomeProps) => {
     const portfolioCopy = [...portfolio];
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
-    }); //if coin found remove from array
+    });
     if (found) {
-      //Remove found coin
       const filtered = portfolioCopy.filter((coin) => {
         return coin.name !== name;
       });
@@ -117,6 +120,10 @@ const Home = (props: HomeProps) => {
     );
   };
 
+  const sortCoinsByMktCap = () => {
+    return [...filteredCoins].sort((a, b) => b.market_cap - a.market_cap);
+  };
+
   let coinsToUse;
   switch (true) {
     case volume:
@@ -127,6 +134,9 @@ const Home = (props: HomeProps) => {
       break;
     case price:
       coinsToUse = sortCoinsByPrice();
+      break;
+    case mktCap:
+      coinsToUse = sortCoinsByMktCap();
       break;
     default:
       coinsToUse = filteredCoins.length > 0 ? filteredCoins : coins;
@@ -220,6 +230,26 @@ const Home = (props: HomeProps) => {
                     />
                   }
                   label="FDV"
+                  labelPlacement="start"
+                />
+
+                <FormControlLabel
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontSize: "14px",
+                      marginRight: "100px",
+                    },
+                  }}
+                  control={
+                    <Switch
+                      checked={mktCap}
+                      onChange={onMktCapSort}
+                      size="small"
+                      className="switch-item"
+                      color="primary"
+                    />
+                  }
+                  label="MktCap"
                   labelPlacement="start"
                 />
 
