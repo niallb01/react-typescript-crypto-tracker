@@ -6,6 +6,9 @@ import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
 import { IoSparklesOutline } from "react-icons/io5";
+import { MdOutlinePriceChange } from "react-icons/md";
+import { SiBaremetrics } from "react-icons/si";
+import { CiBitcoin } from "react-icons/ci";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
 
 const Home = (props: HomeProps) => {
@@ -174,7 +177,10 @@ const Home = (props: HomeProps) => {
           {dropdown && (
             <div className="dropdown-content">
               <FormGroup>
-                <p className="dropdown-header">Price Change:</p>
+                <p className="dropdown-header">
+                  Price Change <CiBitcoin size={20} className="price-icon" />
+                </p>
+
                 <FormControlLabel
                   sx={{
                     "& .MuiFormControlLabel-label": {
@@ -194,7 +200,9 @@ const Home = (props: HomeProps) => {
                   label="24hr"
                   labelPlacement="start"
                 />
-                <p className="dropdown-header">Metrics:</p>
+                <p className="dropdown-header">
+                  Metrics <SiBaremetrics size={12} className="metric-icon" />
+                </p>
                 <FormControlLabel
                   sx={{
                     "& .MuiFormControlLabel-label": {

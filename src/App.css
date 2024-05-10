@@ -68,7 +68,6 @@ body {
 
 .item-8 {
   width: 160px;
-  /* text-align: center; */
 }
 
 .coin-quantity {
@@ -178,6 +177,7 @@ a {
 }
 
 .portfolio-link {
+  margin-left: 65px;
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -274,10 +274,6 @@ a {
   margin-right: auto;
 }
 
-.portfolio-link {
-  margin-left: 65px;
-}
-
 .delete-coin-button {
   background-color: #dd143c;
   color: #ffffff;
@@ -334,19 +330,15 @@ li {
 
 .customize-modal-btn {
   background-color: #48c1be;
-  /* color: #2a3143; */
   font-size: 14px;
   font-weight: 600;
-  /* border: none; */
   border: 1px solid;
   border-radius: 5px;
-  /* height: 25px; */
   height: 30px;
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
   display: block;
-  /* margin-left: auto; */
   margin-right: 65px;
 }
 
@@ -354,51 +346,33 @@ li {
   background-color: #384d61;
   color: #48c1be;
   border: 1px solid;
-
-  /* border: 1px solid be; */
 }
 
 .portfolio-link-customize {
   display: flex;
-  /* align-items: center; */
   align-items: flex-start;
   justify-content: space-between;
 }
 
-.portfolio-link {
-  margin-right: 10px;
-}
-
-/* .customize-modal {
-  margin-left: 10px;
-} */
-
 .dropdown {
   position: relative;
   display: inline-block;
-  /* left: 0; */
 }
 
 .dropdown-header {
-  /* line-height: 1.2;
-  font-size: 24px;
-  width: 100%;
-  font-weight: 400; */
-  /* color: #48c1be; */
   line-height: 1.2;
   font-size: 18px;
-  /* width: 100%; */
   font-weight: 500;
 }
 
-.underline {
-  border-bottom: 2px solid currentColor;
+.price-icon,
+.metric-icon {
+  color: #ffad00;
 }
 
 .dropdown-content {
   position: absolute;
   right: 60px;
-  /* background: #181b26; */
   background: #212635;
   background: #23283a;
   color: #fff;
@@ -411,15 +385,6 @@ li {
   height: 200px;
 }
 
-/* hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-} */
-
 .MuiFormControlLabel-label {
   font-size: 14px;
   margin-right: 100px;
@@ -428,20 +393,6 @@ li {
 .MuiFormControlLabel-label:hover {
   color: #48c1be;
 }
-
-/* .switch-item {
-  color: #48c1be;
-  border: none;
-  cursor: pointer;
-  font-weight: 400;
-  font-size: 14px;
-} */
-
-/* .switch-item-text {
-  color: #fff;
-  font-size: 100px;
-  font-weight: 600;
-} */
 
 .label {
   width: 160px;
@@ -452,10 +403,6 @@ li {
 .label:hover {
   background-color: #384d61;
 }
-
-/* .switch-item:hover {
-  background-color: #384d61;
-}  */
 
 .Toastify__toast-container--top-center {
   --toastify-toast-width: 370px;
@@ -490,10 +437,6 @@ li {
 
   .desc-data {
     display: contents;
-  }
-
-  .portfolio-link {
-    margin-left: 10px;
   }
 
   .coin-desc-text {
