@@ -55,8 +55,7 @@ const Home = (props: HomeProps) => {
   };
 
   const handlePortfolioItem = (name: string) => {
-    const portfolioCopy = [...portfolio]; // shallow copy of portfolio array, we don't mutate state
-    //all coins we have in portfolio, look at them, if name is equal to one we passed in return it
+    const portfolioCopy = [...portfolio];
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
     }); //if coin found remove from array
@@ -65,7 +64,6 @@ const Home = (props: HomeProps) => {
       const filtered = portfolioCopy.filter((coin) => {
         return coin.name !== name;
       });
-      //Update state
       addPortfolio(filtered);
       return;
     }
@@ -166,7 +164,6 @@ const Home = (props: HomeProps) => {
         <div className="dropdown" ref={dropdownRef}>
           <button
             onClick={onDropdown}
-            // value={dropdown}
             data-dropdown={dropdown}
             className="customize-modal-btn"
           >
@@ -176,45 +173,66 @@ const Home = (props: HomeProps) => {
 
           {dropdown && (
             <div className="dropdown-content">
-              <p className="dropdown-header">Metrics</p>
               <FormGroup>
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={volume}
-                      onChange={onVolumeSort}
-                      size="small"
-                      className="switch-item"
-                    />
-                  }
-                  className="switch-item"
-                  label="Volume"
-                />
-                <FormControlLabel
-                  control={
-                    <Switch
-                      checked={fdv}
-                      onChange={onFdvSort}
-                      size="small"
-                      className="switch-item"
-                    />
-                  }
-                  className="switch-item"
-                  label="FDV"
-                />
                 <p className="dropdown-header">Price Change</p>
                 <FormControlLabel
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontSize: "14px",
+                      marginRight: "100px",
+                    },
+                  }}
                   control={
                     <Switch
                       checked={price}
                       onChange={onPriceSort}
                       size="small"
                       className="switch-item"
+                      color="primary"
                     />
                   }
                   label="24hr"
-                  className="switch-item"
-                  // labelPlacement="start"
+                  labelPlacement="start"
+                />
+                <p className="dropdown-header">Metrics</p>
+                <FormControlLabel
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontSize: "14px",
+                      marginRight: "100px",
+                    },
+                  }}
+                  control={
+                    <Switch
+                      checked={fdv}
+                      onChange={onFdvSort}
+                      size="small"
+                      className="switch-item"
+                      color="primary"
+                    />
+                  }
+                  label="FDV"
+                  labelPlacement="start"
+                />
+
+                <FormControlLabel
+                  sx={{
+                    "& .MuiFormControlLabel-label": {
+                      fontSize: "14px",
+                      marginRight: "100px",
+                    },
+                  }}
+                  control={
+                    <Switch
+                      checked={volume}
+                      onChange={onVolumeSort}
+                      size="small"
+                      className="switch-item"
+                      color="primary"
+                    />
+                  }
+                  label="Volume"
+                  labelPlacement="start"
                 />
               </FormGroup>
             </div>
