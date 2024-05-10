@@ -507,10 +507,14 @@ li {
     width: 180px;
   }
   .customize-modal-btn {
-    margin-right: 30px;
+    margin-right: 15px;
   }
 
   .dropdown-content {
-    right: 30px;
+    right: 15px;
+  }
+
+  .portfolio-link {
+    margin-left: 15px;
   }
 }
