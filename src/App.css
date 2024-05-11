@@ -380,8 +380,10 @@ li {
   margin-top: 5px;
   padding: 14px 24px;
   border: 0.01em solid #fff;
-  border-radius: 10px;
+  border-radius: 8px;
   height: 210px;
+
+  width: 180px;
 }
 
 .MuiFormControlLabel-label {
@@ -391,12 +393,6 @@ li {
 
 .MuiFormControlLabel-label:hover {
   color: #48c1be;
-}
-
-.label {
-  width: 160px;
-  font-size: 100px;
-  border-left: 160px;
 }
 
 .label:hover {

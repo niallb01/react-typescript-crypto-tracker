@@ -29,7 +29,7 @@ describe("portfolio link", () => {
     const portfolioLink = getByText(/portfolio/i);
     await user.click(portfolioLink);
     expect(portfolioLink).toBeInTheDocument();
-    expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
+    expect(portfolioLink.getAttribute("href")).toBe("#");
 
     const portfolioIcon = document.querySelector(
       "svg"
@@ -55,5 +55,24 @@ describe("portfolio button", () => {
     // toast
     expect(container.firstChild).toHaveClass("Toastify");
     expect(container.firstChild).toBeTruthy();
+  });
+});
+
+describe("dropdown button", () => {
+  const user = userEvent.setup();
+  it("should trigger dropdown menu", async () => {
+    render(
+      <MemoryRouter>
+        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+      </MemoryRouter>
+    );
+    const dropdownButton = screen.getByRole("button", { name: /customise/i });
+    await user.click(dropdownButton);
+    expect(dropdownButton).toBeInTheDocument();
+
+    const dropdownIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(dropdownIcon).toBeInTheDocument();
   });
 });
