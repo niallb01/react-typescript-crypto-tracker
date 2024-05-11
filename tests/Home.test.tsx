@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import { it, expect, describe, test } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { it, expect, describe } from "vitest";
 import Home from "../src/pagecomponents/Home";
 import React from "react";
 import { MemoryRouter } from "react-router";
