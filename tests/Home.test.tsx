@@ -1,5 +1,5 @@
-import { render, screen } from "@testing-library/react";
-import { it, expect, describe } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { it, expect, describe, test } from "vitest";
 import Home from "../src/pagecomponents/Home";
 import React from "react";
 import { MemoryRouter } from "react-router";
@@ -74,5 +74,34 @@ describe("dropdown button", () => {
       "svg"
     ) as unknown as HTMLImageElement;
     expect(dropdownIcon).toBeInTheDocument();
+  });
+});
+
+describe("dropdown content", () => {
+  const user = userEvent.setup();
+  it("should show metrics and switches that trigger sorting functions", async () => {
+    render(
+      <MemoryRouter>
+        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+      </MemoryRouter>
+    );
+    // before user event
+    expect(screen.queryByText("Price Change")).not.toBeInTheDocument();
+    expect(screen.queryByText("24hr")).not.toBeInTheDocument();
+    expect(screen.queryByText("Metrics")).not.toBeInTheDocument();
+    expect(screen.queryByText("FDV")).not.toBeInTheDocument();
+    expect(screen.queryByText("MktCap")).not.toBeInTheDocument();
+    expect(screen.queryByText("Volume")).not.toBeInTheDocument();
+
+    // click on the dropdown button
+    await user.click(screen.getByRole("button", { name: /customise/i }));
+
+    // after user event, dropdown content should be in the dom
+    expect(screen.getByText("Price Change")).toBeInTheDocument();
+    expect(screen.getByText("24hr")).toBeInTheDocument();
+    expect(screen.getByText("Metrics")).toBeInTheDocument();
+    expect(screen.getByText("FDV")).toBeInTheDocument();
+    expect(screen.getByText("MktCap")).toBeInTheDocument();
+    expect(screen.getByText("Volume")).toBeInTheDocument();
   });
 });

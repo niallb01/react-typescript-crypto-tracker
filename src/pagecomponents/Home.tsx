@@ -205,6 +205,7 @@ const Home = (props: HomeProps) => {
                       size="small"
                       className="switch-item"
                       color="primary"
+                      id="price"
                     />
                   }
                   label="24hr"
