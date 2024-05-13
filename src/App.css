@@ -329,7 +329,8 @@ li {
 }
 
 .customize-modal-btn {
-  background-color: #48c1be;
+  background-color: #384d61;
+  color: #48c1be;
   font-size: 14px;
   font-weight: 600;
   border: 1px solid;
@@ -343,8 +344,8 @@ li {
 }
 
 .customize-modal-btn:hover {
-  background-color: #384d61;
-  color: #48c1be;
+  background-color: #48c1be;
+  color: #384d61;
   border: 1px solid;
 }
 
@@ -382,7 +383,6 @@ li {
   border: 0.01em solid #fff;
   border-radius: 8px;
   height: 210px;
-
   width: 180px;
 }
 

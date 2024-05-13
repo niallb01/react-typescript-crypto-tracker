@@ -1,7 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { it, expect, describe } from "vitest";
+import { render, screen, fireEvent } from "@testing-library/react";
+import { it, expect, describe, vi } from "vitest";
 import Home from "../src/pagecomponents/Home";
 import React from "react";
+import { useRef } from "react";
 import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/vitest";
 import userEvent from "@testing-library/user-event";
@@ -103,5 +104,24 @@ describe("dropdown content", () => {
     expect(screen.getByText("FDV")).toBeInTheDocument();
     expect(screen.getByText("MktCap")).toBeInTheDocument();
     expect(screen.getByText("Volume")).toBeInTheDocument();
+  });
+});
+
+describe("dropdown handler", () => {
+  it("dropdown closes when clicking outside", () => {
+    let dropdownClosed = false;
+
+    const { container } = render(
+      <MemoryRouter>
+        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+      </MemoryRouter>
+    );
+    const dropdown = container.getElementsByClassName("dropdown");
+    expect(dropdown.length).toBeGreaterThan(0);
+
+    fireEvent.mouseDown(document.body);
+    expect(dropdownClosed).toBe(false);
+
+    fireEvent.mouseDown(document.body);
   });
 });
