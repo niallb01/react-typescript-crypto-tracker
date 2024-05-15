@@ -42,19 +42,31 @@ const Home = (props: HomeProps) => {
   };
 
   const onVolumeSort = () => {
-    setVolume(!volume);
+    setVolume(true);
+    setFdv(false);
+    setPrice(false);
+    setMktCap(false);
   };
 
   const onFdvSort = () => {
-    setFdv(!fdv);
+    setVolume(false);
+    setFdv(true);
+    setPrice(false);
+    setMktCap(false);
   };
 
   const onPriceSort = () => {
-    setPrice(!price);
+    setVolume(false);
+    setFdv(false);
+    setPrice(true);
+    setMktCap(false);
   };
 
   const onMktCapSort = () => {
-    setMktCap(!mktCap);
+    setVolume(false);
+    setFdv(false);
+    setPrice(false);
+    setMktCap(true);
   };
 
   const onDropdown = () => {
@@ -93,7 +105,6 @@ const Home = (props: HomeProps) => {
       item: {},
     });
     addPortfolio(portfolioCopy);
-    console.log(portfolioCopy);
     toast.success("Coin Added To Portfolio", {
       position: toast.POSITION.TOP_CENTER,
       autoClose: 500,
