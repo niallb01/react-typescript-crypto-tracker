@@ -45,42 +45,6 @@ const Home = (props: HomeProps) => {
     setDropdown(!dropdown);
   };
 
-  // const onVolumeSort = () => {
-  //   setVolume(!volume);
-  //   if (volume) {
-  //     setFdv(false);
-  //     setPrice(false);
-  //     setMktCap(false);
-  //   }
-  // };
-
-  // const onFdvSort = () => {
-  //   setFdv(!fdv);
-  //   if (fdv) {
-  //     setVolume(false);
-  //     setPrice(false);
-  //     setMktCap(false);
-  //   }
-  // };
-
-  // const onPriceSort = () => {
-  //   setPrice(!price);
-  //   if (price) {
-  //     setVolume(false);
-  //     setFdv(false);
-  //     setMktCap(false);
-  //   }
-  // };
-
-  // const onMktCapSort = () => {
-  //   setMktCap(!mktCap);
-  //   if (mktCap) {
-  //     setVolume(false);
-  //     setFdv(false);
-  //     setPrice(false);
-  //   }
-  // };
-
   const onVolumeSort = () => {
     setVolume(!volume);
     if (!volume) {
