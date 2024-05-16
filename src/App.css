@@ -124,8 +124,10 @@ body {
 }
 
 .coin-row:hover {
+  /* transform: scale(1.01);
+  transition: 0.1s ease-in-out; */
   transform: scale(1.01);
-  transition: 0.2s ease-in-out;
+  transition: 0.1s ease-in-out;
   background-color: #343f56;
   cursor: pointer;
 }

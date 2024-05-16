@@ -41,36 +41,80 @@ const Home = (props: HomeProps) => {
     setSearch(e.target.value);
   };
 
+  const onDropdown = () => {
+    setDropdown(!dropdown);
+  };
+
+  // const onVolumeSort = () => {
+  //   setVolume(!volume);
+  //   if (volume) {
+  //     setFdv(false);
+  //     setPrice(false);
+  //     setMktCap(false);
+  //   }
+  // };
+
+  // const onFdvSort = () => {
+  //   setFdv(!fdv);
+  //   if (fdv) {
+  //     setVolume(false);
+  //     setPrice(false);
+  //     setMktCap(false);
+  //   }
+  // };
+
+  // const onPriceSort = () => {
+  //   setPrice(!price);
+  //   if (price) {
+  //     setVolume(false);
+  //     setFdv(false);
+  //     setMktCap(false);
+  //   }
+  // };
+
+  // const onMktCapSort = () => {
+  //   setMktCap(!mktCap);
+  //   if (mktCap) {
+  //     setVolume(false);
+  //     setFdv(false);
+  //     setPrice(false);
+  //   }
+  // };
+
   const onVolumeSort = () => {
-    setVolume(true);
-    setFdv(false);
-    setPrice(false);
-    setMktCap(false);
+    setVolume(!volume);
+    if (!volume) {
+      setFdv(false);
+      setPrice(false);
+      setMktCap(false);
+    }
   };
 
   const onFdvSort = () => {
-    setVolume(false);
-    setFdv(true);
-    setPrice(false);
-    setMktCap(false);
+    setFdv(!fdv);
+    if (!fdv) {
+      setVolume(false);
+      setPrice(false);
+      setMktCap(false);
+    }
   };
 
   const onPriceSort = () => {
-    setVolume(false);
-    setFdv(false);
-    setPrice(true);
-    setMktCap(false);
+    setPrice(!price);
+    if (!price) {
+      setVolume(false);
+      setFdv(false);
+      setMktCap(false);
+    }
   };
 
   const onMktCapSort = () => {
-    setVolume(false);
-    setFdv(false);
-    setPrice(false);
-    setMktCap(true);
-  };
-
-  const onDropdown = () => {
-    setDropdown(!dropdown);
+    setMktCap(!mktCap);
+    if (!mktCap) {
+      setVolume(false);
+      setFdv(false);
+      setPrice(false);
+    }
   };
 
   const handlePortfolioItem = (name: string) => {
