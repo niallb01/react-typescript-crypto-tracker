@@ -2,7 +2,6 @@
 import { useState } from "react";
 import "../Modal.css";
 import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
 import InputCoin from "../inputcomponents/InputCoin";
 import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
@@ -22,10 +21,6 @@ const Portfolio = (props: PortfolioProps) => {
     setPortfolioModal(!portfolioModal);
   };
 
-  // const toggleDeletePortfolioModal = () => {
-  //   setDeletePortfolioModal(!deletePortfolioModal);
-  // };
-
   const toggleDeletePortfolioModal = () => {
     if (portfolio.length > 0) {
       setDeletePortfolioModal(!deletePortfolioModal);
@@ -44,38 +39,6 @@ const Portfolio = (props: PortfolioProps) => {
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(e.target.value);
   };
-
-  // const onDeletePortfolio = () => {
-  //   addPortfolio([]);
-  // };
-
-  // const onDeletePortfolio = () => {
-  //   if (portfolio.length > 0) {
-  //     toast.warning(
-  //       <>
-  //         Are you sure you want to delete Portfolio?{" "}
-  //         <button
-  //           className="toast-delete-portfolio"
-  //           onClick={() => {
-  //             addPortfolio([]);
-  //             toast.dismiss(); // Dismiss the toast after action
-
-  //           }}
-  //         >
-  //           Yes
-  //         </button>
-  //       </>,
-  //       {
-  //         position: toast.POSITION.TOP_CENTER,
-  //         autoClose: false, // Keep the toast open until closed manually
-  //       }
-  //     );
-  //   } else {
-  //     addPortfolio([]);
-  //   }
-  // };
-
-  // needs to trigger modal
 
   const onDeletePortfolioCoin = (coin: string) => {
     const portfolioCopy = [...portfolio];
@@ -128,7 +91,6 @@ const Portfolio = (props: PortfolioProps) => {
 
   return (
     <>
-      <ToastContainer limit={1} />
       <h4 className="portfolio-header">
         <BsLightning size={22} />
         Quick Portfolio
@@ -219,12 +181,6 @@ const Portfolio = (props: PortfolioProps) => {
         </div>
       )}
 
-      {/* <div className="delete-portfolio-btn">
-        <button onClick={onDeletePortfolio} className="delete-coin-button">
-          Delete Portfolio
-        </button>
-      </div> */}
-
       <div className="delete-portfolio-btn">
         <button
           onClick={toggleDeletePortfolioModal}
@@ -233,14 +189,10 @@ const Portfolio = (props: PortfolioProps) => {
           Delete Portfolio
         </button>
       </div>
-
       {deletePortfolioModal && (
         <div className="delete-portfolio-modal">
           <div onClick={toggleDeletePortfolioModal} className="overlay"></div>
           <div className="modal-content-delete-portfolio">
-            {/* <h4 className="modal-header">
-              Are you sure you want to delete portfolio?
-            </h4> */}
             <IoWarningOutline
               size={24}
               className="delete-portfolio-modal-icon"

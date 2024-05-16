@@ -57,7 +57,6 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  /* position: fixed; */
   position: absolute;
 }
 
@@ -69,7 +68,6 @@ body.active-modal {
 .modal-content {
   display: flex;
   flex-direction: column;
-  /* width: 500px; */
   position: absolute;
   top: 40%;
   left: 50%;
@@ -207,7 +205,6 @@ body.active-modal {
   background: #2a3143;
   padding: 14px 28px;
   border-radius: 10px;
-  /* height: 100px; */
   width: 200px;
 }
 
@@ -235,6 +232,18 @@ body.active-modal {
   position: absolute;
   top: 1px;
   right: 5px;
+}
+
+.delete-edit-overlay {
+  opacity: 0.1;
+  background: #12171f;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
 }
 
 @media (max-width: 600px) {
