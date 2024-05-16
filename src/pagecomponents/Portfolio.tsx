@@ -7,6 +7,7 @@ import InputCoin from "../inputcomponents/InputCoin";
 import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
+import { IoWarningOutline } from "react-icons/io5";
 
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
@@ -234,21 +235,29 @@ const Portfolio = (props: PortfolioProps) => {
       </div>
 
       {deletePortfolioModal && (
-        <div className="edit-modal">
+        <div className="delete-portfolio-modal">
           <div onClick={toggleDeletePortfolioModal} className="overlay"></div>
-          <div className="modal-content">
+          <div className="modal-content-delete-portfolio">
             {/* <h4 className="modal-header">
               Are you sure you want to delete portfolio?
             </h4> */}
+            <IoWarningOutline
+              size={24}
+              className="delete-portfolio-modal-icon"
+            />
+            <p className="delete-portfolio-modal-text">
+              Are you sure you want to delete portfolio?
+            </p>
 
             <div className="edit-coin-btn-container">
               <button
                 onClick={toggleDeletePortfolioModal}
-                className="close-modal"
+                className="close-modal-delete-portfolio"
               >
                 x
               </button>
-              <p>Are you sure you want to delete portfolio?</p>
+
+              <br></br>
               <button
                 onClick={() => {
                   addPortfolio([]);

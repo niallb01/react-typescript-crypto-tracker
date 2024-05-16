@@ -96,7 +96,8 @@ body.active-modal {
   right: 16px;
 }
 
-.close-modal:hover {
+.close-modal:hover,
+.close-modal-delete-portfolio:hover {
   color: #49c0be;
   cursor: pointer;
 }
@@ -155,7 +156,8 @@ body.active-modal {
   margin-bottom: 5px;
 }
 
-.add-portfolio-coin-btn:hover {
+.add-portfolio-coin-btn:hover,
+.delete-portfolio-modal-btn:hover {
   background: #2a3143;
   color: #48c1be;
   border: 1px solid;
@@ -178,6 +180,61 @@ body.active-modal {
   background-color: #384d61;
   color: #dd143c;
   border: 1px solid;
+}
+
+.delete-portfolio-modal-btn {
+  background-color: #48c1be;
+  color: #2a3143;
+  border: none;
+  border-radius: 5px;
+  width: 40px;
+  height: 25px;
+  transition: ease-out 0.3s;
+  outline: none;
+  cursor: pointer;
+  margin-bottom: 5px;
+  display: block;
+  margin: 0 auto;
+}
+
+.modal-content-delete-portfolio {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2a3143;
+  padding: 14px 28px;
+  border-radius: 10px;
+  /* height: 100px; */
+  width: 200px;
+}
+
+.delete-portfolio-modal-text {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.delete-portfolio-modal-icon {
+  display: block;
+  margin: 0 auto;
+  color: #dd143c;
+}
+
+.close-modal-delete-portfolio {
+  position: absolute;
+  background: #2a3143;
+  color: #648cb6;
+  border: none;
+  transition: ease-out 0.3s;
+  outline: none;
+  font-size: 22px;
+  text-shadow: none;
+  position: absolute;
+  top: 1px;
+  right: 5px;
 }
 
 @media (max-width: 600px) {
