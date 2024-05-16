@@ -172,6 +172,8 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
+  position: absolute;
+  right: 10px;
 }
 
 .delete-portfolio-coin-btn:hover {
