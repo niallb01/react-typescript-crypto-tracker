@@ -2,6 +2,7 @@
 import { useState } from "react";
 import "../Modal.css";
 import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 import InputCoin from "../inputcomponents/InputCoin";
 import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
@@ -9,6 +10,8 @@ import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
+  const [deletePortfolioModal, setDeletePortfolioModal] =
+    useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
 
@@ -16,6 +19,18 @@ const Portfolio = (props: PortfolioProps) => {
 
   const togglePortfolioModal = () => {
     setPortfolioModal(!portfolioModal);
+  };
+
+  // const toggleDeletePortfolioModal = () => {
+  //   setDeletePortfolioModal(!deletePortfolioModal);
+  // };
+
+  const toggleDeletePortfolioModal = () => {
+    if (portfolio.length > 0) {
+      setDeletePortfolioModal(!deletePortfolioModal);
+    } else {
+      addPortfolio([]);
+    }
   };
 
   const handlePortfolioSearchInput = (
@@ -29,9 +44,37 @@ const Portfolio = (props: PortfolioProps) => {
     setQuantity(e.target.value);
   };
 
-  const onDeletePortfolio = () => {
-    addPortfolio([]);
-  };
+  // const onDeletePortfolio = () => {
+  //   addPortfolio([]);
+  // };
+
+  // const onDeletePortfolio = () => {
+  //   if (portfolio.length > 0) {
+  //     toast.warning(
+  //       <>
+  //         Are you sure you want to delete Portfolio?{" "}
+  //         <button
+  //           className="toast-delete-portfolio"
+  //           onClick={() => {
+  //             addPortfolio([]);
+  //             toast.dismiss(); // Dismiss the toast after action
+
+  //           }}
+  //         >
+  //           Yes
+  //         </button>
+  //       </>,
+  //       {
+  //         position: toast.POSITION.TOP_CENTER,
+  //         autoClose: false, // Keep the toast open until closed manually
+  //       }
+  //     );
+  //   } else {
+  //     addPortfolio([]);
+  //   }
+  // };
+
+  // needs to trigger modal
 
   const onDeletePortfolioCoin = (coin: string) => {
     const portfolioCopy = [...portfolio];
@@ -84,6 +127,7 @@ const Portfolio = (props: PortfolioProps) => {
 
   return (
     <>
+      <ToastContainer limit={1} />
       <h4 className="portfolio-header">
         <BsLightning size={22} />
         Quick Portfolio
@@ -174,11 +218,50 @@ const Portfolio = (props: PortfolioProps) => {
         </div>
       )}
 
-      <div className="delete-portfolio-btn">
+      {/* <div className="delete-portfolio-btn">
         <button onClick={onDeletePortfolio} className="delete-coin-button">
           Delete Portfolio
         </button>
+      </div> */}
+
+      <div className="delete-portfolio-btn">
+        <button
+          onClick={toggleDeletePortfolioModal}
+          className="delete-coin-button"
+        >
+          Delete Portfolio
+        </button>
       </div>
+
+      {deletePortfolioModal && (
+        <div className="edit-modal">
+          <div onClick={toggleDeletePortfolioModal} className="overlay"></div>
+          <div className="modal-content">
+            {/* <h4 className="modal-header">
+              Are you sure you want to delete portfolio?
+            </h4> */}
+
+            <div className="edit-coin-btn-container">
+              <button
+                onClick={toggleDeletePortfolioModal}
+                className="close-modal"
+              >
+                x
+              </button>
+              <p>Are you sure you want to delete portfolio?</p>
+              <button
+                onClick={() => {
+                  addPortfolio([]);
+                  toggleDeletePortfolioModal();
+                }}
+                className="delete-portfolio-modal-btn"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="portfolio-page-footer"></div>
     </>
