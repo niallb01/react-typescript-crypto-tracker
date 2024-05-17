@@ -1,4 +1,3 @@
-//this component is child of app - data is being sent down from app
 import { useState } from "react";
 import "../Modal.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -155,14 +154,13 @@ const Portfolio = (props: PortfolioProps) => {
                   className="add-coin-overlay"
                 ></div>
                 <div className="modal-content-add-coin">
-                  <IoWarningOutline
-                    size={24}
-                    className="delete-portfolio-modal-icon"
-                  />
                   <p className="add-coin-modal-text">
+                    <IoWarningOutline
+                      size={24}
+                      className="delete-portfolio-modal-icon"
+                    />
                     Please add a valid coin name or quantity
                   </p>
-
                   <div className="edit-coin-btn-container">
                     <button
                       onClick={toggleAddCoinModal}

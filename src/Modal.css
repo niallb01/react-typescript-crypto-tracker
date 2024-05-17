@@ -232,6 +232,7 @@ body.active-modal {
   font-size: 16px;
   font-weight: 400;
   text-align: center;
+  /* display: inline-block; */
 }
 
 .delete-portfolio-modal-icon {
@@ -282,7 +283,7 @@ body.active-modal {
   position: absolute;
   top: 90px;
   /* right: 5px; */
-  width: 400px;
+  width: 350px;
   height: 100px;
 }
 

@@ -315,7 +315,7 @@ a {
 .modal-content-portfolio {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 350px;
   position: absolute;
   top: 2%;
   left: 30%;
@@ -466,6 +466,7 @@ li {
     display: flex;
     flex-direction: column;
     width: 100px;
+    /* width: 350px; */
     position: absolute;
     top: 5%;
     left: 10px;
