@@ -224,6 +224,7 @@ body.active-modal {
   padding: 14px 28px;
   border-radius: 10px;
   width: 200px;
+  border: 0.02em solid #12171f;
 }
 
 .delete-portfolio-modal-text,
@@ -271,9 +272,8 @@ body.active-modal {
   background: #2a3143;
   color: #648cb6;
   border: none;
-
-  border: 1px solid #12171f;
-  border: 0.01em solid #12171f;
+  border: 0.02em solid #12171f;
+  /* border: 0.01em solid #fff; */
   border-radius: 8px;
   transition: ease-out 0.3s;
   outline: none;
@@ -317,6 +317,7 @@ body.active-modal {
   padding: 14px 28px;
   border-radius: 10px;
   width: 200px;
+  border: 0.02em solid #12171f;
 }
 
 .update-edit-overlay {
