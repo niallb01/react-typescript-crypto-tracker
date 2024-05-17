@@ -8,10 +8,13 @@ import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
 
+// Looks good, mate! The only feedback I have is that in the portfolio, if you add the same coin again, it doesn't change the value or do anything. I would suggest either allowing the user to add more this way or removing it from the list if you already have it in your portfolio (considering you have the edit function anyway).
+
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
   const [deletePortfolioModal, setDeletePortfolioModal] =
     useState<boolean>(false);
+  const [addCoinModal, setAddCoinModal] = useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
 
@@ -27,6 +30,10 @@ const Portfolio = (props: PortfolioProps) => {
     } else {
       addPortfolio([]);
     }
+  };
+
+  const toggleAddCoinModal = () => {
+    setAddCoinModal(!addCoinModal);
   };
 
   const handlePortfolioSearchInput = (
@@ -76,17 +83,29 @@ const Portfolio = (props: PortfolioProps) => {
     setPortfolioSearch(name);
   };
 
-  //adding new coin to portfolio, need to add quantity, price * quantity = totalvalue
+  // const onAddNewCoin = () => {
+  //   const newCoin: any = [...portfolio];
+  //   newCoin.push({ name: portfolioSearch, quantity });
+  //   addPortfolio(newCoin);
+
+  //   setPortfolioSearch("");
+  //   setQuantity("");
+  //   setPortfolioModal(!portfolioModal);
+  // };
+
   const onAddNewCoin = () => {
-    const newCoin: any = [...portfolio];
-    //add new item to portfolio/state
-    newCoin.push({ name: portfolioSearch, quantity });
-    // console.log("new coin", newCoin);
-    addPortfolio(newCoin);
-    //empty search inputs
-    setPortfolioSearch("");
-    setQuantity("");
-    setPortfolioModal(!portfolioModal);
+    const quantityNumber = Number(quantity);
+    if (quantity.length > 0 && !isNaN(quantityNumber) && quantityNumber > 0) {
+      const newCoin: any = [...portfolio];
+      newCoin.push({ name: portfolioSearch, quantity });
+      addPortfolio(newCoin);
+
+      setPortfolioSearch("");
+      setQuantity("");
+      setPortfolioModal(!portfolioModal);
+    } else {
+      setAddCoinModal(!addCoinModal);
+    }
   };
 
   return (
@@ -124,6 +143,40 @@ const Portfolio = (props: PortfolioProps) => {
             <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
               + Add
             </button>
+
+            {addCoinModal && (
+              // <div className="modal">
+              //   <div
+              //     onClick={toggleAddCoinModal}
+              //     className="add-coin-overlay"
+              //   ></div>
+              //   <div className="modal-content-add-coin"></div>
+              // </div>
+              <div className="add-coin-modal">
+                <div
+                  onClick={toggleAddCoinModal}
+                  className="add-coin-overlay"
+                ></div>
+                <div className="modal-content-add-coin">
+                  <IoWarningOutline
+                    size={24}
+                    className="delete-portfolio-modal-icon"
+                  />
+                  <p className="add-coin-modal-text">
+                    Please add valid a valid search term or quantity
+                  </p>
+
+                  <div className="edit-coin-btn-container">
+                    <button
+                      onClick={toggleAddCoinModal}
+                      className="close-modal-delete-portfolio"
+                    >
+                      x
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <ul className="input-coin">
               {coinResults.map((coin: PortfolioPageType) => {

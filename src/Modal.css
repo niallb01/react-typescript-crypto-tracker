@@ -210,7 +210,8 @@ body.active-modal {
   width: 200px;
 }
 
-.delete-portfolio-modal-text {
+.delete-portfolio-modal-text,
+.add-coin-modal-text {
   font-size: 16px;
   font-weight: 400;
   text-align: center;
@@ -245,9 +246,45 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  position: absolute;
+  /* position: absolute; */
+  position: fixed;
 }
 
+.add-coin-modal {
+  position: absolute;
+  background: #2a3143;
+  color: #648cb6;
+  border: none;
+  transition: ease-out 0.3s;
+  outline: none;
+  font-size: 22px;
+  text-shadow: none;
+  position: absolute;
+  top: 90px;
+  /* right: 5px; */
+  width: 400px;
+  height: 100px;
+}
+
+.add-coin-overlay {
+  opacity: 0.1;
+  background: #12171f;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
+  position: fixed;
+}
+
+.add-coin-modal-text {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+}
 @media (max-width: 600px) {
   .modal-content {
     width: 0px;
