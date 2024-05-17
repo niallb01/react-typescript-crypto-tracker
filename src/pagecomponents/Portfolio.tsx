@@ -8,8 +8,6 @@ import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
 
-// Looks good, mate! The only feedback I have is that in the portfolio, if you add the same coin again, it doesn't change the value or do anything. I would suggest either allowing the user to add more this way or removing it from the list if you already have it in your portfolio (considering you have the edit function anyway).
-
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
   const [deletePortfolioModal, setDeletePortfolioModal] =
@@ -83,23 +81,29 @@ const Portfolio = (props: PortfolioProps) => {
     setPortfolioSearch(name);
   };
 
-  // const onAddNewCoin = () => {
-  //   const newCoin: any = [...portfolio];
-  //   newCoin.push({ name: portfolioSearch, quantity });
-  //   addPortfolio(newCoin);
-
-  //   setPortfolioSearch("");
-  //   setQuantity("");
-  //   setPortfolioModal(!portfolioModal);
-  // };
-
   const onAddNewCoin = () => {
     const quantityNumber = Number(quantity);
+
+    if (portfolioSearch === "" || !/^[a-zA-Z\s]+$/.test(portfolioSearch)) {
+      setAddCoinModal(!addCoinModal);
+      return;
+    }
+
     if (quantity.length > 0 && !isNaN(quantityNumber) && quantityNumber > 0) {
       const newCoin: any = [...portfolio];
-      newCoin.push({ name: portfolioSearch, quantity });
-      addPortfolio(newCoin);
+      const coinIndex = newCoin.findIndex(
+        (coin: any) => coin.name === portfolioSearch
+      );
 
+      if (coinIndex !== -1) {
+        // Update the quantity of the existing coin
+        newCoin[coinIndex].quantity = quantityNumber;
+      } else {
+        // Add a new coin to the portfolio
+        newCoin.push({ name: portfolioSearch, quantity: quantityNumber });
+      }
+
+      addPortfolio(newCoin);
       setPortfolioSearch("");
       setQuantity("");
       setPortfolioModal(!portfolioModal);
@@ -145,13 +149,6 @@ const Portfolio = (props: PortfolioProps) => {
             </button>
 
             {addCoinModal && (
-              // <div className="modal">
-              //   <div
-              //     onClick={toggleAddCoinModal}
-              //     className="add-coin-overlay"
-              //   ></div>
-              //   <div className="modal-content-add-coin"></div>
-              // </div>
               <div className="add-coin-modal">
                 <div
                   onClick={toggleAddCoinModal}
@@ -163,13 +160,13 @@ const Portfolio = (props: PortfolioProps) => {
                     className="delete-portfolio-modal-icon"
                   />
                   <p className="add-coin-modal-text">
-                    Please add valid a valid search term or quantity
+                    Please add a valid coin name or quantity
                   </p>
 
                   <div className="edit-coin-btn-container">
                     <button
                       onClick={toggleAddCoinModal}
-                      className="close-modal-delete-portfolio"
+                      className="close-modal-edit-coin"
                     >
                       x
                     </button>

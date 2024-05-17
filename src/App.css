@@ -514,4 +514,8 @@ li {
   .portfolio-link {
     margin-left: 15px;
   }
+
+  .add-coin-modal {
+    width: 320px;
+  }
 }

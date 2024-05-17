@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "../Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
-//this component is a child of portfolioCoin - data is being sent down from portfolioCoin
 
 type EditCoinProps = {
   onDeletePortfolioCoin: (coin: string) => void;
@@ -12,12 +11,12 @@ type EditCoinProps = {
 const EditCoin = (props: EditCoinProps) => {
   const [editModal, setEditModal] = useState<boolean>(false);
   const [deleteEditModal, setDeleteEditModal] = useState<boolean>(false);
+  const [updateEditModal, setUpdateEditModal] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<string>("");
   const [selectedCoin, setSelectedCoin] = useState<string>("");
 
   const { name, onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
 
-  //we've passed down the coin into editcoin when btn is clicked we are then storing coin in local state
   const toggleEditModal = (coin: any) => {
     setEditModal(!editModal);
     setSelectedCoin(coin);
@@ -28,9 +27,21 @@ const EditCoin = (props: EditCoinProps) => {
     setDeleteEditModal(!deleteEditModal);
   };
 
-  //event handler to edit coin quantity from user
+  const toggleUpdateEditModal = () => {
+    setUpdateEditModal(!updateEditModal);
+  };
+
   const handleEditQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(e.target.value);
+  };
+
+  const handleUpdateCoin = () => {
+    if (quantity === "" || isNaN(Number(quantity)) || Number(quantity) <= 0) {
+      setUpdateEditModal(true);
+    } else {
+      onUpdatePortfolioCoin(selectedCoin, quantity);
+      toggleEditModal(selectedCoin);
+    }
   };
 
   return (
@@ -60,10 +71,7 @@ const EditCoin = (props: EditCoinProps) => {
             />
             <div className="edit-coin-btn-container">
               <button
-                onClick={() => {
-                  onUpdatePortfolioCoin(selectedCoin, quantity);
-                  toggleEditModal(selectedCoin);
-                }}
+                onClick={handleUpdateCoin}
                 className="add-portfolio-coin-btn"
               >
                 Update
@@ -71,10 +79,34 @@ const EditCoin = (props: EditCoinProps) => {
               <button onClick={toggleEditModal} className="close-modal">
                 X
               </button>
-
+              {updateEditModal && (
+                <div className="update-portfolio-modal">
+                  <div
+                    onClick={toggleUpdateEditModal}
+                    className="update-edit-overlay"
+                  ></div>
+                  <div className="modal-content-update-portfolio">
+                    <IoWarningOutline
+                      size={24}
+                      className="delete-portfolio-modal-icon"
+                    />
+                    <p className="update-portfolio-modal-text">
+                      Invalid quantity. Please enter a valid number greater than
+                      zero.
+                    </p>
+                    <div className="edit-coin-btn-container">
+                      <button
+                        onClick={toggleUpdateEditModal}
+                        className="close-modal-delete-portfolio"
+                      >
+                        x
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
               <button
                 onClick={() => {
-                  // onDeletePortfolioCoin(selectedCoin);
                   setDeleteEditModal(!editModal);
                   toggleDeleteEditModal();
                 }}
@@ -94,9 +126,8 @@ const EditCoin = (props: EditCoinProps) => {
                       className="delete-portfolio-modal-icon"
                     />
                     <p className="delete-portfolio-modal-text">
-                      Are you sure you want to delete coin?
+                      Are you sure you want to delete this coin?
                     </p>
-
                     <div className="edit-coin-btn-container">
                       <button
                         onClick={toggleDeleteEditModal}
@@ -104,8 +135,7 @@ const EditCoin = (props: EditCoinProps) => {
                       >
                         x
                       </button>
-
-                      <br></br>
+                      <br />
                       <button
                         onClick={() => {
                           onDeletePortfolioCoin(selectedCoin);

@@ -58,6 +58,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: absolute;
+  /* position: absolute; */
 }
 
 .overlay {
@@ -94,8 +95,23 @@ body.active-modal {
   right: 16px;
 }
 
+.close-modal-edit-coin {
+  position: absolute;
+  background: #2a3143;
+  color: #648cb6;
+  border: none;
+  transition: ease-out 0.3s;
+  outline: none;
+  font-size: 18px;
+  text-shadow: none;
+  position: absolute;
+  top: 1px;
+  right: 5px;
+}
+
 .close-modal:hover,
-.close-modal-delete-portfolio:hover {
+.close-modal-delete-portfolio:hover,
+.close-modal-edit-coin:hover {
   color: #49c0be;
   cursor: pointer;
 }
@@ -255,6 +271,10 @@ body.active-modal {
   background: #2a3143;
   color: #648cb6;
   border: none;
+
+  border: 1px solid #12171f;
+  border: 0.01em solid #12171f;
+  border-radius: 8px;
   transition: ease-out 0.3s;
   outline: none;
   font-size: 22px;
@@ -285,8 +305,38 @@ body.active-modal {
   text-align: center;
   color: #ffffff;
 }
+
+.update-portfolio-modal {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2a3143;
+  padding: 14px 28px;
+  border-radius: 10px;
+  width: 200px;
+}
+
+.update-edit-overlay {
+  opacity: 0.1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
+  position: fixed;
+}
+
 @media (max-width: 600px) {
   .modal-content {
     width: 0px;
+  }
+
+  .add-coin-modal {
+    width: 320px;
   }
 }
