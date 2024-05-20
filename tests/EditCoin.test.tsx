@@ -39,3 +39,82 @@ describe("edit coin", () => {
     expect(deleteButton).toBeInTheDocument();
   });
 });
+
+describe("update modal", () => {
+  const user = userEvent.setup();
+  it("should prompt user to enter valid number", async () => {
+    const { container } = render(
+      <EditCoin
+        onDeletePortfolioCoin={() => {}}
+        onUpdatePortfolioCoin={() => {}}
+        name={""}
+      />
+    );
+
+    const editButton = screen.getByRole("button", { name: /edit/i });
+    await user.click(editButton);
+    expect(editButton).toBeInTheDocument();
+
+    const updateButton = screen.getByRole("button", { name: /update/i });
+    await user.click(updateButton);
+    expect(updateButton).toBeInTheDocument();
+
+    const warningIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+
+    expect(warningIcon).toBeTruthy();
+
+    const updateText = container.getElementsByClassName(
+      "update-portfolio-modal-text"
+    );
+    expect(updateText).toBeTruthy();
+
+    const closeButton = container.getElementsByClassName(
+      "close-modal-delete-portfolio"
+    );
+    expect(closeButton).toBeTruthy();
+  });
+});
+
+describe("delete modal", () => {
+  const user = userEvent.setup();
+  it("should prompt user to enter valid number", async () => {
+    const { container } = render(
+      <EditCoin
+        onDeletePortfolioCoin={() => {}}
+        onUpdatePortfolioCoin={() => {}}
+        name={""}
+      />
+    );
+
+    const editButton = screen.getByRole("button", { name: /edit/i });
+    await user.click(editButton);
+    expect(editButton).toBeInTheDocument();
+
+    const deleteButton = screen.getByRole("button", { name: /delete coin/i });
+    await user.click(deleteButton);
+    expect(deleteButton).toBeInTheDocument();
+
+    const warningIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+
+    expect(warningIcon).toBeTruthy();
+
+    const updateText = container.getElementsByClassName(
+      "delete-portfolio-modal-text"
+    );
+    expect(updateText).toBeTruthy();
+
+    const closeButton = container.getElementsByClassName(
+      "close-modal-delete-portfolio"
+    );
+    expect(closeButton).toBeTruthy();
+
+    const confirmButton = container.getElementsByClassName(
+      "delete-portfolio-modal-btn"
+    );
+    expect(confirmButton).toBeTruthy();
+  });
+});
