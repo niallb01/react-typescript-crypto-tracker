@@ -321,6 +321,11 @@ body.active-modal {
   border: 0.02em solid #12171f;
 }
 
+.update-portfolio-modal-text {
+  text-align: center;
+  font-size: 16px;
+}
+
 .update-edit-overlay {
   opacity: 0.1;
   width: 100vw;

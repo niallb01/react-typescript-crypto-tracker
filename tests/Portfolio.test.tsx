@@ -70,3 +70,31 @@ describe("add coin modal", () => {
     expect(inputCoin).toBeTruthy();
   });
 });
+
+describe("add coin warning modal", () => {
+  const user = userEvent.setup();
+  it("should ask user for valid name or quantity ", async () => {
+    const { container } = render(
+      <MemoryRouter>
+        <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
+      </MemoryRouter>
+    );
+    const editButton = screen.getByRole("button", { name: /add coin/i });
+    await user.click(editButton);
+    expect(editButton).toBeInTheDocument();
+
+    const editWarningText = container.getElementsByClassName(
+      "add-coin-modal-text"
+    );
+    expect(editWarningText).toBeTruthy();
+
+    const closeButton = screen.getByRole("button", { name: /x/i });
+    user.click(closeButton);
+    expect(closeButton).toBeInTheDocument();
+
+    const warningIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(warningIcon).toBeInTheDocument();
+  });
+});

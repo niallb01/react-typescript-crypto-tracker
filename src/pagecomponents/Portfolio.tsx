@@ -37,7 +37,6 @@ const Portfolio = (props: PortfolioProps) => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPortfolioSearch(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -82,7 +81,6 @@ const Portfolio = (props: PortfolioProps) => {
 
   const onAddNewCoin = () => {
     const quantityNumber = Number(quantity);
-
     if (portfolioSearch === "" || !/^[a-zA-Z\s]+$/.test(portfolioSearch)) {
       setAddCoinModal(!addCoinModal);
       return;

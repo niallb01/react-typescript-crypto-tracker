@@ -91,8 +91,7 @@ const EditCoin = (props: EditCoinProps) => {
                       className="delete-portfolio-modal-icon"
                     />
                     <p className="update-portfolio-modal-text">
-                      Invalid quantity. Please enter a valid number greater than
-                      zero.
+                      Invalid quantity. Please enter a valid number.
                     </p>
                     <div className="edit-coin-btn-container">
                       <button
