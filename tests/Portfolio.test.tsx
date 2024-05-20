@@ -1,5 +1,5 @@
 import Portfolio from "../src/pagecomponents/Portfolio";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { it, expect, describe } from "vitest";
 import "@testing-library/jest-dom/vitest";
@@ -96,5 +96,42 @@ describe("add coin warning modal", () => {
       "svg"
     ) as unknown as HTMLImageElement;
     expect(warningIcon).toBeInTheDocument();
+  });
+});
+
+describe("delete portfolio modal", () => {
+  const user = userEvent.setup();
+  it("should ask user for permission to delete portfolio ", async () => {
+    const { container } = render(
+      <MemoryRouter>
+        <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
+      </MemoryRouter>
+    );
+    const deleteButton = screen.getByRole("button", {
+      name: /delete portfolio/i,
+    });
+    await user.click(deleteButton);
+    expect(deleteButton).toBeInTheDocument();
+
+    const closeButton = container.getElementsByClassName(
+      "close-modal-delete-portfolio"
+    );
+    expect(closeButton).toBeTruthy();
+
+    const confirmButton = container.getElementsByClassName(
+      "delete-portfolio-modal-btn"
+    );
+    expect(confirmButton).toBeTruthy();
+
+    const warningIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+
+    expect(warningIcon).toBeTruthy();
+
+    const deleteWarningText = container.getElementsByClassName(
+      "delete-portfolio-modal-text"
+    );
+    expect(deleteWarningText).toBeTruthy();
   });
 });
