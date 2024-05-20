@@ -124,8 +124,6 @@ body {
 }
 
 .coin-row:hover {
-  /* transform: scale(1.01);
-  transition: 0.1s ease-in-out; */
   transform: scale(1.01);
   transition: 0.1s ease-in-out;
   background-color: #343f56;
@@ -203,7 +201,7 @@ a {
 }
 
 .portfolio-search-input {
-  width: 300px;
+  /* width: 300px; */
   background-color: #2a3143;
   border-radius: 5px 5px;
   height: 1.4375em;
@@ -313,7 +311,7 @@ a {
 }
 
 .modal-content-portfolio {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   width: 350px;
   position: absolute;
@@ -321,6 +319,16 @@ a {
   left: 30%;
   background: #2a3143;
   padding: 10px 22px;
+  border-radius: 10px; */
+
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  position: absolute;
+  top: 2%;
+  left: 35%;
+  background: #2a3143;
+  padding: 5px 22px;
   border-radius: 10px;
 }
 
@@ -476,6 +484,115 @@ li {
     max-width: 600px;
     min-width: 300px;
   }
+  .item-1 {
+    width: 20px;
+  }
+
+  .item-2 {
+    width: 20px;
+  }
+
+  .item-3 {
+    width: 80px;
+    text-align: center;
+  }
+
+  .item-4 {
+    width: 30px;
+  }
+
+  .item-6 {
+    width: 50px;
+  }
+
+  .coin-quantity {
+    width: 100px;
+  }
+
+  .total-value {
+    width: 180px;
+  }
+  .customize-modal-btn {
+    margin-right: 15px;
+  }
+
+  .dropdown-content {
+    right: 15px;
+  }
+
+  .portfolio-link {
+    margin-left: 15px;
+  }
+
+  .add-coin-modal {
+    width: 320px;
+  }
+}
+
+@media (max-width: 900px) {
+  .nav-links {
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .search-input {
+    width: 300px;
+    background-color: #2a3143;
+    border-radius: 5px 5px;
+  }
+  .desc-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .desc-data {
+    display: contents;
+  }
+
+  .coin-desc-text {
+    text-align: center;
+  }
+
+  .coin-row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #2a3143;
+    margin: 5px;
+    height: 160px;
+    bottom: 80%;
+  }
+
+  .portfolio-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    background: #2a3143;
+    margin: 5px;
+    height: 160px;
+    bottom: 80%;
+  }
+
+  /* .modal-content-portfolio {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    position: absolute;
+    top: 5%;
+    left: 10px;
+    background: #2a3143;
+    padding: 14px 28px;
+    border-radius: 10px;
+    max-width: 600px;
+    min-width: 300px;
+  } */
+
   .item-1 {
     width: 20px;
   }

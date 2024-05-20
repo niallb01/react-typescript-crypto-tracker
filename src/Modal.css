@@ -20,9 +20,7 @@ body.active-modal {
 }
 
 .modal-header {
-  line-height: 1.2;
   font-size: 18px;
-  width: 100%;
   font-weight: 400;
 }
 
@@ -52,13 +50,13 @@ body.active-modal {
 .modal,
 .overlay {
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
+  height: 1400px;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   position: absolute;
-  /* position: absolute; */
 }
 
 .overlay {
@@ -274,7 +272,6 @@ body.active-modal {
   color: #648cb6;
   border: none;
   border: 0.02em solid #12171f;
-  /* border: 0.01em solid #fff; */
   border-radius: 8px;
   transition: ease-out 0.3s;
   outline: none;
@@ -282,8 +279,7 @@ body.active-modal {
   text-shadow: none;
   position: absolute;
   top: 90px;
-  /* right: 5px; */
-  width: 350px;
+  width: 320px;
   height: 100px;
 }
 
@@ -339,6 +335,16 @@ body.active-modal {
 }
 
 @media (max-width: 600px) {
+  .modal-content {
+    width: 0px;
+  }
+
+  .add-coin-modal {
+    width: 320px;
+  }
+}
+
+@media (max-width: 900px) {
   .modal-content {
     width: 0px;
   }
