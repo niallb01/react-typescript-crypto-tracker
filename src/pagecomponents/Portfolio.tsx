@@ -6,7 +6,6 @@ import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
-//
 import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
@@ -17,9 +16,8 @@ const Portfolio = (props: PortfolioProps) => {
   const [addCoinModal, setAddCoinModal] = useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
-  //
-  // const [showQRCode, setShowQRCode] = useState<boolean>(false);
   const [qrModal, setQRmodal] = useState<boolean>(false);
+  const [checkModal, setCheckModal] = useState<boolean>(false);
 
   const { portfolio, addPortfolio, coins } = props;
 
@@ -28,7 +26,15 @@ const Portfolio = (props: PortfolioProps) => {
   };
 
   const toggleQRCodeModal = () => {
-    setQRmodal(!qrModal);
+    if (portfolio.length > 0) {
+      setQRmodal(!qrModal);
+    } else {
+      setCheckModal(!checkModal);
+    }
+  };
+
+  const toggleCheckModal = () => {
+    setCheckModal(!checkModal);
   };
 
   const toggleDeletePortfolioModal = () => {
@@ -39,11 +45,32 @@ const Portfolio = (props: PortfolioProps) => {
     }
   };
 
-  const stringifyPortfolioData = () => {
-    return JSON.stringify(portfolio);
-  };
+  // const stringifyPortfolioData = () => {
+  //   return JSON.stringify(portfolio);
+  // };
 
-  console.log(JSON.stringify(portfolio));
+  const filterPortfolioData = () =>
+    portfolio.map(
+      ({
+        name,
+        symbol,
+        quantity,
+        current_price,
+        market_cap,
+        fully_diluted_valuation,
+      }) => ({
+        name,
+        symbol,
+        quantity,
+        current_price,
+        market_cap,
+        fully_diluted_valuation,
+      })
+    );
+
+  const stringifyPortfolioData = () => {
+    return JSON.stringify(filterPortfolioData());
+  };
 
   const toggleAddCoinModal = () => {
     setAddCoinModal(!addCoinModal);
@@ -115,7 +142,6 @@ const Portfolio = (props: PortfolioProps) => {
         // Add a new coin to the portfolio
         newCoin.push({ name: portfolioSearch, quantity: quantityNumber });
       }
-
       addPortfolio(newCoin);
       setPortfolioSearch("");
       setQuantity("");
@@ -134,15 +160,46 @@ const Portfolio = (props: PortfolioProps) => {
       <div className="share-portfolio-btn">
         <button onClick={toggleQRCodeModal} className="btn-share-modal">
           <FaStar className="star-icon-fill" size="10" />
-          Share Portfolio
+          {""} Share
         </button>
       </div>
       {qrModal && (
         <div className="qr-modal">
           <div onClick={toggleQRCodeModal} className="overlay"></div>
           <div className="share-modal-content">
-            <p className="share-modal-header">Scan QR code</p>
-            <QRCode size={200} value={stringifyPortfolioData()} />
+            <h4 className="share-modal-header">Scan QR code</h4>
+            <div className="edit-coin-btn-container">
+              <button
+                onClick={toggleQRCodeModal}
+                className="close-modal-edit-coin"
+              >
+                x
+              </button>
+            </div>
+            <QRCode value={stringifyPortfolioData()} />
+          </div>
+        </div>
+      )}
+
+      {checkModal && (
+        <div className="update-portfolio-modal">
+          <div onClick={toggleCheckModal} className="check-overlay"></div>
+          <div className="modal-content-update-portfolio">
+            <IoWarningOutline
+              size={24}
+              className="delete-portfolio-modal-icon"
+            />
+            <p className="update-portfolio-modal-text">
+              Please enter enter Coins to share portfolio.
+            </p>
+            <div className="edit-coin-btn-container">
+              <button
+                onClick={toggleCheckModal}
+                className="close-modal-delete-portfolio"
+              >
+                x
+              </button>
+            </div>
           </div>
         </div>
       )}
