@@ -182,15 +182,15 @@ const Portfolio = (props: PortfolioProps) => {
       )}
 
       {checkModal && (
-        <div className="update-portfolio-modal">
-          <div onClick={toggleCheckModal} className="check-overlay"></div>
-          <div className="modal-content-update-portfolio">
+        <div className="modal">
+          <div onClick={toggleCheckModal} className="overlay"></div>
+          <div className="modal-content-check">
             <IoWarningOutline
               size={24}
               className="delete-portfolio-modal-icon"
             />
             <p className="update-portfolio-modal-text">
-              Please enter enter Coins to share portfolio.
+              Please enter coins to share portfolio.
             </p>
             <div className="edit-coin-btn-container">
               <button
@@ -235,11 +235,8 @@ const Portfolio = (props: PortfolioProps) => {
             </button>
 
             {addCoinModal && (
-              <div className="add-coin-modal">
-                <div
-                  onClick={toggleAddCoinModal}
-                  className="add-coin-overlay"
-                ></div>
+              <div className="modal">
+                <div onClick={toggleAddCoinModal} className="overlay"></div>
                 <div className="modal-content-add-coin">
                   <p className="add-coin-modal-text">
                     <IoWarningOutline
