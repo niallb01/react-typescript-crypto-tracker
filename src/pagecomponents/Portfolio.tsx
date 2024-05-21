@@ -6,6 +6,9 @@ import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
+//
+import { FaStar } from "react-icons/fa";
+import QRCode from "react-qr-code";
 
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
@@ -14,11 +17,18 @@ const Portfolio = (props: PortfolioProps) => {
   const [addCoinModal, setAddCoinModal] = useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
+  //
+  // const [showQRCode, setShowQRCode] = useState<boolean>(false);
+  const [qrModal, setQRmodal] = useState<boolean>(false);
 
   const { portfolio, addPortfolio, coins } = props;
 
   const togglePortfolioModal = () => {
     setPortfolioModal(!portfolioModal);
+  };
+
+  const toggleQRCodeModal = () => {
+    setQRmodal(!qrModal);
   };
 
   const toggleDeletePortfolioModal = () => {
@@ -28,6 +38,12 @@ const Portfolio = (props: PortfolioProps) => {
       addPortfolio([]);
     }
   };
+
+  const stringifyPortfolioData = () => {
+    return JSON.stringify(portfolio);
+  };
+
+  console.log(JSON.stringify(portfolio));
 
   const toggleAddCoinModal = () => {
     setAddCoinModal(!addCoinModal);
@@ -115,6 +131,22 @@ const Portfolio = (props: PortfolioProps) => {
         <BsLightning size={22} />
         Quick Portfolio
       </h4>
+      <div className="share-portfolio-btn">
+        <button onClick={toggleQRCodeModal} className="btn-share-modal">
+          <FaStar className="star-icon-fill" size="10" />
+          Share Portfolio
+        </button>
+      </div>
+      {qrModal && (
+        <div className="qr-modal">
+          <div onClick={toggleQRCodeModal} className="overlay"></div>
+          <div className="share-modal-content">
+            <p className="share-modal-header">Scan QR code</p>
+            <QRCode size={200} value={stringifyPortfolioData()} />
+          </div>
+        </div>
+      )}
+
       <div className="add-portfolio-btn">
         <button onClick={togglePortfolioModal} className="btn-modal">
           + Add Coin

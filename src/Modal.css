@@ -334,6 +334,51 @@ body.active-modal {
   position: fixed;
 }
 
+.update-edit-overlay {
+  opacity: 0.1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
+  position: fixed;
+}
+
+.share-modal-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #2a3143;
+  padding: 14px 28px;
+  border-radius: 10px;
+  /* width: 200px; */
+
+  border: 0.02em solid #12171f;
+}
+
+.share-overlay {
+  opacity: 0.1;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* position: absolute; */
+  position: fixed;
+}
+
+.share-modal-header {
+  font-size: 16px;
+  font-weight: 400;
+  text-align: center;
+}
+
 @media (max-width: 600px) {
   .modal-content {
     width: 0px;
