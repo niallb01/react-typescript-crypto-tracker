@@ -45,10 +45,6 @@ const Portfolio = (props: PortfolioProps) => {
     }
   };
 
-  // const stringifyPortfolioData = () => {
-  //   return JSON.stringify(portfolio);
-  // };
-
   const filterPortfolioData = () =>
     portfolio.map(
       ({
@@ -128,7 +124,6 @@ const Portfolio = (props: PortfolioProps) => {
       setAddCoinModal(!addCoinModal);
       return;
     }
-
     if (quantity.length > 0 && !isNaN(quantityNumber) && quantityNumber > 0) {
       const newCoin: any = [...portfolio];
       const coinIndex = newCoin.findIndex(

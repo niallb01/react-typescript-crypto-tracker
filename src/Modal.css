@@ -22,6 +22,9 @@ body.active-modal {
 .modal-header {
   font-size: 18px;
   font-weight: 400;
+
+  display: flex;
+  justify-content: space-between;
 }
 
 .btn-modal {
@@ -50,7 +53,6 @@ body.active-modal {
 .modal,
 .overlay {
   width: 100vw;
-  /* height: 100vh; */
   height: 1400px;
   top: 0;
   left: 0;
@@ -230,7 +232,6 @@ body.active-modal {
   font-size: 16px;
   font-weight: 400;
   text-align: center;
-  /* display: inline-block; */
 }
 
 .delete-portfolio-modal-icon {
@@ -359,17 +360,6 @@ body.active-modal {
   border: 0.02em solid #12171f;
 }
 
-/* .share-overlay {
-  opacity: 0.1;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
-} */
-
 .share-modal-header {
   font-size: 16px;
   font-weight: 400;
@@ -386,7 +376,26 @@ body.active-modal {
   outline: none;
   cursor: pointer;
   display: block;
-  margin-left: 20px;
+  margin-left: 60px;
+  height: 25px;
+}
+
+.btn-share-modal:hover {
+  background-color: #48c1be;
+  color: #384d61;
+  border: 1px solid;
+}
+.edit-share-btn {
+  background-color: #384d61;
+  color: #48c1be;
+  border: 1px solid;
+  border-radius: 5px;
+  transition: ease-out 0.3s;
+  outline: none;
+  cursor: pointer;
+  /* display: block; */
+  /* margin-left: 20px; */
+  /* height: 20px; */
 }
 .modal-content-check {
   display: flex;
@@ -406,7 +415,21 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 40%;
+  top: 10%;
+  left: 15%;
+  transform: translate(-50%, -50%);
+  background: #2a3143;
+  padding: 14px 28px;
+  border-radius: 10px;
+  width: 200px;
+  border: 0.02em solid #12171f;
+}
+
+.modal-content-update-portfolio {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;
@@ -424,6 +447,9 @@ body.active-modal {
   .add-coin-modal {
     width: 320px;
   }
+  .btn-share-modal {
+    margin-left: 25px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -433,5 +459,8 @@ body.active-modal {
 
   .add-coin-modal {
     width: 320px;
+  }
+  .btn-share-modal {
+    margin-left: 25px;
   }
 }

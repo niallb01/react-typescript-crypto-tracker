@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "../Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
+import { FaStar } from "react-icons/fa";
+import QRCode from "react-qr-code";
 
 type EditCoinProps = {
   onDeletePortfolioCoin: (coin: string) => void;
@@ -14,6 +16,7 @@ const EditCoin = (props: EditCoinProps) => {
   const [updateEditModal, setUpdateEditModal] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<string>("");
   const [selectedCoin, setSelectedCoin] = useState<string>("");
+  const [editQRCodeModal, setEditQRCodeModal] = useState<boolean>(false);
 
   const { name, onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
 
@@ -21,6 +24,10 @@ const EditCoin = (props: EditCoinProps) => {
     setEditModal(!editModal);
     setSelectedCoin(coin);
     setQuantity("");
+  };
+
+  const toggleEditQRModal = () => {
+    setEditQRCodeModal(!editQRCodeModal);
   };
 
   const toggleDeleteEditModal = () => {
@@ -44,6 +51,11 @@ const EditCoin = (props: EditCoinProps) => {
     }
   };
 
+  const stringifyEditCoinData = () => {
+    console.log(name);
+    return JSON.stringify(name);
+  };
+
   return (
     <>
       <div className="add-portfolio-btn">
@@ -60,7 +72,32 @@ const EditCoin = (props: EditCoinProps) => {
         <div className="edit-modal">
           <div onClick={toggleEditModal} className="overlay"></div>
           <div className="modal-content">
-            <h4 className="modal-header">Edit Coin</h4>
+            <h4 className="modal-header">
+              Edit Coin{" "}
+              {/* <button onClick={toggleEditQRModal} className="edit-share-btn">
+                {" "}
+                <FaStar className="star-icon-fill" size="10" />
+                {""} Share
+              </button> */}
+            </h4>
+            {editQRCodeModal && (
+              <div className="qr-modal">
+                <div onClick={toggleEditQRModal} className="overlay"></div>
+                <div className="share-modal-content">
+                  <h4 className="share-modal-header">Scan QR code</h4>
+                  <div className="edit-coin-btn-container">
+                    <button
+                      onClick={toggleEditQRModal}
+                      className="close-modal-edit-coin"
+                    >
+                      x
+                    </button>
+                  </div>
+                  <QRCode value={stringifyEditCoinData()} />
+                </div>
+              </div>
+            )}
+
             <input className="edit-coin-input" disabled value={selectedCoin} />
             <input
               onInput={handleEditQuantity}
@@ -76,8 +113,12 @@ const EditCoin = (props: EditCoinProps) => {
               >
                 Update
               </button>
-              <button onClick={toggleEditModal} className="close-modal">
-                X
+
+              <button
+                onClick={toggleEditModal}
+                className="close-modal-edit-coin"
+              >
+                x
               </button>
               {updateEditModal && (
                 <div className="update-portfolio-modal">

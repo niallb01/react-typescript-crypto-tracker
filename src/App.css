@@ -311,16 +311,6 @@ a {
 }
 
 .modal-content-portfolio {
-  /* display: flex;
-  flex-direction: column;
-  width: 350px;
-  position: absolute;
-  top: 2%;
-  left: 30%;
-  background: #2a3143;
-  padding: 10px 22px;
-  border-radius: 10px; */
-
   display: flex;
   flex-direction: column;
   width: 320px;
@@ -578,20 +568,6 @@ li {
     height: 160px;
     bottom: 80%;
   }
-
-  /* .modal-content-portfolio {
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    position: absolute;
-    top: 5%;
-    left: 10px;
-    background: #2a3143;
-    padding: 14px 28px;
-    border-radius: 10px;
-    max-width: 600px;
-    min-width: 300px;
-  } */
 
   .item-1 {
     width: 20px;
