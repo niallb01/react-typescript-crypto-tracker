@@ -105,7 +105,7 @@ body.active-modal {
   font-size: 18px;
   text-shadow: none;
   position: absolute;
-  top: 1px;
+  top: 5px;
   right: 5px;
 }
 
@@ -117,7 +117,7 @@ body.active-modal {
 }
 
 .portfolio-search {
-  width: 300px;
+  /* width: 300px; */
   background: #1d2330;
   border-radius: 5px 5px;
   height: 0.8em;
@@ -130,7 +130,7 @@ body.active-modal {
 }
 
 .edit-coin-input {
-  width: 300px;
+  /* width: 300px; */
   background: #1d2330;
   border-radius: 5px 5px;
   height: 0.8em;
@@ -450,6 +450,10 @@ body.active-modal {
   .btn-share-modal {
     margin-left: 25px;
   }
+
+  .modal-content-add-coin {
+    left: 45%;
+  }
 }
 
 @media (max-width: 900px) {
@@ -462,5 +466,8 @@ body.active-modal {
   }
   .btn-share-modal {
     margin-left: 25px;
+  }
+  .modal-content-add-coin {
+    left: 45%;
   }
 }

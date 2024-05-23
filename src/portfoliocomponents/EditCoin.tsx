@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
-import { FaStar } from "react-icons/fa";
+// import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
 type EditCoinProps = {
@@ -118,7 +118,7 @@ const EditCoin = (props: EditCoinProps) => {
                 onClick={toggleEditModal}
                 className="close-modal-edit-coin"
               >
-                x
+                X
               </button>
               {updateEditModal && (
                 <div className="update-portfolio-modal">

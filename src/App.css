@@ -200,22 +200,8 @@ a {
   font-size: 16px;
 }
 
-.portfolio-search-input {
-  /* width: 300px; */
-  background-color: #2a3143;
-  border-radius: 5px 5px;
-  height: 1.4375em;
-  padding: 16.5px 14px;
-  padding-left: 5px;
-  color: #ffffff;
-  margin-bottom: 20px;
-  border-width: 0em;
-  font-size: 16px;
-}
-
 .input-coin {
   list-style-type: none;
-  /* display: contents; */
 }
 
 .search-bar {
@@ -517,6 +503,9 @@ li {
   .add-coin-modal {
     width: 320px;
   }
+  .portfolio-search {
+    width: 250px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -611,5 +600,8 @@ li {
 
   .add-coin-modal {
     width: 320px;
+  }
+  .portfolio-search {
+    width: 250px;
   }
 }
