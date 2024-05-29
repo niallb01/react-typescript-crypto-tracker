@@ -1,5 +1,5 @@
 import Portfolio from "../src/pagecomponents/Portfolio";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { it, expect, describe } from "vitest";
 import "@testing-library/jest-dom/vitest";
@@ -15,7 +15,7 @@ describe("portfolio", () => {
     );
     const heading = screen.getByRole("heading", { level: 4 });
     expect(heading).toBeInTheDocument();
-    // svg
+
     const portfolioIcon = document.querySelector(
       "svg"
     ) as unknown as HTMLImageElement;
@@ -133,5 +133,33 @@ describe("delete portfolio modal", () => {
       "delete-portfolio-modal-text"
     );
     expect(deleteWarningText).toBeTruthy();
+  });
+});
+
+describe("share portfolio button", () => {
+  const user = userEvent.setup();
+  it("should trigger modal with QR code", async () => {
+    const { container } = render(
+      <MemoryRouter>
+        <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
+      </MemoryRouter>
+    );
+
+    const shareButton = screen.getByRole("button", { name: /share/i });
+    await user.click(shareButton);
+    expect(shareButton).toBeInTheDocument();
+
+    const shareIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(shareIcon).toBeTruthy();
+
+    const closeModal = container.getElementsByClassName(
+      "close-modal-edit-coin"
+    );
+    expect(closeModal).toBeTruthy();
+
+    const shareHeader = container.getElementsByClassName("share-modal-header");
+    expect(shareHeader).toBeTruthy();
   });
 });

@@ -152,7 +152,7 @@ const EditCoin = (props: EditCoinProps) => {
                 }}
                 className="delete-portfolio-coin-btn"
               >
-                Delete Coin
+                Delete
               </button>
               {deleteEditModal && (
                 <div className="delete-portfolio-modal">

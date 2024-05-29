@@ -92,7 +92,7 @@ describe("delete modal", () => {
     await user.click(editButton);
     expect(editButton).toBeInTheDocument();
 
-    const deleteButton = screen.getByRole("button", { name: /delete coin/i });
+    const deleteButton = screen.getByRole("button", { name: /delete/i });
     await user.click(deleteButton);
     expect(deleteButton).toBeInTheDocument();
 
