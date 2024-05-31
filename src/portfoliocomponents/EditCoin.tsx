@@ -74,21 +74,14 @@ const EditCoin = (props: EditCoinProps) => {
       symbol,
       name,
       coinPrice,
-      quantity,
-      marketCap,
-      totalValue,
       twentyFourHour,
+      coinQuantity: quantity,
+      marketCap,
+      coinValue: totalValue,
     };
     console.log(coinData);
     return JSON.stringify(coinData);
   };
-
-  // const stringifyEditCoinData = () => {
-  //   console.log(name, coinPrice);
-  //   return JSON.stringify(name);
-  // };
-
-  // console.log(props);
 
   return (
     <>
@@ -116,7 +109,7 @@ const EditCoin = (props: EditCoinProps) => {
             </h4>
             {editQRCodeModal && (
               <div className="qr-modal">
-                <div onClick={toggleEditQRModal} className="overlay"></div>
+                <div onClick={toggleEditQRModal} className="qr-overlay"></div>
                 <div className="share-modal-content">
                   <h4 className="share-modal-header">Scan QR code</h4>
                   <div className="edit-coin-btn-container">

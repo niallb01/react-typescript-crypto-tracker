@@ -36,7 +36,6 @@ const PortfolioCoin = (props: PortfolioCoin) => {
         name={props.name}
         onDeletePortfolioCoin={onDeletePortfolioCoin}
         onUpdatePortfolioCoin={onUpdatePortfolioCoin}
-        //
         rank={props.rank}
         symbol={props.symbol}
         coinPrice={props.coinPrice}

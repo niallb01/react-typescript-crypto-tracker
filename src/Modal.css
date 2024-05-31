@@ -53,7 +53,7 @@ body.active-modal {
 .modal,
 .overlay {
   width: 100vw;
-  height: 1400px;
+  height: 1500px;
   top: 0;
   left: 0;
   right: 0;
@@ -117,7 +117,6 @@ body.active-modal {
 }
 
 .portfolio-search {
-  /* width: 300px; */
   background: #1d2330;
   border-radius: 5px 5px;
   height: 0.8em;
@@ -130,7 +129,6 @@ body.active-modal {
 }
 
 .edit-coin-input {
-  /* width: 300px; */
   background: #1d2330;
   border-radius: 5px 5px;
   height: 0.8em;
@@ -188,7 +186,6 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
-  /* position: absolute; */
   right: 10px;
 }
 
@@ -263,7 +260,6 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  /* position: absolute; */
   position: fixed;
 }
 
@@ -293,7 +289,6 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  /* position: absolute; */
   position: fixed;
 }
 
@@ -331,7 +326,6 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  /* position: absolute; */
   position: fixed;
 }
 
@@ -343,7 +337,6 @@ body.active-modal {
   left: 0;
   right: 0;
   bottom: 0;
-  /* position: absolute; */
   position: fixed;
 }
 
@@ -361,8 +354,6 @@ body.active-modal {
 }
 
 .share-modal-header {
-  /* font-size: 16px;
-  font-weight: 400; */
   text-align: center;
   margin-top: -10px;
 }
@@ -380,7 +371,8 @@ body.active-modal {
   height: 25px;
 }
 
-.btn-share-modal:hover {
+.btn-share-modal:hover,
+.edit-share-btn:hover {
   background-color: #48c1be;
   color: #384d61;
   border: 1px solid;
@@ -394,9 +386,6 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
-  /* display: block; */
-  /* margin-left: 20px; */
-  /* height: 20px; */
 }
 .modal-content-check {
   display: flex;
@@ -438,6 +427,28 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+}
+
+.qr-modal {
+  /* width: 100vw; */
+  /* height: 1500px; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+
+.qr-overlay {
+  width: 100vw;
+  /* height: 1500px; */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 0.7;
+  background: #12171f;
 }
 
 @media (max-width: 600px) {
