@@ -36,6 +36,14 @@ const PortfolioCoin = (props: PortfolioCoin) => {
         name={props.name}
         onDeletePortfolioCoin={onDeletePortfolioCoin}
         onUpdatePortfolioCoin={onUpdatePortfolioCoin}
+        //
+        rank={props.rank}
+        symbol={props.symbol}
+        coinPrice={props.coinPrice}
+        twentyFourHour={props.twentyFourHour}
+        quantity={props.quantity}
+        marketCap={props.marketCap}
+        totalValue={props.totalValue}
       />
     </>
   );

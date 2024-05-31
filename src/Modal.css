@@ -188,7 +188,7 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
-  position: absolute;
+  /* position: absolute; */
   right: 10px;
 }
 
@@ -361,10 +361,10 @@ body.active-modal {
 }
 
 .share-modal-header {
-  font-size: 16px;
-  font-weight: 400;
+  /* font-size: 16px;
+  font-weight: 400; */
   text-align: center;
-  margin-top: -5px;
+  margin-top: -10px;
 }
 
 .btn-share-modal {
@@ -385,6 +385,7 @@ body.active-modal {
   color: #384d61;
   border: 1px solid;
 }
+
 .edit-share-btn {
   background-color: #384d61;
   color: #48c1be;

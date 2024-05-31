@@ -1,13 +1,20 @@
 import { useState } from "react";
 import "../Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
-// import { FaStar } from "react-icons/fa";
+import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
 type EditCoinProps = {
   onDeletePortfolioCoin: (coin: string) => void;
   onUpdatePortfolioCoin: (name: string, quantity: string) => void;
   name: string;
+  coinPrice: string;
+  marketCap: string;
+  rank: number;
+  symbol: string;
+  quantity: string | undefined;
+  totalValue: string;
+  twentyFourHour: string;
 };
 
 const EditCoin = (props: EditCoinProps) => {
@@ -18,7 +25,17 @@ const EditCoin = (props: EditCoinProps) => {
   const [selectedCoin, setSelectedCoin] = useState<string>("");
   const [editQRCodeModal, setEditQRCodeModal] = useState<boolean>(false);
 
-  const { name, onDeletePortfolioCoin, onUpdatePortfolioCoin } = props;
+  const {
+    name,
+    onDeletePortfolioCoin,
+    onUpdatePortfolioCoin,
+    coinPrice,
+    marketCap,
+    rank,
+    symbol,
+    totalValue,
+    twentyFourHour,
+  } = props;
 
   const toggleEditModal = (coin: any) => {
     setEditModal(!editModal);
@@ -52,9 +69,26 @@ const EditCoin = (props: EditCoinProps) => {
   };
 
   const stringifyEditCoinData = () => {
-    console.log(name);
-    return JSON.stringify(name);
+    const coinData = {
+      rank,
+      symbol,
+      name,
+      coinPrice,
+      quantity,
+      marketCap,
+      totalValue,
+      twentyFourHour,
+    };
+    console.log(coinData);
+    return JSON.stringify(coinData);
   };
+
+  // const stringifyEditCoinData = () => {
+  //   console.log(name, coinPrice);
+  //   return JSON.stringify(name);
+  // };
+
+  // console.log(props);
 
   return (
     <>
@@ -74,11 +108,11 @@ const EditCoin = (props: EditCoinProps) => {
           <div className="modal-content">
             <h4 className="modal-header">
               Edit Coin{" "}
-              {/* <button onClick={toggleEditQRModal} className="edit-share-btn">
+              <button onClick={toggleEditQRModal} className="edit-share-btn">
                 {" "}
                 <FaStar className="star-icon-fill" size="10" />
                 {""} Share
-              </button> */}
+              </button>
             </h4>
             {editQRCodeModal && (
               <div className="qr-modal">
