@@ -22,7 +22,6 @@ body.active-modal {
 .modal-header {
   font-size: 18px;
   font-weight: 400;
-
   display: flex;
   justify-content: space-between;
 }
@@ -79,6 +78,7 @@ body.active-modal {
   border-radius: 10px;
   max-width: 600px;
   min-width: 300px;
+  z-index: 10;
 }
 
 .close-modal {
@@ -90,7 +90,6 @@ body.active-modal {
   outline: none;
   font-size: 22px;
   text-shadow: none;
-  position: absolute;
   top: 16px;
   right: 16px;
 }
@@ -104,7 +103,6 @@ body.active-modal {
   outline: none;
   font-size: 18px;
   text-shadow: none;
-  position: absolute;
   top: 5px;
   right: 5px;
 }
@@ -176,6 +174,7 @@ body.active-modal {
 }
 
 .delete-portfolio-coin-btn {
+  position: absolute;
   background-color: #dd143c;
   color: #ffffff;
   font-size: 14px;
@@ -214,7 +213,7 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 40%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;
@@ -222,6 +221,7 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+  z-index: 11;
 }
 
 .delete-portfolio-modal-text,
@@ -246,7 +246,6 @@ body.active-modal {
   outline: none;
   font-size: 22px;
   text-shadow: none;
-  position: absolute;
   top: 1px;
   right: 5px;
 }
@@ -261,6 +260,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 9;
 }
 
 .add-coin-modal {
@@ -274,10 +274,10 @@ body.active-modal {
   outline: none;
   font-size: 22px;
   text-shadow: none;
-  position: absolute;
   top: 90px;
   width: 320px;
   height: 100px;
+  z-index: 12;
 }
 
 .add-coin-overlay {
@@ -290,6 +290,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
+  z-index: 8;
 }
 
 .add-coin-modal-text {
@@ -303,7 +304,7 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;
@@ -311,6 +312,7 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+  z-index: 13;
 }
 
 .update-portfolio-modal-text {
@@ -327,17 +329,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: fixed;
-}
-
-.update-edit-overlay {
-  opacity: 0.1;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  position: fixed;
+  z-index: 7;
 }
 
 .share-modal-content {
@@ -351,6 +343,7 @@ body.active-modal {
   padding: 14px 28px;
   border-radius: 10px;
   border: 0.02em solid #12171f;
+  z-index: 14;
 }
 
 .share-modal-header {
@@ -387,11 +380,12 @@ body.active-modal {
   outline: none;
   cursor: pointer;
 }
+
 .modal-content-check {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 20%;
+  top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;
@@ -399,6 +393,7 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+  z-index: 15;
 }
 
 .modal-content-add-coin {
@@ -413,6 +408,7 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+  z-index: 16;
 }
 
 .modal-content-update-portfolio {
@@ -427,21 +423,19 @@ body.active-modal {
   border-radius: 10px;
   width: 200px;
   border: 0.02em solid #12171f;
+  z-index: 17;
 }
 
 .qr-modal {
-  /* width: 100vw; */
-  /* height: 1500px; */
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   position: absolute;
+  z-index: 18;
 }
 
 .qr-overlay {
-  /* width: 100vw; */
-  /* height: 1500px; */
   top: 0;
   left: 0;
   right: 0;
@@ -449,6 +443,7 @@ body.active-modal {
   position: absolute;
   opacity: 0.7;
   background: #12171f;
+  z-index: 6;
 }
 
 @media (max-width: 600px) {
@@ -459,6 +454,7 @@ body.active-modal {
   .add-coin-modal {
     width: 320px;
   }
+
   .btn-share-modal {
     margin-left: 25px;
   }
@@ -476,10 +472,8 @@ body.active-modal {
   .add-coin-modal {
     width: 320px;
   }
+
   .btn-share-modal {
     margin-left: 25px;
-  }
-  .modal-content-add-coin {
-    left: 45%;
   }
 }
