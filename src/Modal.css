@@ -440,7 +440,7 @@ body.active-modal {
 }
 
 .qr-overlay {
-  width: 100vw;
+  /* width: 100vw; */
   /* height: 1500px; */
   top: 0;
   left: 0;

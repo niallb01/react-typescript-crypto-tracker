@@ -79,7 +79,6 @@ const EditCoin = (props: EditCoinProps) => {
       marketCap,
       coinValue: totalValue,
     };
-    console.log(coinData);
     return JSON.stringify(coinData);
   };
 
@@ -117,7 +116,7 @@ const EditCoin = (props: EditCoinProps) => {
                       onClick={toggleEditQRModal}
                       className="close-modal-edit-coin"
                     >
-                      x
+                      X
                     </button>
                   </div>
                   <QRCode value={stringifyEditCoinData()} />

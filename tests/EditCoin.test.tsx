@@ -13,6 +13,13 @@ describe("edit coin", () => {
         onDeletePortfolioCoin={() => {}}
         onUpdatePortfolioCoin={() => {}}
         name={""}
+        coinPrice={""}
+        marketCap={""}
+        rank={0}
+        symbol={""}
+        quantity={undefined}
+        totalValue={""}
+        twentyFourHour={""}
       />
     );
 
@@ -37,6 +44,16 @@ describe("edit coin", () => {
     const deleteButton = screen.getByRole("button", { name: /delete/i });
     user.click(deleteButton);
     expect(deleteButton).toBeInTheDocument();
+
+    const shareButton = screen.getByRole("button", { name: /share/i });
+    user.click(shareButton);
+    expect(shareButton).toBeInTheDocument();
+
+    const shareIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+
+    expect(shareIcon).toBeTruthy();
   });
 });
 
@@ -48,6 +65,13 @@ describe("update modal", () => {
         onDeletePortfolioCoin={() => {}}
         onUpdatePortfolioCoin={() => {}}
         name={""}
+        coinPrice={""}
+        marketCap={""}
+        rank={0}
+        symbol={""}
+        quantity={undefined}
+        totalValue={""}
+        twentyFourHour={""}
       />
     );
 
@@ -85,6 +109,13 @@ describe("delete modal", () => {
         onDeletePortfolioCoin={() => {}}
         onUpdatePortfolioCoin={() => {}}
         name={""}
+        coinPrice={""}
+        marketCap={""}
+        rank={0}
+        symbol={""}
+        quantity={undefined}
+        totalValue={""}
+        twentyFourHour={""}
       />
     );
 
@@ -116,5 +147,32 @@ describe("delete modal", () => {
       "delete-portfolio-modal-btn"
     );
     expect(confirmButton).toBeTruthy();
+  });
+});
+
+describe("qr modal", () => {
+  const user = userEvent.setup();
+  it("should show QR code to scan stringified coin data", () => {
+    const { container } = render(
+      <EditCoin
+        onDeletePortfolioCoin={() => {}}
+        onUpdatePortfolioCoin={() => {}}
+        name={""}
+        coinPrice={""}
+        marketCap={""}
+        rank={0}
+        symbol={""}
+        quantity={undefined}
+        totalValue={""}
+        twentyFourHour={""}
+      />
+    );
+    const qrheading = container.getElementsByClassName("share-modal-header");
+    expect(qrheading).toBeTruthy();
+
+    const closeButton = container.getElementsByClassName(
+      "close-modal-edit-coin"
+    );
+    expect(closeButton).toBeTruthy();
   });
 });

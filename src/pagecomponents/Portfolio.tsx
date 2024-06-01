@@ -168,7 +168,7 @@ const Portfolio = (props: PortfolioProps) => {
                 onClick={toggleQRCodeModal}
                 className="close-modal-edit-coin"
               >
-                x
+                X
               </button>
             </div>
             <QRCode value={stringifyPortfolioData()} />
