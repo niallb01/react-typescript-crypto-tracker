@@ -124,6 +124,7 @@ const SignUp = () => {
           className="form-text-input"
           value={userData.email}
           onChange={handleChange}
+          placeholder="Test Email"
           required
         />
 
@@ -135,8 +136,13 @@ const SignUp = () => {
           className="form-text-input"
           value={userData.password}
           onChange={handleChange}
+          placeholder="Test Password"
           required
         />
+
+        <p>
+          Already have an account? <a href="/login">Login</a>
+        </p>
 
         <div className="terms-container">
           <input

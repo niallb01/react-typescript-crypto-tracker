@@ -1,7 +1,15 @@
 import Coin from "../components/Coin";
 import { Key, useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import {
+  Link,
+  Route,
+  Routes,
+  redirect,
+  useNavigate,
+  Navigate,
+} from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
@@ -9,6 +17,7 @@ import { IoSparklesOutline } from "react-icons/io5";
 import { SiBaremetrics } from "react-icons/si";
 import { CiBitcoin } from "react-icons/ci";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
@@ -18,7 +27,7 @@ const Home = (props: HomeProps) => {
   const [mktCap, setMktCap] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
 
-  const { coins, portfolio, addPortfolio } = props;
+  const { coins, portfolio, addPortfolio, authenticated } = props;
 
   let dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -82,6 +91,10 @@ const Home = (props: HomeProps) => {
   };
 
   const handlePortfolioItem = (name: string) => {
+    if (!authenticated) {
+      window.location.href = "/signup";
+      return;
+    }
     const portfolioCopy = [...portfolio];
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
@@ -325,6 +338,7 @@ const Home = (props: HomeProps) => {
                       />
                     )}
                   </Link>
+
                   <Coin
                     id={coin.id}
                     rank={coin.market_cap_rank}

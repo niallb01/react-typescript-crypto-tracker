@@ -51,12 +51,28 @@
 
 .login-container {
   display: flex;
+  display: block;
   gap: 10px;
 }
 
 .nav-sign-up-btn,
 .nav-login-btn {
+  /* display: block; */
+  /* position: fixed; */
   /* padding: 10px 20px;
   font-size: 16px; */
   cursor: pointer;
+  /* color: #2a3143; */
+  border-radius: 5px;
+  color: #2a3143;
+  background-color: #48c1be;
+  /* transition: ease-out 0.3s; */
+  height: 27px;
+}
+
+.nav-sign-up-btn:hover,
+.nav-login-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+  border: 1px solid;
 }

@@ -53,6 +53,7 @@ const Login = () => {
           className="form-text-input"
           value={userData.email}
           onChange={handleChange}
+          placeholder="Test Email"
           required
         />
 
@@ -64,9 +65,15 @@ const Login = () => {
           className="form-text-input"
           value={userData.password}
           onChange={handleChange}
+          placeholder="Test Password"
           required
         />
-
+        <p>
+          Don't have an account? <a href="/signup">Sign up</a>
+        </p>
+        <p>
+          Or continue as guest <a href="/login"></a>
+        </p>
         <div className="terms-container">
           <input
             type="checkbox"
@@ -79,7 +86,7 @@ const Login = () => {
         </div>
 
         <button type="submit" id="submit" name="submit" className="sign-up-btn">
-          Sign Up
+          Login
         </button>
 
         {error && <p className="error-message">{error}</p>}

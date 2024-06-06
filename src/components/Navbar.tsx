@@ -1,7 +1,5 @@
-// import { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaCoins } from "react-icons/fa";
-// import supabase from "../auth/supabaseClient";
 import "../styles/Navbar.css";
 
 const Navbar = () => {

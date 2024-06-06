@@ -10,11 +10,13 @@ import CoinDescData from "./data/CoinDescData.json";
 import { CoinType, CoinDescType, PortfolioType } from "./types/coin_types";
 import SignUp from "./pagecomponents/SignUp";
 import Login from "./pagecomponents/Login";
+import ProtectedRoute from "./protectedroutes/ProtectedRoute";
 
 function App() {
   const [coins, setCoins] = useState<CoinType[]>([]);
   const [coinDescription, setDescription] = useState<CoinDescType[]>([]);
   const [portfolio, addPortfolio] = useState<PortfolioType[]>([]);
+  const [authenticated, setAuthenticated] = useState<boolean>(false);
 
   // on mount
   useEffect(() => {
@@ -43,6 +45,7 @@ function App() {
               coins={coins}
               portfolio={portfolio}
               addPortfolio={addPortfolio}
+              authenticated={authenticated}
             />
           }
         />
@@ -50,7 +53,7 @@ function App() {
           path="/coin-description/:coinName"
           element={<CoinDescription coinDescription={coinDescription} />}
         />
-        <Route
+        {/* <Route
           path="/portfolio"
           element={
             <Portfolio
@@ -59,9 +62,29 @@ function App() {
               coins={coins}
             />
           }
+        /> */}
+        <Route
+          path="/portfolio"
+          element={
+            <ProtectedRoute authenticated={authenticated}>
+              <Portfolio
+                portfolio={portfolio}
+                addPortfolio={addPortfolio}
+                coins={coins}
+              />
+            </ProtectedRoute>
+          }
         />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <Login
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          }
+        />
       </Routes>
     </>
   );

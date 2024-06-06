@@ -7,6 +7,7 @@
   background-color: #f9f9f9;
   background: #2a3143;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
 }
 
 .onLogin-header {
@@ -29,12 +30,14 @@ label {
 }
 
 .form-text-input {
+  color: #fff;
   padding: 10px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
   width: calc(100% - 22px); /* To compensate for padding and border */
+  background-color: #181b26;
 }
 
 .terms-container {
