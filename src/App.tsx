@@ -8,7 +8,8 @@ import CoinDescription from "./pagecomponents/CoinDescription";
 import CoinData from "./data/CoinData.json";
 import CoinDescData from "./data/CoinDescData.json";
 import { CoinType, CoinDescType, PortfolioType } from "./types/coin_types";
-
+import SignUp from "./pagecomponents/SignUp";
+import Login from "./pagecomponents/Login";
 
 function App() {
   const [coins, setCoins] = useState<CoinType[]>([]);
@@ -59,6 +60,8 @@ function App() {
             />
           }
         />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

@@ -89,6 +89,7 @@ body.active-modal {
   transition: ease-out 0.3s;
   outline: none;
   font-size: 22px;
+  font-size: 20px;
   text-shadow: none;
   top: 16px;
   right: 16px;
@@ -385,7 +386,7 @@ body.active-modal {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 70%;
+  top: 20%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;

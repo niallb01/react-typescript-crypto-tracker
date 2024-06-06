@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-
+    // "typeRoots": ["./node_modules/@types", "./src/auth"],
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

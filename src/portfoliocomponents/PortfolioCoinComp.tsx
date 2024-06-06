@@ -31,7 +31,7 @@ const PortfolioCoinComp = (props: PortfolioCoinComp) => {
         <p className="coin-price">Price: £{props.coinPrice}</p>
       </div>
       <div className="item-6">
-        {props.twentyFourHour < 0 ? (
+        {props.twentyFourHour < "0" ? (
           <p className="twenty-four-hours-red">{props.twentyFourHour}%</p>
         ) : (
           <p className="twenty-four-hours-green">{props.twentyFourHour}%</p>

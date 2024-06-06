@@ -158,18 +158,17 @@ a .star-icon {
   color: #ffad00;
   fill: #ffad00;
 }
-
+/* 
 .header {
   text-align: center;
   font-size: 30px;
   color: #ffffff;
-  /* opacity: 0.1; */
 }
 
 .header-icon {
   text-shadow: #ffad00 1px 0 10px;
   color: #810081;
-}
+} */
 
 a {
   color: #ffffff;
@@ -449,11 +448,11 @@ li {
   .modal-content-portfolio {
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 60px;
     /* width: 350px; */
     position: absolute;
     top: 5%;
-    left: 10px;
+    left: 15px;
     background: #2a3143;
     padding: 14px 28px;
     border-radius: 10px;
