@@ -2,14 +2,7 @@ import Coin from "../components/Coin";
 import { Key, useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 // import { Link } from "react-router-dom";
-import {
-  Link,
-  Route,
-  Routes,
-  redirect,
-  useNavigate,
-  Navigate,
-} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
@@ -28,6 +21,7 @@ const Home = (props: HomeProps) => {
   const [dropdown, setDropdown] = useState<boolean>(false);
 
   const { coins, portfolio, addPortfolio, authenticated } = props;
+  const navigate = useNavigate();
 
   let dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -95,6 +89,11 @@ const Home = (props: HomeProps) => {
       window.location.href = "/signup";
       return;
     }
+
+    // if (!authenticated) {
+    //   navigate("/signup");
+    //   return;
+    // }
     const portfolioCopy = [...portfolio];
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;

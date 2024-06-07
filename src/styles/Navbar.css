@@ -1,37 +1,14 @@
 /* .navbar-container {
   display: flex;
-}
-
-.header-container {
-  align-items: center;
-}
-
-.login-container {
-  float: right;
-} */
-
-.navbar-container {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
   height: 60px;
-  /* background-color: #f8f9fa; */
 }
 
 .header-container {
-  flex-grow: 1;
   text-align: center;
 }
-
-/* .header {
-  margin: 0;
-  font-size: 24px;
-} */
-
-/* .header-icon {
-  margin-right: 10px;
-} */
 
 .header {
   text-align: center;
@@ -57,16 +34,10 @@
 
 .nav-sign-up-btn,
 .nav-login-btn {
-  /* display: block; */
-  /* position: fixed; */
-  /* padding: 10px 20px;
-  font-size: 16px; */
   cursor: pointer;
-  /* color: #2a3143; */
   border-radius: 5px;
   color: #2a3143;
   background-color: #48c1be;
-  /* transition: ease-out 0.3s; */
   height: 27px;
 }
 
@@ -75,4 +46,104 @@
   background-color: #384d61;
   color: #48c1be;
   border: 1px solid;
+}  */
+
+/* .navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.header-container {
+  text-align: center;
+  width: 100%;
+}
+
+.header {
+  font-size: 27px;
+  color: #ffffff;
+  display: inline-block;
+}
+
+.header-icon {
+  text-shadow: #ffad00 1px 0 10px;
+  color: #810081;
+}
+
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login-container {
+  display: flex;
+  gap: 10px;
+  margin-right: 20px;
+}
+
+.nav-sign-up-btn,
+.nav-login-btn {
+  cursor: pointer;
+  border-radius: 5px;
+  color: #2a3143;
+  background-color: #48c1be;
+  height: 27px;
+  border: 1px solid;
+}
+
+.nav-sign-up-btn:hover,
+.nav-login-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+} */
+
+.navbar-container {
+  text-align: center;
+  padding: 0 20px;
+  height: 60px;
+}
+
+.header-container {
+  display: block;
+}
+
+.header {
+  font-size: 27px;
+  color: #ffffff;
+}
+
+.header-icon {
+  text-shadow: #ffad00 1px 0 10px;
+  color: #810081;
+}
+
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.login-container {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  top: 20px;
+  right: 20px;
+}
+
+.nav-sign-up-btn,
+.nav-login-btn {
+  cursor: pointer;
+  border-radius: 5px;
+  color: #2a3143;
+  background-color: #48c1be;
+  height: 27px;
+  border: 1px solid;
+}
+
+.nav-sign-up-btn:hover,
+.nav-login-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
 }
