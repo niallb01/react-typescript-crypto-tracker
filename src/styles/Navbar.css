@@ -45,15 +45,16 @@
   font-weight: 600;
 }
 
-.nav-sign-up-btn:hover {
+/* .nav-sign-up-btn:hover {
   background-color: #384d61;
   color: #48c1be;
   border: 1px solid;
-}
+} */
 
 .nav-login-btn:hover {
-  color: #384d61;
-  background-color: #48c1be;
+  color: #48c1be;
+  /* background-color: #48c1be; */
+  background-color: #2a3143;
   border: 1px solid;
 }
 
