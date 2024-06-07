@@ -69,10 +69,10 @@ const Login = () => {
           required
         />
         <p>
-          Don't have an account? <a href="/signup">Sign up</a>
+          Don't have an account? <a href="/signup">Sign Up</a>
         </p>
         <p>
-          Or continue as guest <a href="/login"></a>
+          Don't want to register? Continue as Guest <a href="/login"></a>
         </p>
         <div className="terms-container">
           <input

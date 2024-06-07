@@ -186,10 +186,9 @@ const Home = (props: HomeProps) => {
           </datalist> */}
           <datalist id="search-input-2">
             {coins.map((coin: HomeCoinType) => (
-              <option
-                key={coin.name}
-                value={`${coin.name} - ${coin.symbol.toUpperCase()}`}
-              ></option>
+              <option key={coin.name} value={coin.name}>
+                {/* {coin.symbol.toUpperCase()} */}
+              </option>
             ))}
           </datalist>
         </div>

@@ -62,7 +62,7 @@ const Navbar = () => {
         {!isAuthPage && (
           <div className="login-container">
             <Link to="/signup">
-              <button className="nav-sign-up-btn">Sign up</button>
+              <button className="nav-sign-up-btn">Sign Up</button>
             </Link>
             <Link to="/login">
               <button className="nav-login-btn">Login</button>
