@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <div className="login-form-container">
-      <p className="onLogin-header">Login:</p>
+      <p className="onLogin-header">Login</p>
       <form onSubmit={handleSignup}>
         <label htmlFor="email">Email:</label>
         <input
@@ -68,8 +68,11 @@ const Login = () => {
           placeholder="Test Password"
           required
         />
-        <p>
-          Don't have an account? <a href="/signup">Sign Up</a>
+        <p className="form-p">
+          Don't have an account?{" "}
+          <a className="form-link" href="/signup">
+            Sign Up
+          </a>
         </p>
         <p>
           Don't want to register? Continue as Guest <a href="/login"></a>
@@ -85,7 +88,7 @@ const Login = () => {
           <label htmlFor="terms">I agree to terms and conditions</label>
         </div>
 
-        <button type="submit" id="submit" name="submit" className="sign-up-btn">
+        <button type="submit" id="submit" name="submit" className="login-btn">
           Login
         </button>
 

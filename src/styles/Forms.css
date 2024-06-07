@@ -13,9 +13,9 @@
 .onLogin-header {
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 20px;
+  /* margin-bottom: 10px; */
   text-align: center;
-  color: #333;
+  color: #fff;
 }
 
 form {
@@ -26,7 +26,7 @@ form {
 label {
   font-size: 16px;
   margin-bottom: 5px;
-  color: #555;
+  color: #fff;
 }
 
 .form-text-input {
@@ -50,7 +50,8 @@ label {
   margin-right: 10px;
 }
 
-.sign-up-btn {
+.sign-up-btn,
+.login-btn {
   padding: 10px 20px;
   font-size: 16px;
   /* color: #fff; */
@@ -62,14 +63,28 @@ label {
   cursor: pointer;
   transition: ease-out 0.3s;
   outline: none;
+  font-weight: 600;
   /* transition: background-color 0.3s; */
 }
 
-.sign-up-btn:hover {
+.sign-up-btn:hover,
+.login-btn:hover {
   /* background-color: #0056b3; */
   background-color: #384d61;
   color: #48c1be;
   border: 1px solid;
+}
+
+.form-link {
+  color: #ffad00;
+}
+.form-link:hover {
+  color: #48c1be;
+  text-decoration: underline;
+}
+
+.form-p {
+  font-size: 16px;
 }
 
 .error-message {

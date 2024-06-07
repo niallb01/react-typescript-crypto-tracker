@@ -114,7 +114,7 @@ const SignUp = () => {
 
   return (
     <div className="login-form-container">
-      <p className="onLogin-header">Sign Up:</p>
+      <p className="onLogin-header">Create Account</p>
       <form onSubmit={handleSignup}>
         <label htmlFor="email">Email:</label>
         <input
@@ -140,8 +140,11 @@ const SignUp = () => {
           required
         />
 
-        <p>
-          Already have an account? <a href="/login">Login</a>
+        <p className="form-p">
+          Already have an account?{" "}
+          <a className="form-link" href="/login">
+            Login
+          </a>
         </p>
 
         <div className="terms-container">

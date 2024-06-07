@@ -97,6 +97,14 @@
   background-color: #48c1be;
   height: 30px;
   border: 1px solid;
+  font-weight: 600;
+}
+
+.nav-sign-up-btn:hover,
+.nav-login-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+  border: 1px solid;
 }
 
 .login-container {
