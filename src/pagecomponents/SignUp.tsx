@@ -1,75 +1,3 @@
-// import { useState } from "react";
-// import supabase from "../auth/supabaseClient";
-
-// const SignUp = () => {
-//   const [userData, setUserData] = useState({ email: "", password: "" });
-
-//   const handleSignup = async (e: any) => {
-//     e.preventDefault();
-//     setUserData({ ...userData, [e.target.name]: e.target.value });
-//     await supabase.auth.signUp({
-//       email: `${userData.email}`,
-//       password: `${userData.password}`,
-//     });
-
-//   };
-
-//   const handleChange = (e: any) => {
-//     console.log(e.target.value);
-//     setUserData({ ...userData, [e.target.name]: e.target.value });
-//   };
-
-//   return (
-//     <>
-//       <div className="login-form-container">
-//         <p className="onLogin-header">Sign Up:</p>
-//         <form onSubmit={handleSignup}>
-//           <label htmlFor="email">Email:</label>
-//           <input
-//             type="email"
-//             id="email"
-//             name="email"
-//             className="form-text-input"
-//             value={userData.email}
-//             onChange={handleChange}
-//             required
-//           />
-
-//           <label htmlFor="email">Password:</label>
-//           <input
-//             type="password"
-//             id="password"
-//             name="password"
-//             className="form-text-input"
-//             value={userData.password}
-//             onChange={handleChange}
-//             required
-//           />
-//           <button
-//             type="submit"
-//             id="submit"
-//             name="submit"
-//             className="sign-up-btn"
-//           >
-//             Sign Up
-//           </button>
-//           <div className="terms-container">
-//             <label htmlFor="terms">I agree to terms and conditions</label>
-//             <input
-//               //   onClick={handleTerms}
-//               type="checkbox"
-//               id="terms"
-//               name="terms"
-//             />
-//           </div>
-//         </form>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default SignUp;
-
 import { useState } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
@@ -114,7 +42,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="login-form-container">
+    <div className="sign-up-form-container">
       <h1 className="onLogin-header">Create Account</h1>
       <form onSubmit={handleSignup}>
         <label htmlFor="email">Email:</label>
@@ -138,6 +66,8 @@ const SignUp = () => {
           value={userData.password}
           onChange={handleChange}
           placeholder="Test Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
+          title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
           required
         />
 
@@ -150,7 +80,7 @@ const SignUp = () => {
             Login
           </a>
         </p>
-        <button type="submit" id="submit" name="submit" className="guest-btn">
+        <button id="guest" name="guest" className="guest-btn">
           Continue as Guest
         </button>
         <br></br>
@@ -162,7 +92,9 @@ const SignUp = () => {
             checked={termsAccepted}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="terms">I agree to terms and conditions</label>
+          <label className="terms" htmlFor="terms">
+            I agree to terms and conditions
+          </label>
         </div>
 
         {error && <p className="error-message">{error}</p>}

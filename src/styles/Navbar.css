@@ -1,69 +1,3 @@
-/* .navbar-container {
-  text-align: center;
-  padding: 0 20px;
-}
-
-.header-container {
-  display: block;
-}
-
-.header {
-  font-size: 27px;
-  color: #ffffff;
-}
-
-.header-icon {
-  text-shadow: #ffad00 1px 0 10px;
-  color: #810081;
-}
-
-.header a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.login-container {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  top: 15px;
-  right: 60px;
-}
-
-.nav-sign-up-btn,
-.nav-login-btn {
-  margin: 3px;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #2a3143;
-  background-color: #48c1be;
-  height: 30px;
-  border: 1px solid;
-}
-
-.nav-sign-up-btn:hover,
-.nav-login-btn:hover {
-  background-color: #384d61;
-  color: #48c1be;
-}
-
-@media (max-width: 600px) {
-  .nav-login-btn,
-  .nav-sign-up-btn {
-    cursor: pointer;
-    border-radius: 5px;
-    color: #2a3143;
-    background-color: #48c1be;
-    height: 25px;
-    border: 1px solid;
-    margin-left: 10px;
-  }
-
-  .login-container {
-    top: 0;
-  }
-} */
-
 .navbar-container {
   text-align: center;
   padding: 0 20px;
@@ -88,8 +22,7 @@
   color: inherit;
 }
 
-.nav-sign-up-btn,
-.nav-login-btn {
+.nav-sign-up-btn {
   margin: 3px;
   cursor: pointer;
   border-radius: 5px;
@@ -100,10 +33,27 @@
   font-weight: 600;
 }
 
-.nav-sign-up-btn:hover,
-.nav-login-btn:hover {
+.nav-login-btn {
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #2a3143;
   background-color: #384d61;
   color: #48c1be;
+  height: 30px;
+  border: 1px solid;
+  font-weight: 600;
+}
+
+.nav-sign-up-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+  border: 1px solid;
+}
+
+.nav-login-btn:hover {
+  color: #384d61;
+  background-color: #48c1be;
   border: 1px solid;
 }
 
@@ -117,12 +67,7 @@
 @media (max-width: 600px) {
   .nav-login-btn,
   .nav-sign-up-btn {
-    cursor: pointer;
-    border-radius: 5px;
-    color: #2a3143;
-    background-color: #48c1be;
     height: 25px;
-    border: 1px solid;
     margin-left: 5px;
   }
   .login-container {
@@ -132,5 +77,12 @@
     right: auto;
     margin-top: 10px;
     text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-container {
+    /* margin-right: 15px; */
+    right: 10px;
   }
 }

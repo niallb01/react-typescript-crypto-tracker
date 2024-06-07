@@ -84,7 +84,7 @@ const Login = () => {
             Sign Up
           </a>{" "}
         </p>
-        <button type="submit" id="submit" name="submit" className="guest-btn">
+        <button id="submit" name="submit" className="guest-btn">
           Continue as Guest
         </button>
         <br></br>
@@ -96,7 +96,9 @@ const Login = () => {
             checked={termsAccepted}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="terms">I agree to terms and conditions</label>
+          <label className="terms" htmlFor="terms">
+            I agree to terms and conditions
+          </label>
         </div>
 
         {error && <p className="error-message">{error}</p>}
