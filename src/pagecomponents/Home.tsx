@@ -1,8 +1,7 @@
 import Coin from "../components/Coin";
 import { Key, useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
-// import { Link } from "react-router-dom";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import { toast, ToastContainer } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
@@ -10,7 +9,6 @@ import { IoSparklesOutline } from "react-icons/io5";
 import { SiBaremetrics } from "react-icons/si";
 import { CiBitcoin } from "react-icons/ci";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
-import ProtectedRoute from "./components/ProtectedRoute";
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
@@ -21,7 +19,6 @@ const Home = (props: HomeProps) => {
   const [dropdown, setDropdown] = useState<boolean>(false);
 
   const { coins, portfolio, addPortfolio, authenticated } = props;
-  const navigate = useNavigate();
 
   let dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -89,11 +86,6 @@ const Home = (props: HomeProps) => {
       window.location.href = "/signup";
       return;
     }
-
-    // if (!authenticated) {
-    //   navigate("/signup");
-    //   return;
-    // }
     const portfolioCopy = [...portfolio];
     const found = portfolioCopy?.find((coin) => {
       return coin.name === name;
@@ -185,12 +177,20 @@ const Home = (props: HomeProps) => {
             placeholder="Search Currency..."
             onInput={handleSearchInput}
           ></input>
-          <datalist id="search-input-2">
+          {/* <datalist id="search-input-2">
             {coins.map(
               (coin: HomeCoinType, coinName: Key | null | undefined) => (
                 <option key={coinName}>{coin.name}</option>
               )
             )}
+          </datalist> */}
+          <datalist id="search-input-2">
+            {coins.map((coin: HomeCoinType) => (
+              <option
+                key={coin.name}
+                value={`${coin.name} - ${coin.symbol.toUpperCase()}`}
+              ></option>
+            ))}
           </datalist>
         </div>
       </div>

@@ -128,17 +128,18 @@
   display: inline-block;
   position: absolute;
   top: 0;
-  top: 20px;
-  right: 20px;
+  top: 15px;
+  right: 60px;
 }
 
 .nav-sign-up-btn,
 .nav-login-btn {
+  margin: 3px;
   cursor: pointer;
   border-radius: 5px;
   color: #2a3143;
   background-color: #48c1be;
-  height: 27px;
+  height: 30px;
   border: 1px solid;
 }
 
