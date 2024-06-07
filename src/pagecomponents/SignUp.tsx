@@ -72,6 +72,7 @@
 
 import { useState } from "react";
 import supabase from "../auth/supabaseClient";
+import "../styles/Forms.css";
 
 const SignUp = () => {
   const [userData, setUserData] = useState({ email: "", password: "" });
@@ -114,7 +115,7 @@ const SignUp = () => {
 
   return (
     <div className="login-form-container">
-      <p className="onLogin-header">Create Account</p>
+      <h1 className="onLogin-header">Create Account</h1>
       <form onSubmit={handleSignup}>
         <label htmlFor="email">Email:</label>
         <input
@@ -140,13 +141,19 @@ const SignUp = () => {
           required
         />
 
+        <button type="submit" id="submit" name="submit" className="sign-up-btn">
+          Sign Up
+        </button>
         <p className="form-p">
           Already have an account?{" "}
           <a className="form-link" href="/login">
             Login
           </a>
         </p>
-
+        <button type="submit" id="submit" name="submit" className="guest-btn">
+          Continue as Guest
+        </button>
+        <br></br>
         <div className="terms-container">
           <input
             type="checkbox"
@@ -157,10 +164,6 @@ const SignUp = () => {
           />
           <label htmlFor="terms">I agree to terms and conditions</label>
         </div>
-
-        <button type="submit" id="submit" name="submit" className="sign-up-btn">
-          Sign Up
-        </button>
 
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}

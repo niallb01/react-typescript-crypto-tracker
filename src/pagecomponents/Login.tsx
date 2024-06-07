@@ -43,7 +43,7 @@ const Login = () => {
 
   return (
     <div className="login-form-container">
-      <p className="onLogin-header">Login</p>
+      <h1 className="onLogin-header">Login</h1>
       <form onSubmit={handleSignup}>
         <label htmlFor="email">Email:</label>
         <input
@@ -68,15 +68,26 @@ const Login = () => {
           placeholder="Test Password"
           required
         />
-        <p className="form-p">
+        {/* <p className="form-p">
           Don't have an account?{" "}
           <a className="form-link" href="/signup">
             Sign Up
           </a>
+        </p> */}
+
+        <button type="submit" id="submit" name="submit" className="login-btn">
+          Login
+        </button>
+        <p className="form-p">
+          Don't have an account?{" "}
+          <a className="form-link" href="/signup">
+            Sign Up
+          </a>{" "}
         </p>
-        <p>
-          Don't want to register? Continue as Guest <a href="/login"></a>
-        </p>
+        <button type="submit" id="submit" name="submit" className="guest-btn">
+          Continue as Guest
+        </button>
+        <br></br>
         <div className="terms-container">
           <input
             type="checkbox"
@@ -87,10 +98,6 @@ const Login = () => {
           />
           <label htmlFor="terms">I agree to terms and conditions</label>
         </div>
-
-        <button type="submit" id="submit" name="submit" className="login-btn">
-          Login
-        </button>
 
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
