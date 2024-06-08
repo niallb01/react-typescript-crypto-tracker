@@ -47,6 +47,7 @@ function App() {
               portfolio={portfolio}
               addPortfolio={addPortfolio}
               authenticated={authenticated}
+              guest={guest}
             />
           }
         />
@@ -67,7 +68,7 @@ function App() {
         <Route
           path="/portfolio"
           element={
-            <ProtectedRoute authenticated={authenticated}>
+            <ProtectedRoute authenticated={authenticated} guest={guest}>
               <Portfolio
                 portfolio={portfolio}
                 addPortfolio={addPortfolio}
@@ -83,6 +84,7 @@ function App() {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
               guest={guest}
+              setGuest={setGuest}
             />
           }
         />
@@ -93,6 +95,7 @@ function App() {
               authenticated={authenticated}
               setAuthenticated={setAuthenticated}
               guest={guest}
+              setGuest={setGuest}
             />
           }
         />

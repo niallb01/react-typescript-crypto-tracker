@@ -1,12 +1,18 @@
 import { useState } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
+// import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
+
+  const { authenticated, setAuthenticated, guest, setGuest } = props;
+
+  const navigate = useNavigate();
 
   const handleSignup = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -30,6 +36,45 @@ const SignUp = () => {
       }
     } catch (error) {
       setError("An unexpected error occurred.");
+    }
+  };
+
+  // const handleGuest = async () => {
+  //   const { data, error } = await supabase.auth.signInAnonymously();
+  // };
+  // const handleGuest = async () => {
+  //   try {
+  //     const { data, error } = await supabase.auth.signInAnonymously();
+
+  //     if (error) {
+  //       setError(error.message);
+  //     } else {
+  //       setGuest(true); // Mark the user as a guest
+  //       setSuccess("Signed in as guest!");
+  //       navigate("/home");
+  //     }
+  //   } catch (error) {
+  //     setError("An unexpected error guest occurred.");
+  //   }
+  //   console.log(guest);
+  // };
+  const handleGuest = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInAnonymously();
+
+      if (error) {
+        console.error("Guest sign-in error:", error); // Log the error
+        setError(error.message);
+      } else {
+        console.log("Guest sign-in successful."); // Log success
+        setGuest(true); // Mark the user as a guest
+        setSuccess("Signed in as guest!");
+        navigate("/");
+        // console.log(guest);
+      }
+    } catch (error) {
+      console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
+      setError("An unexpected error occurred while signing in as guest.");
     }
   };
 
@@ -66,8 +111,8 @@ const SignUp = () => {
           value={userData.password}
           onChange={handleChange}
           placeholder="Test Password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
-          title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
+          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
+          // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
           required
         />
 
@@ -80,7 +125,13 @@ const SignUp = () => {
             Login
           </a>
         </p>
-        <button id="guest" name="guest" className="guest-btn">
+        <button
+          type="button"
+          onClick={handleGuest}
+          id="guest"
+          name="guest"
+          className="guest-btn"
+        >
           Continue as Guest
         </button>
         <br></br>

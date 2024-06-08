@@ -18,7 +18,7 @@ const Home = (props: HomeProps) => {
   const [mktCap, setMktCap] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
 
-  const { coins, portfolio, addPortfolio, authenticated } = props;
+  const { coins, portfolio, addPortfolio, authenticated, guest } = props;
 
   let dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -82,7 +82,7 @@ const Home = (props: HomeProps) => {
   };
 
   const handlePortfolioItem = (name: string) => {
-    if (!authenticated) {
+    if (!authenticated && !guest) {
       window.location.href = "/signup";
       return;
     }

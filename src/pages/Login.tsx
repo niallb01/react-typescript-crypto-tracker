@@ -2,13 +2,15 @@ import { useState } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
 
-const Login = () => {
+const Login = (props) => {
   const [userData, setUserData] = useState({ email: "", password: "" });
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const handleSignup = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const { authenticated, setAuthenticated, guest } = props;
+
+  const handleLogin = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (!termsAccepted) {
       setError("You must accept the terms and conditions.");
@@ -44,7 +46,7 @@ const Login = () => {
   return (
     <div className="login-form-container">
       <h1 className="onLogin-header">Login</h1>
-      <form onSubmit={handleSignup}>
+      <form onSubmit={handleLogin}>
         <label htmlFor="email">Email:</label>
         <input
           type="email"
@@ -66,6 +68,8 @@ const Login = () => {
           value={userData.password}
           onChange={handleChange}
           placeholder="Test Password"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
+          title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
           required
         />
         {/* <p className="form-p">
