@@ -3,6 +3,9 @@ import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
 // import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Icon from "react-icons-kit";
+import { view_off } from "react-icons-kit/ikons/view_off";
+import { view } from "react-icons-kit/ikons/view";
 
 const SignUp = (props) => {
   const [userData, setUserData] = useState({ email: "", password: "" });
@@ -101,8 +104,13 @@ const SignUp = (props) => {
           placeholder="Test Email"
           required
         />
-
-        <label htmlFor="password">Password:</label>
+        {/* <label htmlFor="password">Password:</label> */}
+        <label className="password-label" htmlFor="password">
+          Password:{" "}
+          <button className="password-icon-button">
+            <Icon icon={props.isPasswordVisible ? view_off : view} size="20" />
+          </button>
+        </label>{" "}
         <input
           type="password"
           id="password"
@@ -111,11 +119,10 @@ const SignUp = (props) => {
           value={userData.password}
           onChange={handleChange}
           placeholder="Test Password"
-          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
+          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
           required
         />
-
         <button type="submit" id="submit" name="submit" className="sign-up-btn">
           Sign Up
         </button>
@@ -147,7 +154,6 @@ const SignUp = (props) => {
             I agree to terms and conditions
           </label>
         </div>
-
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
       </form>

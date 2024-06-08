@@ -1,24 +1,24 @@
 import { useState } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
+import { useNavigate } from "react-router-dom";
+import Icon from "react-icons-kit";
+import { view_off } from "react-icons-kit/ikons/view_off";
+import { view } from "react-icons-kit/ikons/view";
 
 const Login = (props) => {
   const [userData, setUserData] = useState({ email: "", password: "" });
-  const [termsAccepted, setTermsAccepted] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const { authenticated, setAuthenticated, guest } = props;
+  const { authenticated, setAuthenticated, guest, setGuest } = props;
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    if (!termsAccepted) {
-      setError("You must accept the terms and conditions.");
-      return;
-    }
-
     try {
-      const { error } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signInWithPassword({
         email: userData.email,
         password: userData.password,
       });
@@ -26,8 +26,10 @@ const Login = (props) => {
       if (error) {
         setError(error.message);
       } else {
+        setAuthenticated(true); // Mark the user as a guest
+        navigate("/");
         setSuccess(
-          "Sign up successful! Please check your email for confirmation."
+          "Login successful! Please check your email for confirmation."
         );
       }
     } catch (error) {
@@ -35,12 +37,28 @@ const Login = (props) => {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserData({ ...userData, [e.target.name]: e.target.value });
+  const handleGuest = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInAnonymously();
+
+      if (error) {
+        console.error("Guest sign-in error:", error); // Log the error
+        setError(error.message);
+      } else {
+        console.log("Guest sign-in successful."); // Log success
+        setGuest(true); // Mark the user as a guest
+        setSuccess("Signed in as guest!");
+        navigate("/");
+        // console.log(guest);
+      }
+    } catch (error) {
+      console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
+      setError("An unexpected error occurred while signing in as guest.");
+    }
   };
 
-  const handleCheckboxChange = (e) => {
-    setTermsAccepted(e.target.checked);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
   return (
@@ -58,8 +76,12 @@ const Login = (props) => {
           placeholder="Test Email"
           required
         />
-
-        <label htmlFor="password">Password:</label>
+        <label className="password-label" htmlFor="password">
+          Password:{" "}
+          <button className="password-icon-button">
+            <Icon icon={props.isPasswordVisible ? view_off : view} size="20" />
+          </button>
+        </label>{" "}
         <input
           type="password"
           id="password"
@@ -68,8 +90,8 @@ const Login = (props) => {
           value={userData.password}
           onChange={handleChange}
           placeholder="Test Password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.{8,})"
-          title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
+          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
           required
         />
         {/* <p className="form-p">
@@ -78,7 +100,6 @@ const Login = (props) => {
             Sign Up
           </a>
         </p> */}
-
         <button type="submit" id="submit" name="submit" className="login-btn">
           Login
         </button>
@@ -88,23 +109,16 @@ const Login = (props) => {
             Sign Up
           </a>{" "}
         </p>
-        <button id="guest" name="guest" className="guest-btn">
+        <button
+          type="button"
+          onClick={handleGuest}
+          id="guest"
+          name="guest"
+          className="guest-btn"
+        >
           Continue as Guest
         </button>
         <br></br>
-        <div className="terms-container">
-          <input
-            type="checkbox"
-            id="terms"
-            name="terms"
-            checked={termsAccepted}
-            onChange={handleCheckboxChange}
-          />
-          <label className="terms" htmlFor="terms">
-            I agree to terms and conditions
-          </label>
-        </div>
-
         {error && <p className="error-message">{error}</p>}
         {success && <p className="success-message">{success}</p>}
       </form>

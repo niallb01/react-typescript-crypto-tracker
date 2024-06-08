@@ -118,6 +118,24 @@ label {
   font-size: 14px;
 }
 
+.password-label {
+  position: relative;
+  display: inline-block;
+}
+.password-icon-button {
+  width: 30px;
+  cursor: pointer;
+  opacity: 0.8;
+  border-width: 0em;
+  background-color: none;
+  box-shadow: 0 0 15px 4px rgb(0 0 0 / 6%);
+  background-color: #2a3143;
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 @media (max-width: 600px) {
   .login-form-container,
   .sign-up-form-container {

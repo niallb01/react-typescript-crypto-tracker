@@ -39,6 +39,7 @@ function App() {
     <>
       <Navbar
         authenticated={authenticated}
+        setAuthenticated={setAuthenticated}
         guest={guest}
         setGuest={setGuest}
         addPortfolio={addPortfolio}
