@@ -37,7 +37,12 @@ function App() {
 
   return (
     <>
-      <Navbar authenticated={authenticated} guest={guest} />
+      <Navbar
+        authenticated={authenticated}
+        guest={guest}
+        setGuest={setGuest}
+        addPortfolio={addPortfolio}
+      />
       <Routes>
         <Route
           path="/"
