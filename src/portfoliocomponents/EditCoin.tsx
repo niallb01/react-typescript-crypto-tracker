@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../Modal.css";
+import "../styles/Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";

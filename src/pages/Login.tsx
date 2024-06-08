@@ -84,7 +84,7 @@ const Login = () => {
             Sign Up
           </a>{" "}
         </p>
-        <button id="submit" name="submit" className="guest-btn">
+        <button id="guest" name="guest" className="guest-btn">
           Continue as Guest
         </button>
         <br></br>

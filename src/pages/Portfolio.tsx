@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../Modal.css";
+import "../styles/Modal.css";
 import "react-toastify/dist/ReactToastify.css";
 import InputCoin from "../inputcomponents/InputCoin";
 import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
