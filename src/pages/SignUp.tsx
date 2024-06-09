@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
-// import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { view_off } from "react-icons-kit/ikons/view_off";
@@ -49,25 +48,6 @@ const SignUp = (props) => {
     }
   };
 
-  // const handleGuest = async () => {
-  //   const { data, error } = await supabase.auth.signInAnonymously();
-  // };
-  // const handleGuest = async () => {
-  //   try {
-  //     const { data, error } = await supabase.auth.signInAnonymously();
-
-  //     if (error) {
-  //       setError(error.message);
-  //     } else {
-  //       setGuest(true); // Mark the user as a guest
-  //       setSuccess("Signed in as guest!");
-  //       navigate("/home");
-  //     }
-  //   } catch (error) {
-  //     setError("An unexpected error guest occurred.");
-  //   }
-  //   console.log(guest);
-  // };
   const handleGuest = async () => {
     try {
       const { data, error } = await supabase.auth.signInAnonymously();
@@ -80,13 +60,24 @@ const SignUp = (props) => {
         setGuest(true); // Mark the user as a guest
         setSuccess("Signed in as guest!");
         navigate("/");
-        // console.log(guest);
       }
     } catch (error) {
       console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
       setError("An unexpected error occurred while signing in as guest.");
     }
   };
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const session = await supabase.auth.getSession();
+        console.log(session);
+      } catch (error) {
+        console.error("Error fetching session:", error);
+      }
+    };
+    fetchSession();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });

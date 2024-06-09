@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import supabase from "../auth/supabaseClient";
 import "../styles/Forms.css";
 import { useNavigate } from "react-router-dom";
@@ -63,6 +63,19 @@ const Login = (props) => {
       setError("An unexpected error occurred while signing in as guest.");
     }
   };
+
+  useEffect(() => {
+    const fetchSession = async () => {
+      try {
+        const session = await supabase.auth.getSession();
+        console.log(session);
+      } catch (error) {
+        console.error("Error fetching session:", error);
+      }
+    };
+
+    fetchSession();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
