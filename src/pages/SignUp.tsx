@@ -13,7 +13,14 @@ const SignUp = (props) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const { authenticated, setAuthenticated, guest, setGuest } = props;
+  const {
+    authenticated,
+    setAuthenticated,
+    guest,
+    setGuest,
+    onTogglePasswordVisibility,
+    isPasswordVisible,
+  } = props;
 
   const navigate = useNavigate();
 
@@ -107,12 +114,16 @@ const SignUp = (props) => {
         {/* <label htmlFor="password">Password:</label> */}
         <label className="password-label" htmlFor="password">
           Password:{" "}
-          <button className="password-icon-button">
-            <Icon icon={props.isPasswordVisible ? view_off : view} size="20" />
+          <button
+            onClick={onTogglePasswordVisibility}
+            className="password-icon-button"
+          >
+            <Icon icon={isPasswordVisible ? view : view_off} size="20" />
           </button>
         </label>{" "}
         <input
-          type="password"
+          // type="password"
+          type={isPasswordVisible ? "text" : "password"}
           id="password"
           name="password"
           className="form-text-input"

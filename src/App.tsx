@@ -18,6 +18,7 @@ function App() {
   const [portfolio, addPortfolio] = useState<PortfolioType[]>([]);
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [guest, setGuest] = useState<boolean>(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   // on mount
   useEffect(() => {
@@ -34,6 +35,10 @@ function App() {
     const getCoinDescData: CoinDescType[] = CoinDescData;
     setDescription(getCoinDescData);
   }
+
+  const onTogglePasswordVisibility = () => {
+    setIsPasswordVisible(!isPasswordVisible);
+  };
 
   return (
     <>
@@ -61,16 +66,6 @@ function App() {
           path="/coin-description/:coinName"
           element={<CoinDescription coinDescription={coinDescription} />}
         />
-        {/* <Route
-          path="/portfolio"
-          element={
-            <Portfolio
-              portfolio={portfolio}
-              addPortfolio={addPortfolio}
-              coins={coins}
-            />
-          }
-        /> */}
         <Route
           path="/portfolio"
           element={
@@ -91,6 +86,8 @@ function App() {
               setAuthenticated={setAuthenticated}
               guest={guest}
               setGuest={setGuest}
+              isPasswordVisible={isPasswordVisible}
+              onTogglePasswordVisibility={onTogglePasswordVisibility}
             />
           }
         />
@@ -102,6 +99,8 @@ function App() {
               setAuthenticated={setAuthenticated}
               guest={guest}
               setGuest={setGuest}
+              isPasswordVisible={isPasswordVisible}
+              onTogglePasswordVisibility={onTogglePasswordVisibility}
             />
           }
         />
