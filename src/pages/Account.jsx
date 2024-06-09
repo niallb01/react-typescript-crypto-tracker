@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import supabase from "../auth/supabaseClient";
 import { useNavigate } from "react-router-dom";
+import "../styles/Account.css";
 
 const Account = (props) => {
   const [newPassword, setNewPassword] = useState("");

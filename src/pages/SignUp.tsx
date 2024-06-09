@@ -12,14 +12,7 @@ const SignUp = (props) => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(null);
 
-  const {
-    authenticated,
-    setAuthenticated,
-    guest,
-    setGuest,
-    onTogglePasswordVisibility,
-    isPasswordVisible,
-  } = props;
+  const { setGuest, onTogglePasswordVisibility, isPasswordVisible } = props;
 
   const navigate = useNavigate();
 
@@ -102,7 +95,6 @@ const SignUp = (props) => {
           placeholder="Test Email"
           required
         />
-        {/* <label htmlFor="password">Password:</label> */}
         <label className="password-label" htmlFor="password">
           Password:{" "}
           <button
@@ -113,7 +105,6 @@ const SignUp = (props) => {
           </button>
         </label>{" "}
         <input
-          // type="password"
           type={isPasswordVisible ? "text" : "password"}
           id="password"
           name="password"

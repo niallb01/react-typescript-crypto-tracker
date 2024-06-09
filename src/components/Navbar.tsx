@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { FaCoins } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
-import supabase, { signOut } from "../auth/supabaseClient";
+import { signOut } from "../auth/supabaseClient";
 
 const Navbar = (props) => {
   const { authenticated, guest, setGuest, addPortfolio, setAuthenticated } =
@@ -13,12 +13,6 @@ const Navbar = (props) => {
     location.pathname === "/signup" || location.pathname === "/login";
 
   const navigate = useNavigate();
-
-  // const handleGuestLogout = () => {
-  //   setGuest(!guest);
-  //   navigate("/");
-  //   addPortfolio([]);
-  // };
 
   const handleGuestLogout = async () => {
     const success = await signOut();
@@ -65,7 +59,9 @@ const Navbar = (props) => {
           <div className="login-container">
             {authenticated && (
               <>
-                <button className="nav-login-btn">Settings</button>
+                <Link to="/account">
+                  <button className="nav-login-btn">Account</button>
+                </Link>
                 <button className="nav-sign-up-btn" onClick={handleAuthLogout}>
                   Logout
                 </button>

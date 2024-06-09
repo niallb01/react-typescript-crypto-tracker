@@ -12,9 +12,7 @@ const Login = (props) => {
   const [success, setSuccess] = useState(null);
 
   const {
-    authenticated,
     setAuthenticated,
-    guest,
     setGuest,
     onTogglePasswordVisibility,
     isPasswordVisible,
@@ -73,7 +71,6 @@ const Login = (props) => {
         console.error("Error fetching session:", error);
       }
     };
-
     fetchSession();
   }, []);
 

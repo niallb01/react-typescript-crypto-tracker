@@ -177,19 +177,12 @@ const Home = (props: HomeProps) => {
             placeholder="Search Currency..."
             onInput={handleSearchInput}
           ></input>
-          {/* <datalist id="search-input-2">
+          <datalist id="search-input-2">
             {coins.map(
               (coin: HomeCoinType, coinName: Key | null | undefined) => (
                 <option key={coinName}>{coin.name}</option>
               )
             )}
-          </datalist> */}
-          <datalist id="search-input-2">
-            {coins.map((coin: HomeCoinType) => (
-              <option key={coin.name} value={coin.name}>
-                {/* {coin.symbol.toUpperCase()} */}
-              </option>
-            ))}
           </datalist>
         </div>
       </div>

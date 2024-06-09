@@ -136,6 +136,7 @@ label {
   top: 50%;
   transform: translateY(-50%);
 }
+
 @media (max-width: 600px) {
   .login-form-container,
   .sign-up-form-container {

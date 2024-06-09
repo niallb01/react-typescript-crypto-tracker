@@ -10,6 +10,7 @@ import CoinDescData from "./data/CoinDescData.json";
 import { CoinType, CoinDescType, PortfolioType } from "./types/coin_types";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Account from "./pages/Account";
 import ProtectedRoute from "./protectedroutes/ProtectedRoute";
 
 function App() {
@@ -82,9 +83,6 @@ function App() {
           path="/signup"
           element={
             <SignUp
-              authenticated={authenticated}
-              setAuthenticated={setAuthenticated}
-              guest={guest}
               setGuest={setGuest}
               isPasswordVisible={isPasswordVisible}
               onTogglePasswordVisibility={onTogglePasswordVisibility}
@@ -95,9 +93,17 @@ function App() {
           path="/login"
           element={
             <Login
-              authenticated={authenticated}
               setAuthenticated={setAuthenticated}
-              guest={guest}
+              setGuest={setGuest}
+              isPasswordVisible={isPasswordVisible}
+              onTogglePasswordVisibility={onTogglePasswordVisibility}
+            />
+          }
+        />
+        <Route
+          path="/account"
+          element={
+            <Account
               setGuest={setGuest}
               isPasswordVisible={isPasswordVisible}
               onTogglePasswordVisibility={onTogglePasswordVisibility}
