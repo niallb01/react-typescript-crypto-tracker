@@ -103,7 +103,6 @@ const Login = (props) => {
           </button>
         </label>{" "}
         <input
-          // type="password"
           type={isPasswordVisible ? "text" : "password"}
           id="password"
           name="password"

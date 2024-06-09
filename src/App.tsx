@@ -104,7 +104,6 @@ function App() {
           path="/account"
           element={
             <Account
-              setGuest={setGuest}
               isPasswordVisible={isPasswordVisible}
               onTogglePasswordVisibility={onTogglePasswordVisibility}
             />
