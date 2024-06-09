@@ -201,6 +201,8 @@ a {
 
 .input-coin {
   list-style-type: none;
+  height: 200px;
+  overflow-y: auto;
 }
 
 .search-bar {
@@ -300,7 +302,8 @@ a {
   flex-direction: column;
   width: 320px;
   position: absolute;
-  top: 2%;
+  /* top: 2%; */
+  top: 30px;
   left: 35%;
   background: #2a3143;
   padding: 5px 22px;

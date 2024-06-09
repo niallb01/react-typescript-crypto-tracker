@@ -58,6 +58,7 @@ body.active-modal {
   right: 0;
   bottom: 0;
   position: absolute;
+  position: fixed;
 }
 
 .overlay {
@@ -403,6 +404,7 @@ body.active-modal {
   position: absolute;
   top: 10%;
   left: 15%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: #2a3143;
   padding: 14px 28px;
