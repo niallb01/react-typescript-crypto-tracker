@@ -37,7 +37,7 @@ function App() {
     setDescription(getCoinDescData);
   }
 
-  const onTogglePasswordVisibility = () => {
+  const onTogglePasswordVisibility: () => void = () => {
     setIsPasswordVisible(!isPasswordVisible);
   };
 
@@ -103,10 +103,12 @@ function App() {
         <Route
           path="/account"
           element={
-            <Account
-              isPasswordVisible={isPasswordVisible}
-              onTogglePasswordVisibility={onTogglePasswordVisibility}
-            />
+            <ProtectedRoute authenticated={authenticated} guest={guest}>
+              <Account
+                isPasswordVisible={isPasswordVisible}
+                onTogglePasswordVisibility={onTogglePasswordVisibility}
+              />
+            </ProtectedRoute>
           }
         />
       </Routes>

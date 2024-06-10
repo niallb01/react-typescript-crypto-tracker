@@ -73,7 +73,7 @@
 }
 .password-label {
   display: flex;
-  align-items: center; /* Center items vertically */
+  align-items: center;
 }
 
 .password-label button {

@@ -5,11 +5,21 @@ import { useNavigate } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { view_off } from "react-icons-kit/ikons/view_off";
 import { view } from "react-icons-kit/ikons/view";
+import React, { FormEvent } from "react";
+import { LoginProps } from "../types/auth_types";
 
-const Login = (props) => {
-  const [userData, setUserData] = useState({ email: "", password: "" });
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+type UserData = {
+  email: string;
+  password: string;
+};
+
+const Login = (props: LoginProps) => {
+  const [userData, setUserData] = useState<UserData>({
+    email: "",
+    password: "",
+  });
+  // const [error, setError] = useState(null);
+  // const [success, setSuccess] = useState(null);
 
   const {
     setAuthenticated,
@@ -20,7 +30,7 @@ const Login = (props) => {
 
   const navigate = useNavigate();
 
-  const handleLogin = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const { error } = await supabase.auth.signInWithPassword({
@@ -29,36 +39,36 @@ const Login = (props) => {
       });
 
       if (error) {
-        setError(error.message);
+        // setError(error.message);
       } else {
         setAuthenticated(true); // Mark the user as a guest
         navigate("/");
-        setSuccess(
-          "Login successful! Please check your email for confirmation."
-        );
+        // setSuccess(
+        //   "Login successful! Please check your email for confirmation."
+        // );
       }
     } catch (error) {
-      setError("An unexpected error occurred.");
+      // setError("An unexpected error occurred.");
     }
   };
 
   const handleGuest = async () => {
     try {
-      const { data, error } = await supabase.auth.signInAnonymously();
+      const { error } = await supabase.auth.signInAnonymously();
 
       if (error) {
         console.error("Guest sign-in error:", error); // Log the error
-        setError(error.message);
+        // setError(error.message);
       } else {
         console.log("Guest sign-in successful."); // Log success
         setGuest(true); // Mark the user as a guest
-        setSuccess("Signed in as guest!");
+        // setSuccess("Signed in as guest!");
         navigate("/");
         // console.log(guest);
       }
     } catch (error) {
       console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
-      setError("An unexpected error occurred while signing in as guest.");
+      // setError("An unexpected error occurred while signing in as guest.");
     }
   };
 
@@ -133,8 +143,8 @@ const Login = (props) => {
           Continue as Guest
         </button>
         <br></br>
-        {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">{success}</p>}
+        {/* {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>} */}
       </form>
     </div>
   );

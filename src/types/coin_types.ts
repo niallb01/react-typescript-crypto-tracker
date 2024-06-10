@@ -64,6 +64,8 @@ export type HomeProps = {
   coins: HomeCoinType[];
   portfolio: HomeCoinType[];
   addPortfolio: (portfolio: HomeCoinType[]) => void;
+  authenticated: boolean;
+  guest: boolean;
 };
 
 export type HomeCoinType = {

@@ -3,8 +3,9 @@ import { FaCoins } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import { signOut } from "../auth/supabaseClient";
+import { NavbarProps } from "../types/auth_types";
 
-const Navbar = (props) => {
+const Navbar = (props: NavbarProps) => {
   const { authenticated, guest, setGuest, addPortfolio, setAuthenticated } =
     props;
 

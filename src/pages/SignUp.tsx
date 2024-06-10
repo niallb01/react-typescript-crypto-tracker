@@ -5,21 +5,31 @@ import { useNavigate } from "react-router-dom";
 import Icon from "react-icons-kit";
 import { view_off } from "react-icons-kit/ikons/view_off";
 import { view } from "react-icons-kit/ikons/view";
+import React, { FormEvent } from "react";
+import { SignUpProps } from "../types/auth_types";
 
-const SignUp = (props) => {
-  const [userData, setUserData] = useState({ email: "", password: "" });
-  const [termsAccepted, setTermsAccepted] = useState(false);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(null);
+type UserData = {
+  email: string;
+  password: string;
+};
+
+const SignUp = (props: SignUpProps) => {
+  const [userData, setUserData] = useState<UserData>({
+    email: "",
+    password: "",
+  });
+  const [termsAccepted, setTermsAccepted] = useState<boolean>(false);
+  // const [error, setError] = useState(null);
+  // const [success, setSuccess] = useState(null);
 
   const { setGuest, onTogglePasswordVisibility, isPasswordVisible } = props;
 
   const navigate = useNavigate();
 
-  const handleSignup = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!termsAccepted) {
-      setError("You must accept the terms and conditions.");
+      // setError("You must accept the terms and conditions.");
       return;
     }
 
@@ -30,33 +40,33 @@ const SignUp = (props) => {
       });
 
       if (error) {
-        setError(error.message);
+        // setError(error.message);
       } else {
-        setSuccess(
-          "Sign up successful! Please check your email for confirmation."
-        );
+        // setSuccess(
+        //   "Sign up successful! Please check your email for confirmation."
+        // );
       }
     } catch (error) {
-      setError("An unexpected error occurred.");
+      // setError("An unexpected error occurred.");
     }
   };
 
   const handleGuest = async () => {
     try {
-      const { data, error } = await supabase.auth.signInAnonymously();
+      const { error } = await supabase.auth.signInAnonymously();
 
       if (error) {
         console.error("Guest sign-in error:", error); // Log the error
-        setError(error.message);
+        // setError(error.message);
       } else {
         console.log("Guest sign-in successful."); // Log success
         setGuest(true); // Mark the user as a guest
-        setSuccess("Signed in as guest!");
+        // setSuccess("Signed in as guest!");
         navigate("/");
       }
     } catch (error) {
       console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
-      setError("An unexpected error occurred while signing in as guest.");
+      // setError("An unexpected error occurred while signing in as guest.");
     }
   };
 
@@ -76,7 +86,7 @@ const SignUp = (props) => {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
-  const handleCheckboxChange = (e: any) => {
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTermsAccepted(e.target.checked);
   };
 
@@ -147,8 +157,8 @@ const SignUp = (props) => {
             I agree to terms and conditions
           </label>
         </div>
-        {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">{success}</p>}
+        {/* {error && <p className="error-message">{error}</p>}
+        {success && <p className="success-message">{success}</p>} */}
       </form>
     </div>
   );

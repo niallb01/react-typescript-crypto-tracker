@@ -1,6 +1,11 @@
 import { Navigate } from "react-router-dom";
+import { ProtectedRouteProps } from "../types/auth_types";
 
-const ProtectedRoute = ({ authenticated, guest, children }) => {
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
+  authenticated,
+  guest,
+  children,
+}) => {
   if (!authenticated && !guest) {
     return <Navigate to="/signup" />;
   }
