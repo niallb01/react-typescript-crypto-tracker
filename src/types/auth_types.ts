@@ -16,6 +16,8 @@ export type LoginProps = {
 export type AccountProps = {
   isPasswordVisible: boolean;
   onTogglePasswordVisibility: () => void;
+  addPortfolio: any;
+  setAuthenticated: (authenticated: boolean) => void;
 };
 
 export type NavbarProps = {

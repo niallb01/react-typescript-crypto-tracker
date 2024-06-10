@@ -7,6 +7,8 @@ import { view_off } from "react-icons-kit/ikons/view_off";
 import { view } from "react-icons-kit/ikons/view";
 import React, { FormEvent } from "react";
 import { LoginProps } from "../types/auth_types";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 type UserData = {
   email: string;
@@ -18,8 +20,6 @@ const Login = (props: LoginProps) => {
     email: "",
     password: "",
   });
-  // const [error, setError] = useState(null);
-  // const [success, setSuccess] = useState(null);
 
   const {
     setAuthenticated,
@@ -62,7 +62,10 @@ const Login = (props: LoginProps) => {
       } else {
         console.log("Guest sign-in successful."); // Log success
         setGuest(true); // Mark the user as a guest
-        // setSuccess("Signed in as guest!");
+        toast.success("Signed in as guest", {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+        });
         navigate("/");
         // console.log(guest);
       }
@@ -89,64 +92,66 @@ const Login = (props: LoginProps) => {
   };
 
   return (
-    <div className="login-form-container">
-      <h1 className="onLogin-header">Login</h1>
-      <form onSubmit={handleLogin}>
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          className="form-text-input"
-          value={userData.email}
-          onChange={handleChange}
-          placeholder="Test Email"
-          required
-        />
-        <label className="password-label" htmlFor="password">
-          Password:{" "}
-          <button
-            onClick={onTogglePasswordVisibility}
-            className="password-icon-button"
-          >
-            <Icon icon={isPasswordVisible ? view : view_off} size="20" />
+    <>
+      {/* <ToastContainer limit={1} /> */}
+      <div className="login-form-container">
+        <h1 className="onLogin-header">Login</h1>
+        <form onSubmit={handleLogin}>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="form-text-input"
+            value={userData.email}
+            onChange={handleChange}
+            placeholder="Test Email"
+            required
+          />
+          <label className="password-label" htmlFor="password">
+            Password:{" "}
+            <button
+              type="button"
+              onClick={onTogglePasswordVisibility}
+              className="password-icon-button"
+            >
+              <Icon icon={isPasswordVisible ? view : view_off} size="20" />
+            </button>
+          </label>{" "}
+          <input
+            type={isPasswordVisible ? "text" : "password"}
+            id="password"
+            name="password"
+            className="form-text-input"
+            value={userData.password}
+            onChange={handleChange}
+            placeholder="Test Password"
+            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+            // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
+            required
+          />
+          <button type="submit" id="submit" name="submit" className="login-btn">
+            Login
           </button>
-        </label>{" "}
-        <input
-          type={isPasswordVisible ? "text" : "password"}
-          id="password"
-          name="password"
-          className="form-text-input"
-          value={userData.password}
-          onChange={handleChange}
-          placeholder="Test Password"
-          // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-          // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
-          required
-        />
-        <button type="submit" id="submit" name="submit" className="login-btn">
-          Login
-        </button>
-        <p className="form-p">
-          Don't have an account?{" "}
-          <a className="form-link" href="/signup">
-            Sign Up
-          </a>{" "}
-        </p>
-        <button
-          type="button"
-          onClick={handleGuest}
-          id="guest"
-          name="guest"
-          className="guest-btn"
-        >
-          Continue as Guest
-        </button>
-        <br></br>
-        {/* {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">{success}</p>} */}
-      </form>
-    </div>
+          <p className="form-p">
+            Don't have an account?{" "}
+            <a className="form-link" href="/signup">
+              Sign Up
+            </a>{" "}
+          </p>
+          <button
+            type="button"
+            onClick={handleGuest}
+            id="guest"
+            name="guest"
+            className="guest-btn"
+          >
+            Continue as Guest
+          </button>
+          <br></br>
+        </form>
+      </div>
+    </>
   );
 };
 

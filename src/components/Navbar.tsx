@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "../styles/Navbar.css";
 import { signOut } from "../auth/supabaseClient";
 import { NavbarProps } from "../types/auth_types";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 const Navbar = (props: NavbarProps) => {
   const { authenticated, guest, setGuest, addPortfolio, setAuthenticated } =
@@ -21,6 +23,10 @@ const Navbar = (props: NavbarProps) => {
       setGuest(false);
       navigate("/");
       addPortfolio([]);
+      toast.success("You have logged out as guest", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
     }
   };
 
@@ -30,6 +36,10 @@ const Navbar = (props: NavbarProps) => {
       setAuthenticated(false);
       navigate("/");
       addPortfolio([]);
+      toast.success("You have logged out", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
     }
   };
 

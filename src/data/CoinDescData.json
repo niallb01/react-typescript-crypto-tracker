@@ -434,8 +434,8 @@
     "circulating_supply": 412345678,
     "total_supply": 1000000000,
     "max_supply": null,
-    "ath": 52.34,
-    "atl": 0.1,
+    "ath": 0.133669,
+    "atl": 0.00013621,
     "coin_description": "Chainlink is a framework for building Decentralized Oracle Networks (DONs) that bring real-world data onto blockchain networks, enabling the creation of hybrid smart contracts. These DONs provide decentralized services such as Price Feeds, Proof of Reserve, Verifiable Randomness, Keepers, and the ability to connect to any web API.",
     "key": "",
     "index": 21,
@@ -455,8 +455,8 @@
     "circulating_supply": 345678912,
     "total_supply": 8179582327,
     "max_supply": 1000000000,
-    "ath": 3.45,
-    "atl": 0.05,
+    "ath": 0.1669,
+    "atl": 0.00011,
     "coin_description": "ALGO tokens can be traded on centralized crypto exchanges. The most popular exchange to buy and trade Algorand is Gate.io, where the most active trading pair ALGO/USDT has a trading volume of $2,486,050 in the last 24 hours. Other popular options include MEXC and LBank.",
     "key": "",
     "index": 22,
@@ -690,7 +690,7 @@
     "atl": 20.0,
     "key": "",
     "index": 26,
-    "coin_description": "Zcash is a privacy-focused cryptocurrency that uses zero-knowledge proofs to ensure transactions are shielded and private. It offers the option to shield transactions for added privacy.",
+    "coin_description": "Zcash is a privacy-focused cryptocurrency which is based on Bitcoin's codebase. It shares many similarities, such as a fixed total supply of 21 million units. Transactions can be transparent, similar to bitcoin transactions, or they can be shielded transactions which use a type of zero-knowledge proof to provide anonymity in transactions. Zcash coins are either in a transparent pool or a shielded pool.",
     "coindesc": ""
   },
   {
@@ -774,7 +774,7 @@
     "atl": 0.5,
     "key": "",
     "index": 26,
-    "coin_description": "Horizen is a privacy-focused blockchain platform that enables developers to build privacy-preserving applications. It features a scalable, interoperable, and secure infrastructure.",
+    "coin_description": "ZEN tokens can be traded on centralized crypto exchanges. The most popular exchange to buy and trade Horizen is Binance, where the most active trading pair ZEN/USDT has a trading volume of $2,334,227 in the last 24 hours. Other popular options include DigiFinex and Bybit.",
     "coindesc": ""
   },
   {
@@ -816,7 +816,7 @@
     "atl": 0.001,
     "key": "",
     "index": 26,
-    "coin_description": "Zilliqa is a high-performance, high-security blockchain platform for decentralized applications. It uses sharding to enable high throughput and low latency, making it suitable for applications requiring high transaction rates.",
+    "coin_description": "Zilliqa (ZIL) is a token developed in the year 2017. Zilliqa is mainly based on the concept of Sharding and primarily aims at improving the scalability of the cryptocurrency networks as in case of Bitcoin or Ethereum. The white paper mentions that the transactions speed would be approximately a thousand times more than that of Ethereum network. Ziliqa is fast, secured and decentralized. Zilliqa’s high throughput means that you can focus on developing your ideas without worrying about network congestion, high transaction fees or security which are the key issues with legacy blockchain platforms.",
     "coindesc": ""
   },
   {

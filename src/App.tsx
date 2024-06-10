@@ -12,7 +12,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Account from "./pages/Account";
 import ProtectedRoute from "./protectedroutes/ProtectedRoute";
-
+import { ToastContainer } from "react-toastify";
 function App() {
   const [coins, setCoins] = useState<CoinType[]>([]);
   const [coinDescription, setDescription] = useState<CoinDescType[]>([]);
@@ -43,6 +43,7 @@ function App() {
 
   return (
     <>
+      <ToastContainer limit={1} />
       <Navbar
         authenticated={authenticated}
         setAuthenticated={setAuthenticated}
@@ -105,6 +106,8 @@ function App() {
           element={
             <ProtectedRoute authenticated={authenticated} guest={guest}>
               <Account
+                setAuthenticated={setAuthenticated}
+                addPortfolio={addPortfolio}
                 isPasswordVisible={isPasswordVisible}
                 onTogglePasswordVisibility={onTogglePasswordVisibility}
               />

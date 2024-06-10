@@ -14,4 +14,4 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
 
 export default ProtectedRoute;
 
-// children = portfolio component
+// children = route that is being protected, portfolio, account
