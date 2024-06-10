@@ -19,7 +19,7 @@ function App() {
   const [portfolio, addPortfolio] = useState<PortfolioType[]>([]);
   const [authenticated, setAuthenticated] = useState<boolean>(false);
   const [guest, setGuest] = useState<boolean>(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   // on mount
   useEffect(() => {
