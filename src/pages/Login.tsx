@@ -39,7 +39,7 @@ const Login = (props: LoginProps) => {
     if (error) {
       toast.error("Error logging in, please check your account details", {
         position: toast.POSITION.TOP_CENTER,
-        autoClose: false,
+        autoClose: 2000,
       });
     } else {
       setAuthenticated(true);

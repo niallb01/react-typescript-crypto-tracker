@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import supabase, { signOut } from "../auth/supabaseClient";
+import supabase from "../auth/supabaseClient";
 import "../styles/Account.css";
 import Icon from "react-icons-kit";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +8,7 @@ import { view } from "react-icons-kit/ikons/view";
 import { AccountProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+// import { signOut } from "../auth/supabaseClient";
 
 const Account = (props: AccountProps) => {
   const [newPassword, setNewPassword] = useState("");
@@ -33,11 +34,20 @@ const Account = (props: AccountProps) => {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
-      navigate("/login");
       setAuthenticated(false);
       addPortfolio([]);
+      navigate("/login");
     }
   };
+
+  // const handlePasswordLogout = async () => {
+  //   const success = await signOut();
+  //   if (success) {
+  //     setAuthenticated(false);
+  //     navigate("/login");
+  //     addPortfolio([]);
+  //   }
+  // };
 
   const onPasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(e.target.value);
