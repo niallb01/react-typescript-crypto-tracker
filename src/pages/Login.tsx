@@ -8,7 +8,7 @@ import { view } from "react-icons-kit/ikons/view";
 import React, { FormEvent } from "react";
 import { LoginProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 
 type UserData = {
   email: string;
@@ -32,46 +32,39 @@ const Login = (props: LoginProps) => {
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email: userData.email,
-        password: userData.password,
+    const { error } = await supabase.auth.signInWithPassword({
+      email: userData.email,
+      password: userData.password,
+    });
+    if (error) {
+      toast.error("Error logging in, please check your account details", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: false,
       });
-
-      if (error) {
-        // setError(error.message);
-      } else {
-        setAuthenticated(true); // Mark the user as a guest
-        navigate("/");
-        // setSuccess(
-        //   "Login successful! Please check your email for confirmation."
-        // );
-      }
-    } catch (error) {
-      // setError("An unexpected error occurred.");
+    } else {
+      setAuthenticated(true);
+      navigate("/");
+      toast.success("Success, you are logged in", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
     }
   };
 
   const handleGuest = async () => {
-    try {
-      const { error } = await supabase.auth.signInAnonymously();
-
-      if (error) {
-        console.error("Guest sign-in error:", error); // Log the error
-        // setError(error.message);
-      } else {
-        console.log("Guest sign-in successful."); // Log success
-        setGuest(true); // Mark the user as a guest
-        toast.success("Signed in as guest", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1000,
-        });
-        navigate("/");
-        // console.log(guest);
-      }
-    } catch (error) {
-      console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
-      // setError("An unexpected error occurred while signing in as guest.");
+    const { error } = await supabase.auth.signInAnonymously();
+    if (error) {
+      toast.error("Error signing in as Guest", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: false,
+      });
+    } else {
+      setGuest(true);
+      toast.success("Signed in as Guest", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+      navigate("/");
     }
   };
 
@@ -93,7 +86,6 @@ const Login = (props: LoginProps) => {
 
   return (
     <>
-      {/* <ToastContainer limit={1} /> */}
       <div className="login-form-container">
         <h1 className="onLogin-header">Login</h1>
         <form onSubmit={handleLogin}>
@@ -126,8 +118,8 @@ const Login = (props: LoginProps) => {
             value={userData.password}
             onChange={handleChange}
             placeholder="Test Password"
-            // pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-            // title="Must contain at least one number, one uppercase letter, one special character, and at least 8 or more characters"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+            title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
             required
           />
           <button type="submit" id="submit" name="submit" className="login-btn">

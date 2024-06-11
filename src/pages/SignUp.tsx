@@ -26,36 +26,6 @@ const SignUp = (props: SignUpProps) => {
 
   const navigate = useNavigate();
 
-  // const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   if (!termsAccepted) {
-  //     toast.warning("You must agree to terms and conditions", {
-  //       position: toast.POSITION.TOP_CENTER,
-  //       autoClose: 1000,
-  //     });
-  //     return;
-  //   }
-
-  //   try {
-  //     const { error } = await supabase.auth.signUp({
-  //       email: userData.email,
-  //       password: userData.password,
-  //     });
-
-  //     if (error) {
-  //       // setError(error.message);
-  //     } else {
-  //       toast.success("Account created, please go to login", {
-  //         position: toast.POSITION.TOP_CENTER,
-  //         autoClose: 1000,
-  //       });
-  //       setUserData({ email: "", password: "" });
-  //     }
-  //   } catch (error) {
-  //     // setError("An unexpected error occurred.");
-  //   }
-  // };
-
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!termsAccepted) {
@@ -73,39 +43,37 @@ const SignUp = (props: SignUpProps) => {
 
     if (error) {
       toast.error(
-        "Error, creating account, check account details are not duplicate.",
+        "Error creating account, check account details are not duplicate.",
         {
           position: toast.POSITION.TOP_CENTER,
-          // autoClose: 3000,
+          autoClose: false,
         }
       );
     } else {
-      toast.success("Account created, please go to login", {
+      toast.success("Success, user account created", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
       setUserData({ email: "", password: "" });
+      navigate("/login");
     }
   };
 
   const handleGuest = async () => {
-    try {
-      const { error } = await supabase.auth.signInAnonymously();
+    const { error } = await supabase.auth.signInAnonymously();
 
-      if (error) {
-        console.error("Guest sign-in error:", error); // Log the error
-        // setError(error.message);
-      } else {
-        console.log("Guest sign-in successful."); // Log success
-        setGuest(true); // Mark the user as a guest
-        toast.success("Signed in as guest", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1000,
-        });
-        navigate("/");
-      }
-    } catch (error) {
-      console.error("Unexpected error during guest sign-in:", error); // Log unexpected errors
+    if (error) {
+      toast.error("Guest sign-in error. Please try again.", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+    } else {
+      setGuest(true);
+      toast.success("Signed in as Guest", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+      navigate("/");
     }
   };
 

@@ -45,11 +45,9 @@
   font-weight: 600;
 }
 
-/* .nav-sign-up-btn:hover {
-  background-color: #384d61;
-  color: #48c1be;
-  border: 1px solid;
-} */
+.nav-sign-up-btn:hover {
+  background-color: #3dcab5;
+}
 
 .nav-login-btn:hover {
   color: #48c1be;
@@ -65,11 +63,10 @@
 }
 
 @media (max-width: 600px) {
-  .nav-login-btn,
+  /* .nav-login-btn,
   .nav-sign-up-btn {
-    height: 25px;
     margin-left: 5px;
-  }
+  } */
   .login-container {
     display: block;
     position: relative;
@@ -81,8 +78,8 @@
 }
 
 @media (max-width: 900px) {
-  .login-container {
-    /* margin-right: 15px; */
+  /* .login-container {
+    margin-right: 15px;
     right: 10px;
-  }
+  } */
 }

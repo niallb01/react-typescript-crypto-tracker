@@ -22,27 +22,20 @@ const Account = (props: AccountProps) => {
   } = props;
 
   const handleChangePassword = async () => {
-    try {
-      const { error } = await supabase.auth.updateUser({
-        password: newPassword,
-      });
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
 
-      if (error) {
-        toast.warning("Error changing password", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1000,
-        });
-      } else {
-        toast.success("Password successfully changed", {
-          position: toast.POSITION.TOP_CENTER,
-          autoClose: 1000,
-        });
-        navigate("/login");
-        setAuthenticated(false);
-        addPortfolio([]);
-      }
-    } catch (error) {
-      // setMessage(`Error changing password: ${error.message}`);
+    if (error) {
+      return;
+    } else {
+      toast.success("Password successfully changed", {
+        position: toast.POSITION.TOP_CENTER,
+        autoClose: 1000,
+      });
+      navigate("/login");
+      setAuthenticated(false);
+      addPortfolio([]);
     }
   };
 
@@ -52,32 +45,35 @@ const Account = (props: AccountProps) => {
 
   return (
     <>
-      <div className="login-form-container">
-        <h1 className="onLogin-header">Change Password</h1>
-        <label className="password-label" htmlFor="password">
-          Password:{" "}
-          <button
-            type="button"
-            onClick={onTogglePasswordVisibility}
-            className="password-icon-button"
-          >
-            <Icon icon={isPasswordVisible ? view : view_off} size="20" />
+      <div className="account-form-container">
+        <h1 className="account-header">Change Password</h1>
+        <form>
+          <label className="password-label" htmlFor="password">
+            New Password:{" "}
+            <button
+              type="button"
+              onClick={onTogglePasswordVisibility}
+              className="password-icon-button"
+            >
+              <Icon icon={isPasswordVisible ? view : view_off} size="20" />
+            </button>
+          </label>{" "}
+          <input
+            type={isPasswordVisible ? "text" : "password"}
+            id="password"
+            name="password"
+            className="form-text-input"
+            value={newPassword}
+            onChange={onPasswordInput}
+            placeholder="New Test Password"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+            title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
+            required
+          />
+          <button onClick={handleChangePassword} className="login-btn">
+            Confirm
           </button>
-        </label>{" "}
-        <input
-          type={isPasswordVisible ? "text" : "password"}
-          id="password"
-          name="password"
-          className="form-text-input"
-          onChange={onPasswordInput}
-          placeholder="Test Password"
-          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
-          title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
-          required
-        />
-        <button onClick={handleChangePassword} className="login-btn">
-          Change Password
-        </button>
+        </form>
       </div>
     </>
   );

@@ -23,7 +23,7 @@ const Navbar = (props: NavbarProps) => {
       setGuest(false);
       navigate("/");
       addPortfolio([]);
-      toast.success("You have logged out as guest", {
+      toast.success("You have logged out as Guest", {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
       });
