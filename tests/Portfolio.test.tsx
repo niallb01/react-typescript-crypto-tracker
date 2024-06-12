@@ -1,4 +1,4 @@
-import Portfolio from "../src/pagecomponents/Portfolio";
+import Portfolio from "../src/pages/Portfolio";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { it, expect, describe } from "vitest";

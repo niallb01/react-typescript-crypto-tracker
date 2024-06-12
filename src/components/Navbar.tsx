@@ -71,9 +71,9 @@ const Navbar = (props: NavbarProps) => {
             {authenticated && (
               <>
                 <Link to="/account">
-                  <button className="nav-login-btn">Account</button>
+                  <button className="nav-account-btn">Account</button>
                 </Link>
-                <button className="nav-sign-up-btn" onClick={handleAuthLogout}>
+                <button className="nav-logout-btn" onClick={handleAuthLogout}>
                   Logout
                 </button>
               </>

@@ -1,6 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { it, expect, describe, vi } from "vitest";
-import Home from "../src/pagecomponents/Home";
+import { it, expect, describe } from "vitest";
+import Home from "../src/pages/Home";
 import React from "react";
 import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/vitest";
@@ -10,7 +10,13 @@ describe("home", () => {
   it("should render with correct text and initial state", () => {
     render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     const searchInput = screen.getByPlaceholderText(/search currency/i);
@@ -23,7 +29,13 @@ describe("portfolio link", () => {
   it("should render portfolio page when navigating to portfolio page", async () => {
     const { getByText } = render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     const portfolioLink = getByText(/portfolio/i);
@@ -43,7 +55,13 @@ describe("portfolio button", () => {
   it("should add or remove coin from portfolio and trigger toast message", async () => {
     const { container } = render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     const addCoinButton = document.querySelector(
@@ -63,7 +81,13 @@ describe("dropdown button", () => {
   it("should trigger dropdown menu", async () => {
     render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     const dropdownButton = screen.getByRole("button", { name: /customise/i });
@@ -82,7 +106,13 @@ describe("dropdown content", () => {
   it("should show metrics and switches that trigger sorting functions", async () => {
     render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     // before user event
@@ -111,7 +141,13 @@ describe("dropdown handler", () => {
     let dropdownClosed = false;
     const { container } = render(
       <MemoryRouter>
-        <Home coins={[]} portfolio={[]} addPortfolio={() => {}} />
+        <Home
+          coins={[]}
+          portfolio={[]}
+          addPortfolio={() => {}}
+          authenticated={false}
+          guest={false}
+        />
       </MemoryRouter>
     );
     const dropdown = container.getElementsByClassName("dropdown");

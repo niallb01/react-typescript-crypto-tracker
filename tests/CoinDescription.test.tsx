@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { it, describe, expect } from "vitest";
-import CoinDescription from "../src/pagecomponents/CoinDescription";
+import CoinDescription from "../src/pages/CoinDescription";
 import React from "react";
 import { MemoryRouter } from "react-router";
 import "@testing-library/jest-dom/vitest";
