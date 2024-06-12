@@ -4,13 +4,14 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import SignUp from "../../src/pages/SignUp";
+import Login from "../../src/pages/Login";
 
-describe("signup", () => {
-  it("should render signup page with form", () => {
+describe("login'", () => {
+  it("should render login page with form", () => {
     render(
       <MemoryRouter>
-        <SignUp
+        <Login
+          setAuthenticated={() => {}}
           setGuest={() => {}}
           isPasswordVisible={false}
           onTogglePasswordVisibility={() => {}}
@@ -22,13 +23,14 @@ describe("signup", () => {
   });
 });
 
-describe("signup form", () => {
+describe("login form", () => {
   const user = userEvent.setup();
 
   it("should contain text inputs and buttons", async () => {
     const { getByText } = render(
       <MemoryRouter>
-        <SignUp
+        <Login
+          setAuthenticated={() => {}}
           setGuest={() => {}}
           isPasswordVisible={false}
           onTogglePasswordVisibility={() => {}}
@@ -46,11 +48,11 @@ describe("signup form", () => {
     ) as unknown as HTMLImageElement;
     expect(passwordIcon).toBeInTheDocument();
 
-    const signUpButton = screen.getByRole("button", {
-      name: /sign up/i,
+    const loginButton = screen.getByRole("button", {
+      name: /login/i,
     });
-    user.click(signUpButton);
-    expect(signUpButton).toBeInTheDocument();
+    user.click(loginButton);
+    expect(loginButton).toBeInTheDocument();
 
     const guestButton = screen.getByRole("button", {
       name: /continue as guest/i,
@@ -58,13 +60,9 @@ describe("signup form", () => {
     user.click(guestButton);
     expect(guestButton).toBeInTheDocument();
 
-    const loginLink = getByText(/login/i);
+    const loginLink = getByText(/sign up/i);
     await user.click(loginLink);
     expect(loginLink).toBeInTheDocument();
-    expect(loginLink.getAttribute("href")).toBe("/login");
-
-    const terms = screen.getByRole("checkbox");
-    await user.click(terms);
-    expect(terms).toBeInTheDocument();
+    expect(loginLink.getAttribute("href")).toBe("/signup");
   });
 });
