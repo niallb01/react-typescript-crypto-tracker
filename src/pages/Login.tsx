@@ -9,6 +9,7 @@ import React, { FormEvent } from "react";
 import { LoginProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { IoMdLogIn } from "react-icons/io";
 
 type UserData = {
   email: string;
@@ -87,7 +88,10 @@ const Login = (props: LoginProps) => {
   return (
     <>
       <div className="login-form-container">
-        <h1 className="onLogin-header">Login</h1>
+        <h1 className="onLogin-header">
+          <IoMdLogIn />
+          Login
+        </h1>
         <form onSubmit={handleLogin}>
           <label htmlFor="email">Email:</label>
           <input

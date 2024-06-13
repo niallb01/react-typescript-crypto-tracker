@@ -3,7 +3,7 @@ import { Key, useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import { HomeCoinType, HomeProps } from "../types/coin_types";
 import { IoSparklesOutline } from "react-icons/io5";
 import { SiBaremetrics } from "react-icons/si";
@@ -168,7 +168,6 @@ const Home = (props: HomeProps) => {
 
   return (
     <>
-      <ToastContainer limit={1} />
       <div className="user-coin-search">
         <div className="search-bar">
           <input

@@ -9,6 +9,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
   if (!authenticated && !guest) {
     return <Navigate to="/signup" />;
   }
+
   return children;
 };
 

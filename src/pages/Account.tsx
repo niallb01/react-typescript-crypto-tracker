@@ -8,6 +8,7 @@ import { view } from "react-icons-kit/ikons/view";
 import { AccountProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { TbPasswordUser } from "react-icons/tb";
 
 const Account = (props: AccountProps) => {
   const [newPassword, setNewPassword] = useState("");
@@ -51,7 +52,9 @@ const Account = (props: AccountProps) => {
 
   return (
     <div className="account-form-container">
-      <h1 className="account-header">Change Password</h1>
+      <h1 className="account-header">
+        <TbPasswordUser /> Change Password
+      </h1>
       <form onSubmit={handleChangePassword}>
         <label className="password-label" htmlFor="password">
           New Password:{" "}

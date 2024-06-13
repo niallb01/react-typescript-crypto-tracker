@@ -9,6 +9,7 @@ import React, { FormEvent } from "react";
 import { SignUpProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
+import { IoCreateOutline } from "react-icons/io5";
 
 type UserData = {
   email: string;
@@ -100,7 +101,10 @@ const SignUp = (props: SignUpProps) => {
   return (
     <>
       <div className="sign-up-form-container">
-        <h1 className="onLogin-header">Create Account</h1>
+        <h1 className="onLogin-header">
+          <IoCreateOutline />
+          Create Account
+        </h1>
         <form onSubmit={handleSignup}>
           <label htmlFor="email">Email:</label>
           <input
