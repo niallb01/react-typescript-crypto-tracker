@@ -55,11 +55,6 @@ label {
   margin-bottom: 20px;
 }
 
-.login-btn:hover {
-  background-color: #384d61;
-  color: #48c1be;
-}
-
 .password-label {
   display: flex;
   align-items: center;

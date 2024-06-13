@@ -62,11 +62,45 @@
   right: 60px;
 }
 
+.nav-account-btn {
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #2a3143;
+  background-color: #384d61;
+  color: #48c1be;
+  height: 30px;
+  border: 1px solid;
+  font-weight: 600;
+}
+
+.nav-account-btn:hover {
+  color: #48c1be;
+  background-color: #2a3143;
+  border: 1px solid;
+}
+
+.nav-logout-btn {
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #2a3143;
+  background-color: #48c1be;
+  height: 30px;
+  border: 1px solid;
+  font-weight: 600;
+}
+
+.nav-logout-btn:hover {
+  background-color: #3dcab5;
+}
+
+.login-btn:hover {
+  background-color: #384d61;
+  color: #48c1be;
+}
+
 @media (max-width: 600px) {
-  /* .nav-login-btn,
-  .nav-sign-up-btn {
-    margin-left: 5px;
-  } */
   .login-container {
     display: block;
     position: relative;
