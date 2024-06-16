@@ -6,6 +6,7 @@ import PortfolioCoin from "../portfoliocomponents/PortfolioCoin";
 import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
 
@@ -168,7 +169,7 @@ const Portfolio = (props: PortfolioProps) => {
                 onClick={toggleQRCodeModal}
                 className="close-modal-edit-coin"
               >
-                X
+                <IoMdCloseCircleOutline />
               </button>
             </div>
             <QRCode value={stringifyPortfolioData()} />
@@ -192,7 +193,7 @@ const Portfolio = (props: PortfolioProps) => {
                 onClick={toggleCheckModal}
                 className="close-modal-delete-portfolio"
               >
-                x
+                <IoMdCloseCircleOutline />
               </button>
             </div>
           </div>
@@ -245,7 +246,7 @@ const Portfolio = (props: PortfolioProps) => {
                       onClick={toggleAddCoinModal}
                       className="close-modal-edit-coin"
                     >
-                      x
+                      <IoMdCloseCircleOutline />
                     </button>
                   </div>
                 </div>
@@ -267,7 +268,7 @@ const Portfolio = (props: PortfolioProps) => {
             </ul>
 
             <button onClick={togglePortfolioModal} className="close-modal">
-              X
+              <IoMdCloseCircleOutline size={24} />
             </button>
           </div>
         </div>
@@ -333,7 +334,7 @@ const Portfolio = (props: PortfolioProps) => {
                 onClick={toggleDeletePortfolioModal}
                 className="close-modal-delete-portfolio"
               >
-                x
+                <IoMdCloseCircleOutline />
               </button>
 
               <br></br>

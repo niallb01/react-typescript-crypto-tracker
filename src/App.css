@@ -434,7 +434,7 @@ li {
     flex-wrap: wrap;
     background: #2a3143;
     margin: 5px;
-    height: 160px;
+    height: 200px;
     bottom: 80%;
   }
 
@@ -443,7 +443,7 @@ li {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    background: #2a3143;
+    background: hsl(223, 23%, 21%);
     margin: 5px;
     height: 160px;
     bottom: 80%;
@@ -452,13 +452,14 @@ li {
   .modal-content-portfolio {
     display: flex;
     flex-direction: column;
-    width: 60px;
-    /* width: 350px; */
+    /* width: 60px; */
+    width: 40px;
     position: absolute;
     top: 5%;
-    left: 15px;
+    /* left: 15px; */
+    left: 35px;
     background: #2a3143;
-    padding: 14px 28px;
+    /* padding: 14px 28px; */
     border-radius: 10px;
     max-width: 600px;
     min-width: 300px;
@@ -546,7 +547,7 @@ li {
     flex-wrap: wrap;
     background: #2a3143;
     margin: 5px;
-    height: 160px;
+    height: 200px;
     bottom: 80%;
   }
 
