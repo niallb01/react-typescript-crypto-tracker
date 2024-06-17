@@ -30,6 +30,7 @@ body.active-modal {
   background-color: #48c1be;
   color: #2a3143;
   font-size: 14px;
+  font-weight: 600;
   border: none;
   border-radius: 5px;
   width: 110px;
@@ -103,7 +104,7 @@ body.active-modal {
   border: none;
   transition: ease-out 0.3s;
   outline: none;
-  font-size: 18px;
+  font-size: 22px;
   text-shadow: none;
   top: 5px;
   right: 5px;
@@ -248,8 +249,10 @@ body.active-modal {
   outline: none;
   font-size: 22px;
   text-shadow: none;
-  top: 1px;
-  right: 5px;
+  /* top: 1px;
+  right: 5px; */
+  top: 3px;
+  right: 2px;
 }
 
 .delete-edit-overlay {
@@ -358,6 +361,7 @@ body.active-modal {
   color: #48c1be;
   border: 1px solid;
   border-radius: 5px;
+  font-weight: 600;
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;
@@ -378,6 +382,7 @@ body.active-modal {
   color: #48c1be;
   border: 1px solid;
   border-radius: 5px;
+  font-weight: 600;
   transition: ease-out 0.3s;
   outline: none;
   cursor: pointer;

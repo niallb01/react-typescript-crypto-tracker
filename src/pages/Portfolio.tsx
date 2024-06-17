@@ -218,6 +218,22 @@ const Portfolio = (props: PortfolioProps) => {
               onInput={handlePortfolioSearchInput}
             />
 
+            {/* <div>
+              <input
+                className="portfolio-search"
+                list="search-input-2"
+                placeholder="Search Coin..."
+                value={portfolioSearch}
+                onInput={handlePortfolioSearchInput}
+              />
+
+              <datalist id="search-input-2">
+                {coinResults.map((coin) => (
+                  <option key={coin.name} value={coin.name}></option>
+                ))}
+              </datalist>
+            </div> */}
+
             <input
               onInput={handleQuantity}
               type="text"

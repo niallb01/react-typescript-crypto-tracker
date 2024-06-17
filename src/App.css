@@ -265,6 +265,7 @@ a {
   background-color: #dd143c;
   color: #ffffff;
   font-size: 14px;
+  font-weight: 600;
   border: none;
   border-radius: 5px;
   height: 40px;
@@ -469,16 +470,16 @@ li {
   }
 
   .item-2 {
-    width: 20px;
+    width: 30px;
   }
 
   .item-3 {
-    width: 80px;
+    width: 100px;
     text-align: center;
   }
 
   .item-4 {
-    width: 30px;
+    width: 40px;
   }
 
   .item-6 {
@@ -567,16 +568,16 @@ li {
   }
 
   .item-2 {
-    width: 20px;
+    width: 30px;
   }
 
   .item-3 {
-    width: 80px;
+    width: 100px;
     text-align: center;
   }
 
   .item-4 {
-    width: 30px;
+    width: 40px;
   }
 
   .item-6 {

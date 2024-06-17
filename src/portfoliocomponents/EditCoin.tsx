@@ -3,6 +3,7 @@ import "../styles/Modal.css";
 import { IoWarningOutline } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 type EditCoinProps = {
   onDeletePortfolioCoin: (coin: string) => void;
@@ -116,7 +117,7 @@ const EditCoin = (props: EditCoinProps) => {
                       onClick={toggleEditQRModal}
                       className="close-modal-edit-coin"
                     >
-                      X
+                      <IoMdCloseCircleOutline />
                     </button>
                   </div>
                   <QRCode value={stringifyEditCoinData()} />
@@ -144,7 +145,7 @@ const EditCoin = (props: EditCoinProps) => {
                 onClick={toggleEditModal}
                 className="close-modal-edit-coin"
               >
-                X
+                <IoMdCloseCircleOutline />
               </button>
               {updateEditModal && (
                 <div className="update-portfolio-modal">
@@ -165,7 +166,7 @@ const EditCoin = (props: EditCoinProps) => {
                         onClick={toggleUpdateEditModal}
                         className="close-modal-delete-portfolio"
                       >
-                        x
+                        <IoMdCloseCircleOutline />
                       </button>
                     </div>
                   </div>
@@ -199,7 +200,7 @@ const EditCoin = (props: EditCoinProps) => {
                         onClick={toggleDeleteEditModal}
                         className="close-modal-delete-portfolio"
                       >
-                        x
+                        <IoMdCloseCircleOutline />
                       </button>
                       <br />
                       <button
