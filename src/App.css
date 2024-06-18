@@ -185,20 +185,6 @@ a {
   color: #49c0be;
 }
 
-.search-input {
-  width: 500px;
-  background-color: #2a3143;
-  border-radius: 5px 5px;
-  height: 1.4375em;
-  padding: 16.5px 14px;
-  padding-left: 5px;
-  color: #ffffff;
-  margin-top: 20px;
-  margin-bottom: 30px;
-  border-width: 0em;
-  font-size: 16px;
-}
-
 .input-coin {
   list-style-type: none;
   height: 150px;
@@ -458,7 +444,7 @@ li {
     position: absolute;
     top: 5%;
     /* left: 15px; */
-    left: 35px;
+    left: 18px;
     background: #2a3143;
     /* padding: 14px 28px; */
     border-radius: 10px;

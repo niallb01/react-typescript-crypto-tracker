@@ -9,6 +9,8 @@ import { IoSparklesOutline } from "react-icons/io5";
 import { SiBaremetrics } from "react-icons/si";
 import { CiBitcoin } from "react-icons/ci";
 import { Switch, FormGroup, FormControlLabel } from "@mui/material";
+import "../styles/Dropdown.css";
+import InputCoin from "../inputcomponents/InputCoin";
 
 const Home = (props: HomeProps) => {
   const [search, setSearch] = useState<string>("");
@@ -38,7 +40,16 @@ const Home = (props: HomeProps) => {
   }, [dropdown]);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.value);
     setSearch(e.target.value);
+  };
+
+  // const handleDropdownClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearch(e.target.value);
+  // };
+
+  const chooseCoin = (name: string) => {
+    setSearch(name);
   };
 
   const onDropdown = () => {
@@ -170,7 +181,8 @@ const Home = (props: HomeProps) => {
     <>
       <div className="user-coin-search">
         <div className="search-bar">
-          <input
+          {/* <input
+            type="text"
             className="search-input"
             list="search-input-2"
             placeholder="Search Currency..."
@@ -182,7 +194,32 @@ const Home = (props: HomeProps) => {
                 <option key={coinName}>{coin.name}</option>
               )
             )}
-          </datalist>
+          </datalist> */}
+
+          <input
+            type="text"
+            className="search-input"
+            id="search-input-2"
+            placeholder="Search Currency..."
+            onInput={handleSearchInput}
+            value={search}
+          ></input>
+        </div>
+        <div className="dropdown">
+          {coinsToUse.map((coin: HomeCoinType) => (
+            <div
+              onClick={() => chooseCoin(coin.name)}
+              value={search}
+              id="search-input-2"
+              className="dropdown-row"
+            >
+              <InputCoin
+                image={coin.image}
+                symbol={coin.symbol.toUpperCase()}
+                name={coin.name}
+              />
+            </div>
+          ))}
         </div>
       </div>
 

@@ -1,0 +1,58 @@
+.user-coin-search {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  background: palevioletred;
+  position: relative; /* Ensure the parent has a relative position */
+}
+
+.search-bar {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.search-input {
+  width: 500px;
+  background-color: #2a3143;
+  border-radius: 5px 5px;
+  height: 1.4375em;
+  padding: 16.5px 14px;
+  padding-left: 5px;
+  color: #ffffff;
+  margin-top: 20px;
+  border-width: 0em;
+  font-size: 16px;
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%; /* Position below the input field */
+  width: 100%;
+  background-color: #ffffff; /* Set a background color */
+  z-index: 10; /* Ensure it appears above other elements */
+  max-height: 200px; /* Optional: Limit the height and make it scrollable */
+  overflow-y: auto;
+  border: 1px solid #ccc; /* Optional: Add a border to make it stand out */
+  border-radius: 0 0 5px 5px; /* Match the border radius of the input field */
+  color: #2a3143;
+}
+
+.dropdown:empty {
+  border: none;
+}
+
+.dropdown-row {
+  cursor: pointer;
+  text-align: start;
+  margin: 2px 0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc; /* Optional: Add a divider between items */
+  background-color: #f9f9f9; /* Optional: Set a background color for items */
+}
+
+.dropdown-row:hover {
+  background-color: #e0e0e0; /* Optional: Change background color on hover */
+}
