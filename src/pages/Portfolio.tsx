@@ -9,6 +9,7 @@ import { IoWarningOutline } from "react-icons/io5";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import { FaStar } from "react-icons/fa";
 import QRCode from "react-qr-code";
+import "../styles/Dropdown.css";
 
 const Portfolio = (props: PortfolioProps) => {
   const [portfolioModal, setPortfolioModal] = useState<boolean>(false);
@@ -19,6 +20,7 @@ const Portfolio = (props: PortfolioProps) => {
   const [quantity, setQuantity] = useState<string>("");
   const [qrModal, setQRmodal] = useState<boolean>(false);
   const [checkModal, setCheckModal] = useState<boolean>(false);
+  const [searchDropdown, setSearchDropdown] = useState<boolean>(false);
 
   const { portfolio, addPortfolio, coins } = props;
 
@@ -77,6 +79,7 @@ const Portfolio = (props: PortfolioProps) => {
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setPortfolioSearch(e.target.value);
+    setSearchDropdown(!searchDropdown);
   };
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -116,6 +119,7 @@ const Portfolio = (props: PortfolioProps) => {
   });
 
   const chooseCoin = (name: string) => {
+    setSearchDropdown(false);
     setPortfolioSearch(name);
   };
 
@@ -218,22 +222,6 @@ const Portfolio = (props: PortfolioProps) => {
               onInput={handlePortfolioSearchInput}
             />
 
-            {/* <div>
-              <input
-                className="portfolio-search"
-                list="search-input-2"
-                placeholder="Search Coin..."
-                value={portfolioSearch}
-                onInput={handlePortfolioSearchInput}
-              />
-
-              <datalist id="search-input-2">
-                {coinResults.map((coin) => (
-                  <option key={coin.name} value={coin.name}></option>
-                ))}
-              </datalist>
-            </div> */}
-
             <input
               onInput={handleQuantity}
               type="text"
@@ -245,6 +233,24 @@ const Portfolio = (props: PortfolioProps) => {
             <button onClick={onAddNewCoin} className="add-portfolio-coin-btn">
               + Add
             </button>
+
+            {searchDropdown && (
+              <div className="portfolio-search-dropdown">
+                {coinResults.map((coin: PortfolioPageType) => (
+                  <div
+                    key={coin.name}
+                    onClick={() => chooseCoin(coin.name)}
+                    className="portfolio-search-dropdown-row"
+                  >
+                    <InputCoin
+                      image={coin.image}
+                      symbol={coin.symbol.toUpperCase()}
+                      name={coin.name}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
 
             {addCoinModal && (
               <div className="modal">
@@ -269,7 +275,25 @@ const Portfolio = (props: PortfolioProps) => {
               </div>
             )}
 
-            <ul className="input-coin">
+            {/* {searchDropdown && (
+              <div className="search-dropdown">
+                {coinResults.map((coin: PortfolioPageType) => (
+                  <div
+                    key={coin.name}
+                    onClick={() => chooseCoin(coin.name)}
+                    className="search-dropdown-row"
+                  >
+                    <InputCoin
+                      image={coin.image}
+                      symbol={coin.symbol.toUpperCase()}
+                      name={coin.name}
+                    />
+                  </div>
+                ))}
+              </div>
+            )} */}
+
+            {/* <ul className="input-coin">
               {coinResults.map((coin: PortfolioPageType) => {
                 return (
                   <li onClick={() => chooseCoin(coin.name)} key={coin.name}>
@@ -281,7 +305,7 @@ const Portfolio = (props: PortfolioProps) => {
                   </li>
                 );
               })}
-            </ul>
+            </ul> */}
 
             <button onClick={togglePortfolioModal} className="close-modal">
               <IoMdCloseCircleOutline size={24} />
