@@ -182,21 +182,6 @@ const Home = (props: HomeProps) => {
     <>
       <div className="user-coin-search">
         <div className="search-bar">
-          {/* <input
-            type="text"
-            className="search-input"
-            list="search-input-2"
-            placeholder="Search Currency..."
-            onInput={handleSearchInput}
-          ></input>
-          <datalist id="search-input-2">
-            {coins.map(
-              (coin: HomeCoinType, coinName: Key | null | undefined) => (
-                <option key={coinName}>{coin.name}</option>
-              )
-            )}
-          </datalist> */}
-
           <input
             type="text"
             className="search-input"
@@ -206,23 +191,6 @@ const Home = (props: HomeProps) => {
             value={search}
           ></input>
         </div>
-        {/* 
-        <div className="search-dropdown">
-          {coinsToUse.map((coin: HomeCoinType) => (
-            <div
-              onClick={() => chooseCoin(coin.name)}
-              id="search-input-2"
-              className="search-dropdown-row"
-            >
-              <InputCoin
-                image={coin.image}
-                symbol={coin.symbol.toUpperCase()}
-                name={coin.name}
-              />
-            </div>
-          ))}
-        </div>
-      </div> */}
         {searchDropdown && (
           <div className="search-dropdown">
             {coinsToUse.map((coin: HomeCoinType) => (
