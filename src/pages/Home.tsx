@@ -1,5 +1,5 @@
 import Coin from "../components/Coin";
-import { Key, useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +19,7 @@ const Home = (props: HomeProps) => {
   const [price, setPrice] = useState<boolean>(false);
   const [mktCap, setMktCap] = useState<boolean>(false);
   const [dropdown, setDropdown] = useState<boolean>(false);
+  const [searchDropdown, setSearchDropdown] = useState<boolean>(false);
 
   const { coins, portfolio, addPortfolio, authenticated, guest } = props;
 
@@ -40,15 +41,15 @@ const Home = (props: HomeProps) => {
   }, [dropdown]);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.value);
-    setSearch(e.target.value);
+    // setSearchDropdown(true);
+    // setSearch(e.target.value);
+    const inputValue = e.target.value.trim(); // Trim whitespace from input value
+    setSearch(inputValue); // Update the search state with trimmed input value
+    setSearchDropdown(!!inputValue); // S
   };
 
-  // const handleDropdownClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setSearch(e.target.value);
-  // };
-
   const chooseCoin = (name: string) => {
+    setSearchDropdown(false);
     setSearch(name);
   };
 
@@ -205,13 +206,13 @@ const Home = (props: HomeProps) => {
             value={search}
           ></input>
         </div>
-        <div className="dropdown">
+        {/* 
+        <div className="search-dropdown">
           {coinsToUse.map((coin: HomeCoinType) => (
             <div
               onClick={() => chooseCoin(coin.name)}
-              value={search}
               id="search-input-2"
-              className="dropdown-row"
+              className="search-dropdown-row"
             >
               <InputCoin
                 image={coin.image}
@@ -221,6 +222,24 @@ const Home = (props: HomeProps) => {
             </div>
           ))}
         </div>
+      </div> */}
+        {searchDropdown && (
+          <div className="search-dropdown">
+            {coinsToUse.map((coin: HomeCoinType) => (
+              <div
+                key={coin.name}
+                onClick={() => chooseCoin(coin.name)}
+                className="search-dropdown-row"
+              >
+                <InputCoin
+                  image={coin.image}
+                  symbol={coin.symbol.toUpperCase()}
+                  name={coin.name}
+                />
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="portfolio-link-customize">
