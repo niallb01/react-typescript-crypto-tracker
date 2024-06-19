@@ -445,7 +445,7 @@ li {
     position: absolute;
     top: 5%;
     /* left: 15px; */
-    left: 18px;
+    left: 20px;
     background: #2a3143;
     /* padding: 14px 28px; */
     border-radius: 10px;
@@ -500,7 +500,7 @@ li {
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav-links {
     display: flex;
     text-decoration: none;

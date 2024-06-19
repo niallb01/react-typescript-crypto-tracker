@@ -120,6 +120,12 @@
   .search-dropdown {
     max-width: 300px;
   }
+  /* .portfolio-search-dropdown-row {
+    width: 250px;
+  } */
+  .portfolio-search-dropdown {
+    width: 270px;
+  }
 }
 
 @media (max-width: 900px) {

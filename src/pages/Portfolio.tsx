@@ -78,8 +78,11 @@ const Portfolio = (props: PortfolioProps) => {
   const handlePortfolioSearchInput = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
-    setPortfolioSearch(e.target.value);
-    setSearchDropdown(!searchDropdown);
+    // setPortfolioSearch(e.target.value);
+    // setSearchDropdown(!searchDropdown);
+    const inputValue = e.target.value.trim(); // Trim whitespace from input value
+    setPortfolioSearch(inputValue); // Update the search state with trimmed input value
+    setSearchDropdown(!!inputValue); // S
   };
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {

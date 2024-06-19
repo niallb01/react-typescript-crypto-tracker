@@ -24,6 +24,7 @@ const Home = (props: HomeProps) => {
   const { coins, portfolio, addPortfolio, authenticated, guest } = props;
 
   let dropdownRef = useRef<HTMLDivElement>(null);
+  let searchDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let handler = (e: MouseEvent) => {
@@ -40,8 +41,23 @@ const Home = (props: HomeProps) => {
     };
   }, [dropdown]);
 
+  useEffect(() => {
+    let handler = (e: MouseEvent) => {
+      if (
+        searchDropdownRef.current &&
+        !searchDropdownRef.current.contains(e.target as Node)
+      ) {
+        setSearchDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [searchDropdown]);
+
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setSearchDropdown(true);
+    // setSearchDropdown(!searchDropdown);
     // setSearch(e.target.value);
     const inputValue = e.target.value.trim(); // Trim whitespace from input value
     setSearch(inputValue); // Update the search state with trimmed input value
@@ -49,8 +65,12 @@ const Home = (props: HomeProps) => {
   };
 
   const chooseCoin = (name: string) => {
+    // setSearchDropdown(!searchDropdown);
     setSearchDropdown(false);
     setSearch(name);
+  };
+  const handleSearchClick = () => {
+    setSearchDropdown(true); // Open search dropdown when search input is clicked
   };
 
   const onDropdown = () => {
@@ -187,12 +207,13 @@ const Home = (props: HomeProps) => {
             className="search-input"
             id="search-input-2"
             placeholder="Search Currency..."
+            onClick={handleSearchClick}
             onInput={handleSearchInput}
             value={search}
           ></input>
         </div>
         {searchDropdown && (
-          <div className="search-dropdown">
+          <div className="search-dropdown" ref={searchDropdownRef}>
             {coinsToUse.map((coin: HomeCoinType) => (
               <div
                 key={coin.name}
@@ -328,7 +349,7 @@ const Home = (props: HomeProps) => {
       {coinsToUse.map((coin: HomeCoinType) => {
         return (
           <div key={coin.name}>
-            {dropdown ? (
+            {dropdown || searchDropdown ? (
               <div className="coin-container">
                 <div className="coin-row">
                   <Link to={"#"}>
