@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../styles/Modal.css";
 import "react-toastify/dist/ReactToastify.css";
 import InputCoin from "../inputcomponents/InputCoin";
@@ -7,8 +7,6 @@ import { BsLightning } from "react-icons/bs";
 import { PortfolioPageType, PortfolioProps } from "../types/coin_types";
 import { IoWarningOutline } from "react-icons/io5";
 import { IoMdCloseCircleOutline } from "react-icons/io";
-import { FaStar } from "react-icons/fa";
-import QRCode from "react-qr-code";
 import "../styles/Dropdown.css";
 
 const Portfolio = (props: PortfolioProps) => {
@@ -18,22 +16,30 @@ const Portfolio = (props: PortfolioProps) => {
   const [addCoinModal, setAddCoinModal] = useState<boolean>(false);
   const [portfolioSearch, setPortfolioSearch] = useState<string>("");
   const [quantity, setQuantity] = useState<string>("");
-  const [qrModal, setQRmodal] = useState<boolean>(false);
   const [checkModal, setCheckModal] = useState<boolean>(false);
   const [searchDropdown, setSearchDropdown] = useState<boolean>(false);
 
   const { portfolio, addPortfolio, coins } = props;
 
+  let searchDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let handler = (e: MouseEvent) => {
+      if (
+        searchDropdownRef.current &&
+        !searchDropdownRef.current.contains(e.target as Node)
+      ) {
+        setSearchDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [searchDropdown]);
+
   const togglePortfolioModal = () => {
     setPortfolioModal(!portfolioModal);
-  };
-
-  const toggleQRCodeModal = () => {
-    if (portfolio.length > 0) {
-      setQRmodal(!qrModal);
-    } else {
-      setCheckModal(!checkModal);
-    }
   };
 
   const toggleCheckModal = () => {
@@ -46,29 +52,6 @@ const Portfolio = (props: PortfolioProps) => {
     } else {
       addPortfolio([]);
     }
-  };
-
-  const filterPortfolioData = () =>
-    portfolio.map(
-      ({
-        name,
-        symbol,
-        quantity,
-        current_price,
-        market_cap,
-        fully_diluted_valuation,
-      }) => ({
-        name,
-        symbol,
-        quantity,
-        current_price,
-        market_cap,
-        fully_diluted_valuation,
-      })
-    );
-
-  const stringifyPortfolioData = () => {
-    return JSON.stringify(filterPortfolioData());
   };
 
   const toggleAddCoinModal = () => {
@@ -87,6 +70,10 @@ const Portfolio = (props: PortfolioProps) => {
 
   const handleQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    setSearchDropdown(true); // Open search dropdown when search input is clicked
   };
 
   const onDeletePortfolioCoin = (coin: string) => {
@@ -160,29 +147,6 @@ const Portfolio = (props: PortfolioProps) => {
         <BsLightning size={22} />
         Quick Portfolio
       </h4>
-      <div className="share-portfolio-btn">
-        <button onClick={toggleQRCodeModal} className="btn-share-modal">
-          <FaStar className="star-icon-fill" size="10" />
-          {""} Share
-        </button>
-      </div>
-      {qrModal && (
-        <div className="qr-modal">
-          <div onClick={toggleQRCodeModal} className="overlay"></div>
-          <div className="share-modal-content">
-            <h4 className="share-modal-header">Scan QR code</h4>
-            <div className="edit-coin-btn-container">
-              <button
-                onClick={toggleQRCodeModal}
-                className="close-modal-edit-coin"
-              >
-                <IoMdCloseCircleOutline />
-              </button>
-            </div>
-            <QRCode value={stringifyPortfolioData()} />
-          </div>
-        </div>
-      )}
 
       {checkModal && (
         <div className="modal">
@@ -222,6 +186,7 @@ const Portfolio = (props: PortfolioProps) => {
               list="search-input-3"
               placeholder="Search Coin..."
               value={portfolioSearch}
+              onClick={handleSearchClick}
               onInput={handlePortfolioSearchInput}
             />
 
@@ -238,7 +203,10 @@ const Portfolio = (props: PortfolioProps) => {
             </button>
 
             {searchDropdown && (
-              <div className="portfolio-search-dropdown">
+              <div
+                className="portfolio-search-dropdown"
+                ref={searchDropdownRef}
+              >
                 {coinResults.map((coin: PortfolioPageType) => (
                   <div
                     key={coin.name}
@@ -277,38 +245,6 @@ const Portfolio = (props: PortfolioProps) => {
                 </div>
               </div>
             )}
-
-            {/* {searchDropdown && (
-              <div className="search-dropdown">
-                {coinResults.map((coin: PortfolioPageType) => (
-                  <div
-                    key={coin.name}
-                    onClick={() => chooseCoin(coin.name)}
-                    className="search-dropdown-row"
-                  >
-                    <InputCoin
-                      image={coin.image}
-                      symbol={coin.symbol.toUpperCase()}
-                      name={coin.name}
-                    />
-                  </div>
-                ))}
-              </div>
-            )} */}
-
-            {/* <ul className="input-coin">
-              {coinResults.map((coin: PortfolioPageType) => {
-                return (
-                  <li onClick={() => chooseCoin(coin.name)} key={coin.name}>
-                    <InputCoin
-                      image={coin.image}
-                      symbol={coin.symbol.toUpperCase()}
-                      name={coin.name}
-                    />
-                  </li>
-                );
-              })}
-            </ul> */}
 
             <button onClick={togglePortfolioModal} className="close-modal">
               <IoMdCloseCircleOutline size={24} />

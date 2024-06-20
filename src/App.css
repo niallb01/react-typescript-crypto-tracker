@@ -158,17 +158,6 @@ a .star-icon {
   color: #ffad00;
   fill: #ffad00;
 }
-/* 
-.header {
-  text-align: center;
-  font-size: 30px;
-  color: #ffffff;
-}
-
-.header-icon {
-  text-shadow: #ffad00 1px 0 10px;
-  color: #810081;
-} */
 
 a {
   color: #ffffff;
@@ -395,11 +384,23 @@ li {
     justify-content: center;
     gap: 20px;
   }
+
   .search-input {
-    width: 300px;
+    /* width: 500px; */
     background-color: #2a3143;
-    border-radius: 5px 5px;
+    border-radius: 5px;
+    height: 1.4375em;
+    height: 55px;
+    /* padding: 16.5px 14px 16.5px 5px; */
+    padding: 0px 0px 0px 5px;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-width: 0em;
+    font-size: 16px;
+    max-width: 300px;
   }
+
   .desc-container {
     display: flex;
     justify-content: space-evenly;
@@ -508,11 +509,7 @@ li {
     justify-content: center;
     gap: 20px;
   }
-  .search-input {
-    width: 300px;
-    background-color: #2a3143;
-    border-radius: 5px 5px;
-  }
+
   .desc-container {
     display: flex;
     justify-content: space-evenly;

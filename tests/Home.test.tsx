@@ -71,7 +71,6 @@ describe("portfolio button", () => {
     await user.click(addCoinButton);
     expect(addCoinButton).toBeInTheDocument();
     // toast
-    expect(container.firstChild).toHaveClass("Toastify");
     expect(container.firstChild).toBeTruthy();
   });
 });

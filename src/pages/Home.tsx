@@ -57,15 +57,12 @@ const Home = (props: HomeProps) => {
   }, [searchDropdown]);
 
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // setSearchDropdown(!searchDropdown);
-    // setSearch(e.target.value);
     const inputValue = e.target.value.trim(); // Trim whitespace from input value
     setSearch(inputValue); // Update the search state with trimmed input value
     setSearchDropdown(!!inputValue); // S
   };
 
   const chooseCoin = (name: string) => {
-    // setSearchDropdown(!searchDropdown);
     setSearchDropdown(false);
     setSearch(name);
   };

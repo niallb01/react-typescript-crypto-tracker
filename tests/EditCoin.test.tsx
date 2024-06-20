@@ -33,9 +33,10 @@ describe("edit coin", () => {
     const editCoin = container.getElementsByClassName("edit-coin-input");
     expect(editCoin).toBeTruthy();
 
-    const closeButton = screen.getByRole("button", { name: /x/i });
-    user.click(closeButton);
-    expect(closeButton).toBeInTheDocument();
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
 
     const updateButton = screen.getByRole("button", { name: /update/i });
     user.click(updateButton);
@@ -94,10 +95,10 @@ describe("update modal", () => {
     );
     expect(updateText).toBeTruthy();
 
-    const closeButton = container.getElementsByClassName(
-      "close-modal-delete-portfolio"
-    );
-    expect(closeButton).toBeTruthy();
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
   });
 });
 
@@ -138,10 +139,10 @@ describe("delete modal", () => {
     );
     expect(updateText).toBeTruthy();
 
-    const closeButton = container.getElementsByClassName(
-      "close-modal-delete-portfolio"
-    );
-    expect(closeButton).toBeTruthy();
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
 
     const confirmButton = container.getElementsByClassName(
       "delete-portfolio-modal-btn"

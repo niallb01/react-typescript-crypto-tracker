@@ -54,7 +54,7 @@
   background-color: #2a3143;
   color: #ffffff;
   z-index: 10;
-  max-height: 400px;
+  max-height: 450px;
   overflow-y: auto;
   border: 1px solid #181b26;
   /* border-radius: 0 0 5px 5px; */
@@ -120,16 +120,14 @@
   .search-dropdown {
     max-width: 300px;
   }
-  /* .portfolio-search-dropdown-row {
-    width: 250px;
-  } */
+
   .portfolio-search-dropdown {
     width: 270px;
   }
 }
 
-@media (max-width: 900px) {
-  .search-input {
-    max-width: 300px;
+@media (max-width: 1100px) {
+  .portfolio-search-dropdown {
+    width: 270px;
   }
 }

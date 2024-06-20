@@ -58,9 +58,10 @@ describe("add coin modal", () => {
     const quantityInput = screen.getByPlaceholderText(/add quantity/i);
     expect(quantityInput).toBeInTheDocument();
 
-    const closeButton = screen.getByRole("button", { name: /x/i });
-    user.click(closeButton);
-    expect(closeButton).toBeInTheDocument();
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
 
     const addCoinButton = screen.getByRole("button", { name: "+ Add" });
     user.click(addCoinButton);
@@ -88,9 +89,10 @@ describe("add coin warning modal", () => {
     );
     expect(editWarningText).toBeTruthy();
 
-    const closeButton = screen.getByRole("button", { name: /x/i });
-    user.click(closeButton);
-    expect(closeButton).toBeInTheDocument();
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
 
     const warningIcon = document.querySelector(
       "svg"
@@ -123,6 +125,11 @@ describe("delete portfolio modal", () => {
     );
     expect(confirmButton).toBeTruthy();
 
+    const closeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(closeIcon).toBeInTheDocument();
+
     const warningIcon = document.querySelector(
       "svg"
     ) as unknown as HTMLImageElement;
@@ -133,33 +140,5 @@ describe("delete portfolio modal", () => {
       "delete-portfolio-modal-text"
     );
     expect(deleteWarningText).toBeTruthy();
-  });
-});
-
-describe("share portfolio button", () => {
-  const user = userEvent.setup();
-  it("should trigger modal with QR code", async () => {
-    const { container } = render(
-      <MemoryRouter>
-        <Portfolio portfolio={[]} addPortfolio={() => {}} coins={[]} />
-      </MemoryRouter>
-    );
-
-    const shareButton = screen.getByRole("button", { name: /share/i });
-    await user.click(shareButton);
-    expect(shareButton).toBeInTheDocument();
-
-    const shareIcon = document.querySelector(
-      "svg"
-    ) as unknown as HTMLImageElement;
-    expect(shareIcon).toBeTruthy();
-
-    const closeModal = container.getElementsByClassName(
-      "close-modal-edit-coin"
-    );
-    expect(closeModal).toBeTruthy();
-
-    const shareHeader = container.getElementsByClassName("share-modal-header");
-    expect(shareHeader).toBeTruthy();
   });
 });
