@@ -104,10 +104,13 @@ import { AccountProps } from "../types/auth_types";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { TbPasswordUser } from "react-icons/tb";
+import { IoWarningOutline } from "react-icons/io5";
+import { IoMdCloseCircleOutline } from "react-icons/io";
 
 const Account = (props: AccountProps) => {
   const [newPassword, setNewPassword] = useState("");
   const [userId, setUserId] = useState<string | null>(null);
+  const [deleteAccModal, setDeleteAccModal] = useState<boolean>(false);
 
   const navigate = useNavigate();
 
@@ -162,6 +165,10 @@ const Account = (props: AccountProps) => {
 
   const onPasswordInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewPassword(e.target.value);
+  };
+
+  const toggleDeleteAccModal = () => {
+    setDeleteAccModal(!deleteAccModal);
   };
 
   const handleDeleteAccount = async () => {
@@ -223,10 +230,43 @@ const Account = (props: AccountProps) => {
           Change Password
         </button>
       </form>
-
-      <button onClick={handleDeleteAccount} className="delete-acc-btn">
+      <button onClick={toggleDeleteAccModal} className="delete-acc-btn">
         Delete Account
       </button>
+      {deleteAccModal && (
+        <div className="delete-portfolio-modal">
+          <div onClick={toggleDeleteAccModal} className="overlay"></div>
+          <div className="modal-content-delete-portfolio">
+            <IoWarningOutline
+              size={24}
+              className="delete-portfolio-modal-icon"
+            />
+            <p className="delete-portfolio-modal-text">
+              Are you sure you want to permanently delete account?
+            </p>
+
+            <div className="edit-coin-btn-container">
+              <button
+                onClick={toggleDeleteAccModal}
+                className="close-modal-delete-portfolio"
+              >
+                <IoMdCloseCircleOutline />
+              </button>
+
+              <br></br>
+              <button
+                onClick={() => {
+                  // toggleDeleteAccModal();
+                  handleDeleteAccount();
+                }}
+                className="delete-portfolio-modal-btn"
+              >
+                Yes
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
