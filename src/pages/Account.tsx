@@ -105,7 +105,8 @@ const Account = (props: AccountProps) => {
   return (
     <div className="account-form-container">
       <h1 className="account-header">
-        <TbPasswordUser /> Account
+        <TbPasswordUser />
+        {""}Account
       </h1>
       <form onSubmit={handleChangePassword}>
         <label className="password-label" htmlFor="password">
@@ -125,7 +126,7 @@ const Account = (props: AccountProps) => {
           className="form-text-input"
           value={newPassword}
           onChange={onPasswordInput}
-          placeholder="New Test Password"
+          placeholder="New Password"
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
           title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
           required

@@ -101,7 +101,7 @@ const Login = (props: LoginProps) => {
             className="form-text-input"
             value={userData.email}
             onChange={handleChange}
-            placeholder="Test Email"
+            placeholder="Email"
             required
           />
           <label className="password-label" htmlFor="password">
@@ -121,7 +121,7 @@ const Login = (props: LoginProps) => {
             className="form-text-input"
             value={userData.password}
             onChange={handleChange}
-            placeholder="Test Password"
+            placeholder="Password"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
             title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
             required
