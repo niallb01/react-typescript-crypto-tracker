@@ -31,7 +31,6 @@ const Account = (props: AccountProps) => {
     const fetchUserId = async () => {
       const { data, error } = await supabase.auth.getUser();
       if (error) {
-        console.error("Error fetching user:", error);
         toast.error("Error fetching user information", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 2000,
@@ -39,7 +38,6 @@ const Account = (props: AccountProps) => {
       } else {
         const fetchedUserId = data.user?.id || null;
         setUserId(fetchedUserId);
-        console.log("Fetched user ID:", fetchedUserId);
       }
     };
     fetchUserId();

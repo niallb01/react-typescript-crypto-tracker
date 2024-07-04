@@ -29,7 +29,7 @@ const CoinComp = (props: CoinCompProps) => {
         )}
       </div>
       <div className="item-7">
-        <p className="coin-volume-24hr">Volume: £{props.volume}</p>
+        <p className="coin-volume-24hr">Vol: £{props.volume}</p>
       </div>
       <div className="item-8">
         <p className="fdv">FDV: £{props.fdv}</p>

@@ -101,6 +101,32 @@ body {
   margin-left: 90px;
 }
 
+.desc-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-link-btn {
+  display: flex;
+  align-items: center;
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #2a3143;
+  background-color: #384d61;
+  color: #48c1be;
+  height: 30px;
+  border: 1px solid;
+  font-weight: 600;
+  margin-right: 60px;
+}
+
+.home-link-btn:hover {
+  color: #48c1be;
+  background-color: #2a3143;
+  border: 1px solid;
+}
+
 .coin-desc-text {
   height: 600px;
   flex-basis: 40%;
@@ -498,6 +524,10 @@ li {
   }
   .portfolio-search {
     width: 250px;
+  }
+
+  .home-link-btn {
+    margin-right: 15px;
   }
 }
 

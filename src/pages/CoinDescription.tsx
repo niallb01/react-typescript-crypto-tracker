@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import DescText from "../components/DescText";
 import { Link } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { IoArrowBackCircleOutline } from "react-icons/io5";
+
 import { DescriptionProps, CoinDescriptionType } from "../types/coin_types";
 
 const CoinDescription = (props: DescriptionProps) => {
@@ -21,14 +23,24 @@ const CoinDescription = (props: DescriptionProps) => {
   return (
     <>
       <h4 className="desc-header">All About {currentCoin[2]}</h4>
-      <div className="portfolio-link">
-        Go to
-        <Link to="/portfolio" className="portfolio-link-text">
-          {" "}
-          Portfolio {<FaStar className="star-icon-fill" size="10" />}
-        </Link>
+      <div className="desc-nav">
+        <div className="portfolio-link">
+          Go to
+          <Link to="/portfolio" className="portfolio-link-text">
+            {" "}
+            Portfolio {<FaStar className="star-icon-fill" size="10" />}
+          </Link>
+        </div>
+        <div className="home-btn">
+          <Link to="/">
+            <button className="home-link-btn">
+              <IoArrowBackCircleOutline size={20} />
+              {""}
+              Back
+            </button>
+          </Link>
+        </div>
       </div>
-
       {coinToShow.map((coindesc: CoinDescriptionType, index: number) => {
         return (
           <div key={index} className="desc-container">
