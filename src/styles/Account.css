@@ -11,6 +11,9 @@
 }
 
 .account-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 22px;
   font-weight: 400;
   text-align: center;

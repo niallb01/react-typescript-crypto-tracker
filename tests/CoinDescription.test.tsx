@@ -24,10 +24,10 @@ describe("coin description", () => {
   });
 });
 
-describe("portfolio link", () => {
+describe("portfolio and homelink", () => {
   const user = userEvent.setup();
-  it("should render portfolio page when navigating to portfolio page", async () => {
-    const { getByText } = render(
+  it("should render portfolio and home page when navigating to pages", async () => {
+    const { getByText, container } = render(
       <MemoryRouter>
         <CoinDescription coinDescription={[]} />
       </MemoryRouter>
@@ -41,5 +41,13 @@ describe("portfolio link", () => {
       "svg"
     ) as unknown as HTMLImageElement;
     expect(portfolioIcon).toBeInTheDocument();
+
+    const homeButton = container.getElementsByClassName("home-link-btn");
+    expect(homeButton).toBeTruthy();
+
+    const homeIcon = document.querySelector(
+      "svg"
+    ) as unknown as HTMLImageElement;
+    expect(homeIcon).toBeInTheDocument();
   });
 });
