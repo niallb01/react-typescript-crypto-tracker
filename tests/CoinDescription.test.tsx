@@ -24,7 +24,7 @@ describe("coin description", () => {
   });
 });
 
-describe("portfolio and homelink", () => {
+describe("portfolio and home link", () => {
   const user = userEvent.setup();
   it("should render portfolio and home page when navigating to pages", async () => {
     const { getByText, container } = render(
