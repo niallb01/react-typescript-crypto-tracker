@@ -59,7 +59,7 @@ const Home = (props: HomeProps) => {
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.trim(); // Trim whitespace from input value
     setSearch(inputValue); // Update the search state with trimmed input value
-    setSearchDropdown(!!inputValue); // S
+    setSearchDropdown(!!inputValue);
   };
 
   const chooseCoin = (name: string) => {
@@ -439,7 +439,6 @@ const Home = (props: HomeProps) => {
           </div>
         );
       })}
-
       <div className="page-footer"></div>
     </>
   );

@@ -102,8 +102,7 @@ const SignUp = (props: SignUpProps) => {
     <>
       <div className="sign-up-form-container">
         <h1 className="onLogin-header">
-          <IoCreateOutline />
-          Create Account
+          <IoCreateOutline /> Create Account
         </h1>
         <form onSubmit={handleSignup}>
           <label htmlFor="email">Email:</label>
