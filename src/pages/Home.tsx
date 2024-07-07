@@ -41,21 +41,6 @@ const Home = (props: HomeProps) => {
     };
   }, [dropdown]);
 
-  useEffect(() => {
-    let handler = (e: MouseEvent) => {
-      if (
-        searchDropdownRef.current &&
-        !searchDropdownRef.current.contains(e.target as Node)
-      ) {
-        setSearchDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handler);
-    return () => {
-      document.removeEventListener("mousedown", handler);
-    };
-  }, [searchDropdown]);
-
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value.trim(); // Trim whitespace from input value
     setSearch(inputValue); // Update the search state with trimmed input value
@@ -194,6 +179,26 @@ const Home = (props: HomeProps) => {
       coinsToUse = filteredCoins.length > 0 ? filteredCoins : coins;
       break;
   }
+
+  useEffect(() => {
+    if (coinsToUse.length <= 1) {
+      setSearchDropdown(false);
+    }
+
+    let handler = (e: MouseEvent) => {
+      if (
+        searchDropdownRef.current &&
+        !searchDropdownRef.current.contains(e.target as Node)
+      ) {
+        setSearchDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  }, [searchDropdown, coinsToUse]);
 
   return (
     <>
