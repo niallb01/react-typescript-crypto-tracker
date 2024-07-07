@@ -126,6 +126,10 @@ const Login = (props: LoginProps) => {
             title="Must contain at least one number, one uppercase letter and special character, and at least 8 or more characters"
             required
           />
+          <p>
+            Password must contain at least one number, one uppercase letter and
+            special character, and at least 8 or more characters
+          </p>
           <button type="submit" id="submit" name="submit" className="login-btn">
             Login
           </button>
